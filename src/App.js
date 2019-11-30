@@ -22,6 +22,7 @@ function App({ title }) {
       </div>
       <div className="d-flex justify-content-center">
         <img src={joker} alt="joker" />
+        <p>alo header</p>
       </div>
     </div>
   );

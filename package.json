@@ -7,7 +7,7 @@
     "start": "webpack-dev-server --config ./webpack.config.js --mode development",
     "test": "echo \"No test specified\" && exit 0",
     "prettier": "prettier \"src/**/*.{js,css}\"",
-    "format": "yarn prettier --write",
+    "format": "npm run prettier -- --write",
     "linting": "eslint src"
   },
   "keywords": [],
