@@ -1,8 +1,18 @@
 /* eslint-disable no-path-concat */
 const webpack = require('webpack');
+const path = require('path');
+
+const PATH_SOURCE = path.join(__dirname, './src');
+const PATH_DIST = path.join(__dirname, './dist');
 
 module.exports = {
-  entry: './src/index.js',
+  // entry: './src/client/index.js',
+  entry: [path.join(PATH_SOURCE, './client/index.js')],
+  output: {
+    // eslint-disable-next-line prefer-template
+    path: PATH_DIST,
+    filename: 'bundle.js',
+  },
   module: {
     rules: [
       {
@@ -75,12 +85,7 @@ module.exports = {
   resolve: {
     extensions: ['*', '.js', '.jsx'],
   },
-  output: {
-    // eslint-disable-next-line prefer-template
-    path: __dirname + '/dist',
-    publicPath: '/',
-    filename: 'bundle.js',
-  },
+
   plugins: [new webpack.HotModuleReplacementPlugin()],
   devServer: {
     // host: '192.168.2.101',
@@ -88,5 +93,6 @@ module.exports = {
     contentBase: './dist',
     hot: true,
     open: true,
+    historyApiFallback: true,
   },
 };
