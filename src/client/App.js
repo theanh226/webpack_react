@@ -11,7 +11,7 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-      <div className="container">
+      <div>
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route component={Routes} />

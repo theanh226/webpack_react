@@ -1,16 +1,37 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import PropTypes from 'prop-types';
 
-function LandingPage() {
+const Landingpage = () => {
   return (
     <div>
-      <Link to="/test">to Test component</Link>
-      <h3>This is landing page</h3>
+      <div className="masthead d-flex align-items-center text-center">
+        <div className="container">
+          <div className="row">
+            <div className="col-12">
+              <h1 className="text-light font-weight-light">
+                W E L C O M E &nbsp; t o &nbsp; I N F O H O R S E
+              </h1>
+              <p className="lead text-light">
+                A great place for tutors and students to communicate
+              </p>
+            </div>
+            <div className="col-6 text-right">
+              <button type="button" className="btn bg-light">
+                Goto Faq
+              </button>
+            </div>
+            <div className="col-6 text-left">
+              <Link to="/test">
+                <button type="button" className="btn bg-danger text-light">
+                  Goto Test
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
-}
+};
 
-// LandingPage.propTypes = {};
-
-export default LandingPage;
+export default Landingpage;

@@ -1,12 +1,30 @@
-.bg-light-blue {
-  background-color: rgb(59, 56, 66, 0.6);
+.bg-pale-green {
+  background-color: rgba(50, 58, 20, 0.7);
 }
 
-/* .masthead {
+.masthead {
   height: 100vh;
   min-height: 500px;
-  background: linear-gradient(to bottom, rgba(92, 77, 66, .5) 0, rgba(92, 77, 66, .5) 100%), url(https://www.xtrafondos.com/wallpapers/fortnite-battle-bus-3760.jpg);
+  background: linear-gradient(
+      to bottom,
+      rgba(92, 77, 66, 0.8) 0,
+      rgba(92, 77, 66, 0.8) 100%
+    ),
+    url(https://wallpapercave.com/wp/COs2teg.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-} */
+}
+.nav-link {
+  padding: 0 0.5rem 0 0.5rem !important;
+}
+.navbar .navbar-nav li {
+  border: 3px solid rgb(0, 0, 0, 0);
+  transition: all 0.2s ease-in-out;
+}
+.navbar .navbar-nav li:hover {
+  border: 3px solid #ffffff;
+}
+.navbar .navbar-nav .btn {
+  padding: 0.5rem 0.75rem !important;
+}
