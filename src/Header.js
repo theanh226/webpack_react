@@ -1,39 +1,47 @@
 import React from 'react';
-import ButtonDropDown from './ButtonDropDown';
 import logo from '../vendor/img/logo1.png';
-import './style.css';
 
 const Header = () => {
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light-blue shadow fixed-top">
+      <nav className="navbar navbar-expand-lg navbar-light bg-pale-green shadow ">
         <div className="container">
           <a className="navbar-brand" href="./link">
-            <img src={logo} alt="logo" className="img" width="200" />
+            <img src={logo} alt="logo" className="img" width="100" />
           </a>
-
-          {/* <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarResponsive"
-            aria-controls="navbarResponsive"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon" />
-          </button> */}
-          <div className="collapse navbar-collapse" id="navbarResponsive">
+          <div>
+            {/* User and user setting */}
             <ul className="navbar-nav ml-auto">
-              <li className="nav-item active">
+              <li className="nav-item">
                 <a className="nav-link" href="./link">
-                  <p className="text-light mt-2">Hello User</p>
+                  <p className="text-light mt-2 mb-2">Hello User</p>
                 </a>
               </li>
+              {/* setting drop down */}
               <li className="nav-item active">
-                <a className="nav-link" href="./link">
-                  <ButtonDropDown />
-                </a>
+                <div className="nav-link btn-group">
+                  <button
+                    type="button"
+                    className="btn shadow-none"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    <i className="fas fa-cogs text-light mt-1" />
+                  </button>
+                  <div className="dropdown-menu dropdown-menu-right bg-dark">
+                    <a className="dropdown-item text-light" href="/link">
+                      Your Account
+                    </a>
+                    <a className="dropdown-item text-light" href="/link">
+                      Change Information
+                    </a>
+                    <div className="dropdown-divider" />
+                    <a className="dropdown-item text-light" href="/link">
+                      Log out
+                    </a>
+                  </div>
+                </div>
               </li>
             </ul>
           </div>
