@@ -1,6 +1,6 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
-import { BrowserRouter as Switch, Route, HashRouter } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Header from './components/Header';
 import './style.css';
 import Routes from './routing/Routes';
@@ -9,7 +9,7 @@ import LandingPage from './components/LandingPage';
 
 function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Header />
       <div className="container">
         <Switch>
@@ -17,7 +17,7 @@ function App() {
           <Route component={Routes} />
         </Switch>
       </div>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 

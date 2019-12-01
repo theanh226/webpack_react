@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "webpack  --config ./webpack.config.js --mode production",
     "start": "webpack-dev-server --config ./webpack.config.js --mode development",
     "test": "echo \"No test specified\" && exit 0",
     "prettier": "prettier \"src/**/*.{js,css}\"",
@@ -20,6 +21,7 @@
     "@fortawesome/fontawesome-free": "^5.11.2",
     "babel-loader": "^8.0.6",
     "bootstrap": "^4.4.1",
+    "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.2.0",
     "eslint": "^6.7.1",
     "eslint-config-airbnb": "^18.0.1",

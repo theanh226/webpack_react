@@ -2,16 +2,19 @@
 const webpack = require('webpack');
 const path = require('path');
 
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
 const PATH_SOURCE = path.join(__dirname, './src');
 const PATH_DIST = path.join(__dirname, './dist');
 
 module.exports = {
   // entry: './src/client/index.js',
-  entry: [path.join(PATH_SOURCE, './client/index.js')],
+  entry: [path.join(PATH_SOURCE, './index.js')],
   output: {
     // eslint-disable-next-line prefer-template
     path: PATH_DIST,
-    filename: 'bundle.js',
+    filename: 'js/[name].[hash].js',
   },
   module: {
     rules: [
@@ -86,13 +89,23 @@ module.exports = {
     extensions: ['*', '.js', '.jsx'],
   },
 
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: path.join(PATH_SOURCE, './index.html'),
+    }),
+  ],
   devServer: {
     // host: '192.168.2.101',
     port: 4000,
-    contentBase: './dist',
+    contentBase: PATH_DIST,
     hot: true,
     open: true,
     historyApiFallback: true,
+    overlay: {
+      errors: true,
+      warnings: true,
+    },
   },
 };
