@@ -4,8 +4,15 @@ import { Link } from 'react-router-dom';
 
 function Test() {
   return (
-    <div>
-      <Link to="/">landing</Link>
+    <div className="mt-2">
+      <ul>
+        <li>
+          <Link to="/">Landing</Link>
+        </li>
+        <li>
+          <Link to="/chat">Chat Room</Link>
+        </li>
+      </ul>
       <h3>Test component</h3>
     </div>
   );
