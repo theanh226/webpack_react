@@ -5,6 +5,7 @@ import Header from './components/Header';
 import './style.css';
 import Routes from './routing/Routes';
 import LandingPage from './components/LandingPage';
+import Footer from './components/Footer';
 // import Test from './components/Test';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route component={Routes} />
         </Switch>
       </div>
+      <Footer />
     </BrowserRouter>
   );
 }
