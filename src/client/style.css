@@ -28,3 +28,22 @@
 .navbar .navbar-nav .btn {
   padding: 0.5rem 0.75rem !important;
 }
+/* FOOTER CSS */
+.about {
+  word-wrap: break-word;
+}
+.fa-facebook:hover {
+  color: rgb(73, 96, 202);
+}
+.fa-twitter:hover {
+  color: rgb(31, 148, 177);
+}
+.fa-youtube:hover {
+  color: red;
+}
+.fa-instagram:hover {
+  color: rgb(231, 116, 21);
+}
+.fa-university:hover {
+  color: white;
+}
