@@ -9,31 +9,39 @@ import 'codemirror/mode/javascript/javascript.js';
 import 'codemirror/mode/python/python';
 import './chat.css';
 
-const Room = require('./../../../backend/DummyData');
+// import CodeMirrorCom from './CodeMirrorCom';
 
 const socket = io('http://localhost:5000');
 
 const Chat = () => {
-  const [code, setCode] = useState(Room.code);
-  console.log(Room);
+  const [code, setCode] = useState('');
   const [sendCode, setSendCode] = useState(false);
+
   useEffect(() => {
     console.log('emit sendCode');
-    socket.emit('sendCode', code, error => {
+    socket.emit('sendCode', { code }, error => {
       if (error) {
         console.log(error);
       }
     });
-    Room.code = code;
+
+    socket.on('showCode', data => {
+      console.log('showCode building in client');
+      console.log('Data reviced from Server', data.codeStudent);
+      setCode(data.codeStudent);
+    });
     // return () => {};
   }, [sendCode]);
-  // socket.on('showCode', data => {
-  //   console.log('showCode building in client');
-  //   console.log(data.codeStudent);
-  //   setCode(data.codeStudent);
-  // });
+
+  // const onChange = e => setCode({ [e.target.name]: e.target.value });
+
+  // const onSubmit = e => {
+  //   e.preventDefault();
+  //   setSendCode(!sendCode);
+  // };
+
   return (
-    <div>
+    <div className="mb-5">
       <h2 className="text-center mb-2 mt-2">Chat Component</h2>
       <CodeMirror
         value={code}
@@ -43,7 +51,6 @@ const Chat = () => {
           lineNumbers: true,
         }}
         onBeforeChange={(editor, data, value) => {
-          console.log(editor);
           setCode(value);
         }}
         // onChange={(editor, data, value) => {}}
@@ -55,6 +62,19 @@ const Chat = () => {
       >
         Submit Code
       </button>
+      {/* <div>
+        <form className="form" onSubmit={e => onSubmit(e)}>
+          <div className="form-group">
+            <input
+              type="text"
+              placeholder="input your code here"
+              name="company"
+              value={code}
+              onChange={e => onChange(e)}
+            />
+          </div>
+        </form>
+      </div> */}
     </div>
   );
 };
