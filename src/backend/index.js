@@ -6,6 +6,10 @@ const cors = require('cors');
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
+const connectDB = require('./config/db');
+
+// Connect Database MongoDB
+connectDB();
 
 // connect to socket io in socketManager.js
 require('./socketManager')(io);

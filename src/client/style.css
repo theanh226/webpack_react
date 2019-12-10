@@ -47,3 +47,11 @@
 .fa-university:hover {
   color: white;
 }
+
+/* LINK */
+a {
+  color: rgba(50, 58, 20, 0.7) !important;
+}
+a:hover {
+  text-decoration: none;
+}
