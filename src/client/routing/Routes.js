@@ -1,16 +1,16 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Test from '../components/Test';
-import Chat from '../components/Chat/Chat';
-import Tutor from '../components/Chat/Tutor';
+import ProfileBox from '../components/Profile/ProfileBox';
+import ProfileCard from '../components/Profile/ProfileCard';
 
 const Routes = () => {
   return (
     <section className="container">
       <Switch>
         <Route exact path="/test" component={Test} />
-        <Route exact path="/chat" component={Chat} />
-        <Route exact path="/tutor" component={Tutor} />
+        <Route exact path="/profile-box" component={ProfileBox} />
+        <Route exact path="/profile-card" component={ProfileCard} />
       </Switch>
     </section>
   );
