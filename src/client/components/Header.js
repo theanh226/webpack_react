@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import logo from '../../../vendor/img/logo1.png';
 
-const Header = () => {
+const Header = ({ user }) => {
+  console.log(user);
+  const [userName, setUserName] = useState('Hello User');
+  useEffect(() => {
+    if (user != null) {
+      setUserName(user.name);
+    }
+    return () => {};
+  }, [user]);
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-pale-green shadow ">
@@ -15,7 +25,7 @@ const Header = () => {
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
                 <a className="nav-link" href="./link">
-                  <p className="text-light mt-2 mb-2">Hello User</p>
+                  <p className="text-light mt-2 mb-2">{userName}</p>
                 </a>
               </li>
               {/* setting drop down */}
@@ -52,4 +62,12 @@ const Header = () => {
   );
 };
 
-export default Header;
+Header.propTypes = {
+  user: PropTypes.object,
+};
+
+const mapStateToProps = state => ({
+  user: state.auth.user,
+});
+
+export default connect(mapStateToProps)(Header);
