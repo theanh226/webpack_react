@@ -1,16 +1,21 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Test from '../components/Test';
-import ProfileBox from '../components/Profile/ProfileBox';
-import ProfileCard from '../components/Profile/ProfileCard';
+import Register from '../components/Auth/Register';
+import Login from '../components/Auth/Login';
+import Alert from '../layout/Alert';
+import PrivateRoute from './PrivateRoute';
+import NotFound from '../layout/NotFound';
 
 const Routes = () => {
   return (
     <section className="container">
+      <Alert />
       <Switch>
-        <Route exact path="/test" component={Test} />
-        <Route exact path="/profile-box" component={ProfileBox} />
-        <Route exact path="/profile-card" component={ProfileCard} />
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/login" component={Login} />
+        <PrivateRoute exact path="/test" component={Test} />
+        <Route component={NotFound} />
       </Switch>
     </section>
   );

@@ -1,9 +1,11 @@
 module.exports = {
   parserOptions: {
-    ecmaVersion: 2017,
+    ecmaVersion: 2018,
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
+      experimentalObjectRestSpread: true,
+      modules: true,
     },
   },
   extends: [
@@ -33,6 +35,8 @@ module.exports = {
     'react/jsx-uses-vars': 2,
     'react/jsx-closing-bracket-location': 1,
     'react/jsx-first-prop-new-line': 1,
+    'react/jsx-props-no-spreading': 0,
+    'react/jsx-fragments': 0,
     'no-multi-assign': 0,
     'no-console': 0,
     'consistent-return': 0,

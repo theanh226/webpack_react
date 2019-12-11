@@ -21,7 +21,33 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ['babel-loader'],
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+            plugins: [
+              ['@babel/plugin-proposal-decorators', { legacy: true }],
+              ['@babel/plugin-proposal-class-properties', { loose: true }],
+              [
+                '@babel/plugin-transform-regenerator',
+                {
+                  asyncGenerators: true,
+                  generators: true,
+                  async: true,
+                },
+              ],
+              [
+                '@babel/plugin-transform-runtime',
+                {
+                  corejs: false,
+                  helpers: false,
+                  regenerator: true,
+                  useESModules: false,
+                },
+              ],
+            ],
+          },
+        },
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
