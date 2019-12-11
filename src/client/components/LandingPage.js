@@ -16,9 +16,11 @@ const Landingpage = () => {
               </p>
             </div>
             <div className="col-6 text-right">
-              <button type="button" className="btn bg-light">
-                Goto Faq
-              </button>
+              <Link to="/faq">
+                <button type="button" className="btn bg-light">
+                  Goto Faq
+                </button>
+              </Link>
             </div>
             <div className="col-6 text-left">
               <Link to="/login">
