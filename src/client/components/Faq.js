@@ -13,7 +13,7 @@ const Faq = () => {
                 <h5 className="mb-0">
                   <button
                     className="btn bg-pale-green btn-lg btn-block text-left text-white"
-                    Type="button"
+                    type="button"
                     data-toggle="collapse"
                     data-target="#collapseOne"
                     aria-expanded="false"
