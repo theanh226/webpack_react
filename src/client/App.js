@@ -6,6 +6,7 @@ import './style.css';
 import Routes from './routing/Routes';
 import LandingPage from './components/LandingPage';
 import Footer from './components/Footer';
+import Faq from './components/Faq';
 // import Test from './components/Test';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route component={Routes} />
         </Switch>
       </div>
+      <Faq />
       <Footer />
     </BrowserRouter>
   );

@@ -1,5 +1,5 @@
 .bg-pale-green {
-  background-color: rgba(50, 58, 20, 0.7);
+  background-color: rgba(50, 58, 20, 0.7) !important;
 }
 
 .masthead {
@@ -33,25 +33,26 @@
   word-wrap: break-word;
 }
 .fa-facebook:hover {
-  color: rgb(73, 96, 202);
+  color: #3b5998;
 }
 .fa-twitter:hover {
-  color: rgb(31, 148, 177);
+  color: #00acee;
 }
 .fa-youtube:hover {
-  color: red;
+  color: #c4302b;
 }
 .fa-instagram:hover {
-  color: rgb(231, 116, 21);
+  color: #bc2a8d;
 }
 .fa-university:hover {
   color: white;
 }
-
-/* LINK */
-a {
-  color: rgba(50, 58, 20, 0.7) !important;
-}
-a:hover {
+.no_underline:hover {
   text-decoration: none;
+}
+/* FAQ CSS */
+.accordion {
+  position: relative;
+  height: 300px;
+  overflow: auto;
 }
