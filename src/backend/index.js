@@ -8,13 +8,18 @@ const server = http.createServer(app);
 const io = socketio(server);
 const connectDB = require('./config/db');
 
+app.use(cors());
 // Connect Database MongoDB
 connectDB();
 
 // connect to socket io in socketManager.js
 require('./socketManager')(io);
 
-app.use(cors());
+// Init Middleware
+app.use(express.json({ extended: false }));
+
+// Define Routes
+app.use('/api/users', require('./api/userAPI'));
 
 server.listen(process.env.PORT || 5000);
 console.log(`Server has started: 5000`);
