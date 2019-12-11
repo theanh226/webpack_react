@@ -3,7 +3,7 @@ import React from 'react';
 const Faq = () => {
   return (
     <div className="container">
-      <h1 className="text-center mt-3">FAQ</h1>
+      <h1 className="text-center mt-3 color-pale-green">FAQ</h1>
       <hr className="col-lg-1 mb-4" />
       <div className="row">
         <div className="col-10 mx-auto mb-5">
@@ -19,7 +19,7 @@ const Faq = () => {
                     aria-expanded="false"
                     aria-controls="collapseOne"
                   >
-                    What are an online tutor’s responsibilities?aaa
+                    What are an online tutor’s responsibilities?
                   </button>
                 </h5>
               </div>
