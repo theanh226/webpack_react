@@ -1,29 +1,39 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 // import PropTypes from 'prop-types';
+import { Provider } from 'react-redux';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Header from './components/Header';
 import './style.css';
 import Routes from './routing/Routes';
 import LandingPage from './components/LandingPage';
 import Footer from './components/Footer';
-import Faq from './components/Faq';
-// import Test from './components/Test';
+import setAuthToken from './utils/setAuthToken';
+import { loadUser } from './actions/auth';
+import store from './store';
 
-function App() {
-  return (
-    <BrowserRouter>
-      <Header />
-      <div>
-        <Switch>
-          <Route exact path="/" component={LandingPage} />
-          <Route component={Routes} />
-        </Switch>
-      </div>
-      <Faq />
-      <Footer />
-    </BrowserRouter>
-  );
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
 }
+
+const App = () => {
+  useEffect(() => {
+    store.dispatch(loadUser());
+  }, []);
+  return (
+    <Provider store={store}>
+      <BrowserRouter>
+        <Header />
+        <div>
+          <Switch>
+            <Route exact path="/" component={LandingPage} />
+            <Route component={Routes} />
+          </Switch>
+        </div>
+        <Footer />
+      </BrowserRouter>
+    </Provider>
+  );
+};
 
 // App.propTypes = {
 //   title: PropTypes.string,

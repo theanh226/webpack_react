@@ -21,9 +21,9 @@ const Landingpage = () => {
               </button>
             </div>
             <div className="col-6 text-left">
-              <Link to="/test">
+              <Link to="/login">
                 <button type="button" className="btn bg-danger text-light">
-                  Goto Test
+                  Goto Lounge
                 </button>
               </Link>
             </div>

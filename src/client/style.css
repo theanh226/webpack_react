@@ -1,5 +1,18 @@
+/* Global Styles */
+:root {
+  --primary-color: #17a2b8;
+  --dark-color: #343a40;
+  --light-color: #f4f4f4;
+  --danger-color: #dc3545;
+  --success-color: #28a745;
+}
+
+/* COLOR */
 .bg-pale-green {
   background-color: rgba(50, 58, 20, 0.7) !important;
+}
+.color-pale-green {
+  color: rgba(50, 58, 20, 0.7);
 }
 
 .masthead {
@@ -33,26 +46,89 @@
   word-wrap: break-word;
 }
 .fa-facebook:hover {
-  color: #3b5998;
+  color: rgb(73, 96, 202);
 }
 .fa-twitter:hover {
-  color: #00acee;
+  color: rgb(31, 148, 177);
 }
 .fa-youtube:hover {
-  color: #c4302b;
+  color: red;
 }
 .fa-instagram:hover {
-  color: #bc2a8d;
+  color: rgb(231, 116, 21);
 }
 .fa-university:hover {
   color: white;
 }
-.no_underline:hover {
+
+/* LINK */
+a {
+  color: rgba(50, 58, 20, 0.7) !important;
+}
+a:hover {
   text-decoration: none;
 }
-/* FAQ CSS */
-.accordion {
-  position: relative;
-  height: 300px;
-  overflow: auto;
+
+.lead {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.large {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+/* Forms */
+.form .form-group {
+  margin: 1.2rem 0;
+}
+
+.form .form-text {
+  display: block;
+  margin-top: 0.3rem;
+  color: #888;
+}
+
+.form input[type='text'],
+.form input[type='email'],
+.form input[type='password'],
+.form input[type='date'],
+.form select,
+.form textarea {
+  display: block;
+  width: 100%;
+  padding: 0.4rem;
+  font-size: 1.2rem;
+  border: 1px solid #ccc;
+}
+.form input[type='text'],
+.form input[type='email'],
+.form input[type='password'],
+:focus {
+  outline: 1px solid rgba(50, 58, 20, 0.7);
+}
+.form input[type='submit'],
+button {
+  font: inherit;
+}
+
+.form .social-input {
+  display: flex;
+}
+
+.form .social-input i {
+  padding: 0.5rem;
+  width: 4rem;
+}
+
+.table th,
+.table td {
+  padding: 1rem;
+  text-align: left;
+}
+
+.table th {
+  background: var(--light-color);
 }
