@@ -132,3 +132,6 @@ button {
 .table th {
   background: var(--light-color);
 }
+.btn:focus {
+  box-shadow: 0 0 0 0.2rem rgba(119, 135, 54, 0.7) !important;
+}
