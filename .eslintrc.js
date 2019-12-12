@@ -26,6 +26,7 @@ module.exports = {
     'react/require-default-props': 0,
     'no-unused-vars': 1,
     'import/extensions': 0,
+    'no-shadow': 0,
     'import/order': 1,
     'react/prefer-stateless-function': 0,
     'no-use-before-define': 0,

@@ -92,6 +92,5 @@
       "npm run format",
       "git add"
     ]
-  },
-  "proxy": "http://localhost:5000"
+  }
 }
