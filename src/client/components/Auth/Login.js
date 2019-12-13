@@ -21,7 +21,7 @@ const Login = ({ login, isAuthenticated }) => {
     login(email, password);
   };
   if (isAuthenticated) {
-    return <Redirect to="/test" />;
+    return <Redirect to="/profile" />;
   }
   return (
     <div className="mt-4">

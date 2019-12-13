@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Test from '../components/Test';
+// import Test from '../components/Test';
 import Register from '../components/Auth/Register';
 import Login from '../components/Auth/Login';
 import Alert from '../layout/Alert';
@@ -8,6 +8,7 @@ import PrivateRoute from './PrivateRoute';
 import NotFound from '../layout/NotFound';
 import Faq from '../components/Faq';
 import Queue from '../components/View/Queue';
+import ProfilePage from '../components/Profile/ProfilePage';
 
 const Routes = () => {
   return (
@@ -18,7 +19,7 @@ const Routes = () => {
         <Route exact path="/faq" component={Faq} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/queue" component={Queue} />
-        <PrivateRoute exact path="/test" component={Test} />
+        <PrivateRoute exact path="/profile" component={ProfilePage} />
         <Route component={NotFound} />
       </Switch>
     </section>

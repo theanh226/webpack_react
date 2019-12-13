@@ -4,53 +4,40 @@ import { Link } from 'react-router-dom';
 const ProfileBox = () => {
   return (
     <div>
-      <div className="d-flex w-25 bg-dark flex-column align-items-center pt-5 pb-5 pr-3 pl-3">
+      <div className="d-flex bg-dark flex-column align-items-center pt-4 pb-3 pr-3 pl-4">
         <Link to="/">
           <div>
             <img
-              src="https://mmart.de/wp-content/uploads/2017/09/Avatar-Icon-1.jpg"
+              src="https://avatarfiles.alphacoders.com/150/150052.png"
               alt="avatar"
               width="150"
               height="150"
               className="rounded-circle"
             />
             <p className="lead text-light text-center mt-3 mb-4">
-              Minh Anh Nguyen
+              Quang Huy Luong
             </p>
           </div>
         </Link>
 
         <div className="w-100 d-flex text-light">
-          <p className="col-6">User Typ:</p>
-          <p className="col-6 font-weight-light">Student</p>
+          <p className="col-3">Type:</p>
+          <p className="col-9 font-weight-light">Student</p>
         </div>
         <div className="w-100 d-flex text-light">
-          <p className="col-6">Fach:</p>
-          <p className="col-6 font-weight-light">Something about programming</p>
+          <p className="col-3">Fach:</p>
+          <p className="col-9 font-weight-light">Programmieren</p>
         </div>
         <div className="w-100 d-flex text-light">
-          <p className="col-6">Mail:</p>
-          <a
-            className="col-6 text-truncate text-light font-italic font-weight-light"
-            href="mailto:veri_nic3@yahoo.de"
-          >
-            veri_nic3@yahoo.de
-          </a>
-        </div>
-        <div className="w-100 d-flex text-light">
-          <p className="col-6">Endorse:</p>
-          <p className="col-6 font-weight-light">+358 Likes</p>
-        </div>
-        <div className="w-100 d-flex text-light">
-          <p className="col-6">Status:</p>
+          <p className="col-3">Status:</p>
           <div>
             <div className="d-flex justify-content-start ml-3">
               <i className="fas fa-circle text-success mt-1 mr-2" />
-              <div className="font-weight-light font-italic">In Queue</div>
+              <div className="font-weight-light font-italic">Online</div>
             </div>
-            <div className="d-flex justify-content-start ml-3">
+            <div className="d-none justify-content-start ml-3">
               <i className="fas fa-circle text-danger mt-1 mr-2" />
-              <div className="font-weight-light font-italic">Not in Queue.</div>
+              <div className="font-weight-light font-italic">Offline</div>
             </div>
           </div>
         </div>
