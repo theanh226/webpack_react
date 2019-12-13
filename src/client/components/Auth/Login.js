@@ -21,10 +21,10 @@ const Login = ({ login, isAuthenticated }) => {
     login(email, password);
   };
   if (isAuthenticated) {
-    return <Redirect to="/profile" />;
+    return <Redirect to="/test" />;
   }
   return (
-    <div className="mt-4">
+    <div className="p-5">
       <h2 className="color-pale-green">Sign In</h2>
       <p className="lead">
         <i className="fas fa-user color-pale-green" /> Sign Into Your Account
@@ -56,7 +56,7 @@ const Login = ({ login, isAuthenticated }) => {
           value="Login"
         />
       </form>
-      <p className="my-1">
+      <p className="my-1 text-light">
         Do not have an account? <Link to="/register">Sign Up</Link>
       </p>
     </div>

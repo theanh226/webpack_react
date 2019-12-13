@@ -37,7 +37,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   }
 
   return (
-    <div className="mb-4 mt-4">
+    <div className="p-4">
       <h2 className="color-pale-green">Sign Up</h2>
       <p className="lead">
         <i className="fas fa-user color-pale-green" /> Create Your Account
@@ -97,7 +97,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
           value="Register"
         />
       </form>
-      <p className="my-1">
+      <p className="my-1 text-light">
         Already have an account? <Link to="/login">Sign In</Link>
       </p>
     </div>

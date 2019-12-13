@@ -10,17 +10,14 @@
 a:focus {
   outline: none;
 }
-
 /* COLOR */
 .bg-pale-green {
-  background-color: rgb(66, 85, 62) !important;
+  background-color: rgba(50, 58, 20) !important;
 }
 .color-pale-green {
   color: rgba(50, 58, 20);
 }
-.f-3 {
-  font-size: 2.25rem !important;
-}
+
 .masthead {
   min-height: 621px;
   background: linear-gradient(
