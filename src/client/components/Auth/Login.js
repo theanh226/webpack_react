@@ -24,41 +24,47 @@ const Login = ({ login, isAuthenticated }) => {
     return <Redirect to="/profile" />;
   }
   return (
-    <div className="mt-4">
-      <h2 className="color-pale-green">Sign In</h2>
-      <p className="lead">
-        <i className="fas fa-user color-pale-green" /> Sign Into Your Account
-      </p>
-      <form className="form" onSubmit={e => onSubmit(e)}>
-        <div className="form-group">
+    <div className="container text-light p-5 col-lg-5 col-md-8">
+      <div className="p-5">
+        <h2 className="color-pale-green text-light">Sign In</h2>
+        <p className="lead">
+          <i className="fas fa-user color-pale-green text-light mr-2" /> Sign
+          Into Your Account
+        </p>
+        <form className="form" onSubmit={e => onSubmit(e)}>
+          <div className="form-group">
+            <input
+              type="email"
+              placeholder="Email Address"
+              name="email"
+              value={email}
+              onChange={e => onChange(e)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="password"
+              placeholder="Password"
+              name="password"
+              value={password}
+              onChange={e => onChange(e)}
+              minLength="6"
+            />
+          </div>
           <input
-            type="email"
-            placeholder="Email Address"
-            name="email"
-            value={email}
-            onChange={e => onChange(e)}
-            required
+            type="submit"
+            className="btn bg-pale-green btn-lg text-light "
+            value="Login"
           />
-        </div>
-        <div className="form-group">
-          <input
-            type="password"
-            placeholder="Password"
-            name="password"
-            value={password}
-            onChange={e => onChange(e)}
-            minLength="6"
-          />
-        </div>
-        <input
-          type="submit"
-          className="btn bg-pale-green text-light"
-          value="Login"
-        />
-      </form>
-      <p className="my-1">
-        Do not have an account? <Link to="/register">Sign Up</Link>
-      </p>
+        </form>
+        <p className="my-1 text-light d-flex">
+          Do not have an account?{' '}
+          <Link to="/register">
+            <p className="text-white-50 ml-2">Sign Up</p>
+          </Link>
+        </p>
+      </div>
     </div>
   );
 };
