@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const PersonalInfo = () => {
   return (
     <div>
-      <div className="d-flex bg-pale-green flex-column align-items-center pt-5 pb-5 pr-3 pl-3 mt-4 rounded-0">
+      <div className="d-flex bg-main flex-column align-items-center pt-5 pb-5 pr-3 pl-3 rounded-0">
         <div className="w-100 text-light mb-4">
           <h1 className="lead f-3 text-center">W E L C O M E &nbsp; H U Y </h1>
         </div>
@@ -51,7 +51,7 @@ const PersonalInfo = () => {
         <div className="col-xl-2 col-lg-3 col-md-4 text-light mt-3 p-0">
           <Link to="/faq">
             <button
-              className="btn btn-danger rounded-0 pt-3 px-3"
+              className="btn bg-main text-light rounded-0 pt-3 px-3"
               type="button"
             >
               <p className="lead">Go to Faq</p>
@@ -59,7 +59,7 @@ const PersonalInfo = () => {
           </Link>
         </div>
         <button
-          className="btn btn-danger rounded-0 col-xl-4 col-lg-3 col-md-4 text-light mt-3 pt-3"
+          className="btn bg-main rounded-0 col-xl-4 col-lg-3 col-md-4 text-light mt-3 pt-3"
           type="button"
         >
           <p className="lead">Change Information</p>

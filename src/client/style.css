@@ -11,21 +11,35 @@ a:focus {
   outline: none;
 }
 /* COLOR */
-.bg-pale-green {
-  background-color: rgba(50, 58, 20) !important;
+.bg-main {
+  background-color: rgba(25, 30, 88) !important;
 }
-.color-pale-green {
-  color: rgba(50, 58, 20);
+.bg-main-dark {
+  background-color: rgba(8, 12, 59) !important;
+}
+.bg-sub {
+  background-color: rgba(50, 55, 118) !important;
+}
+.bg-sub-light {
+  background-color: rgba(84, 89, 147) !important;
+}
+.color-main {
+  color: rgba(25, 30, 88);
 }
 
+/* Shape */
+.circle {
+  width: 150px;
+  height: 150px;
+}
 .masthead {
   min-height: 621px;
   background: linear-gradient(
       to bottom,
-      rgba(92, 77, 66, 0.8) 0,
-      rgba(92, 77, 66, 0.8) 100%
+      rgba(50, 55, 118, 0.5) 0,
+      rgba(50, 55, 118, 0.5) 100%
     ),
-    url(https://wallpapercave.com/wp/COs2teg.jpg);
+    url(https://wallpaperbro.com/img/996539.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -43,7 +57,7 @@ a:focus {
 .navbar .navbar-nav .btn {
   padding: 0.5rem 0.75rem !important;
 }
-.navbar .navbar-nav .btn:focus {
+.btn:focus {
   box-shadow: none !important;
 }
 /* FOOTER CSS */
@@ -138,19 +152,16 @@ button {
   background: var(--light-color);
 }
 /* FAQ CSS */
-.card-header .btn:focus {
+/* .card-header .btn:focus {
   box-shadow: 0 0 0 0.2rem rgba(119, 135, 54, 0.7) !important;
-}
+} */
 .accordion {
   position: relative;
   height: 300px;
   overflow: auto;
 }
 /* PROFILEPAGE CSS */
-.personalPage .btn:focus {
-  box-shadow: none !important;
+.personalInfo .btn:hover {
+  background-color: rgba(8, 12, 59) !important;
 }
 /* SIGNUP/LOGIN CSS */
-.form .btn:focus {
-  box-shadow: 0 0 0 0.2rem rgba(119, 135, 54, 0.7) !important;
-}

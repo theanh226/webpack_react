@@ -1,15 +1,15 @@
 import React from 'react';
 import QueueCard from './QueueCard';
-import './view.css';
+import '../View/view.css';
 
 const Queue = () => {
   return (
     <div>
-      <div className="queue col-4 bg-dark p-3">
-        <div className="lead bg-success text-center py-4 text-light">
+      <div className="queue col-4 bg-sub p-3">
+        <div className="lead bg-sub-light text-center py-4 text-light">
           Q u e u e &nbsp;&nbsp; l i s t
         </div>
-        <ul className="list-group">
+        <ul className="list-group ">
           <li className="list-group-item p-0 ml-2 border-top-0">
             <QueueCard />
           </li>

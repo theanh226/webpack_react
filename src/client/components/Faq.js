@@ -2,8 +2,8 @@ import React from 'react';
 
 const Faq = () => {
   return (
-    <div className="container">
-      <h1 className="text-center mt-3 color-pale-green">FAQ</h1>
+    <div className="container pt-5">
+      <h1 className="text-center text-light display-3">FAQ</h1>
       <hr className="col-lg-1 mb-4" />
       <div className="row">
         <div className="col-10 mx-auto mb-5">
@@ -12,7 +12,7 @@ const Faq = () => {
               <div className="card-header p-2" id="headingOne">
                 <h5 className="mb-0">
                   <button
-                    className="btn bg-pale-green btn-lg btn-block text-left text-white"
+                    className="btn bg-main btn-lg btn-block text-left text-white"
                     type="button"
                     data-toggle="collapse"
                     data-target="#collapseOne"
@@ -55,7 +55,7 @@ const Faq = () => {
               <div className="card-header p-2 text-center" id="headingTwo">
                 <h5 className="mb-0">
                   <button
-                    className="btn bg-pale-green btn-lg btn-block text-left text-white"
+                    className="btn bg-main btn-lg btn-block text-left text-white"
                     type="button"
                     data-toggle="collapse"
                     data-target="#collapseTwo"
@@ -87,7 +87,7 @@ const Faq = () => {
               <div className="card-header p-2 text-center" id="headingThree">
                 <h5 className="mb-0">
                   <button
-                    className="btn bg-pale-green btn-lg btn-block text-left text-white"
+                    className="btn bg-main btn-lg btn-block text-left text-white"
                     type="button"
                     data-toggle="collapse"
                     data-target="#collapseThree"
@@ -123,7 +123,7 @@ const Faq = () => {
               <div className="card-heade p-2 text-center" id="headingFour">
                 <h5 className="mb-0">
                   <button
-                    className="btn bg-pale-green btn-lg btn-block text-left text-white"
+                    className="btn bg-main btn-lg btn-block text-left text-white"
                     type="button"
                     data-toggle="collapse"
                     data-target="#collapseFour"
@@ -153,7 +153,7 @@ const Faq = () => {
               <div className="card-heade p-2 text-center" id="headingFive">
                 <h5 className="mb-0">
                   <button
-                    className="btn bg-pale-green btn-lg btn-block text-left text-white"
+                    className="btn bg-main btn-lg btn-block text-left text-white"
                     type="button"
                     data-toggle="collapse"
                     data-target="#collapseFive"
@@ -179,7 +179,7 @@ const Faq = () => {
               <div className="card-heade p-2 text-center" id="headingSix">
                 <h5 className="mb-0">
                   <button
-                    className="btn bg-pale-green btn-lg btn-block text-left text-white"
+                    className="btn bg-main btn-lg btn-block text-left text-white"
                     type="button"
                     data-toggle="collapse"
                     data-target="#collapseSix"
@@ -209,7 +209,7 @@ const Faq = () => {
               <div className="card-heade p-2 text-center" id="headingSeven">
                 <h5 className="mb-0">
                   <button
-                    className="btn bg-pale-green btn-lg btn-block text-left text-white"
+                    className="btn bg-main btn-lg btn-block text-left text-white"
                     type="button"
                     data-toggle="collapse"
                     data-target="#collapseSeven"

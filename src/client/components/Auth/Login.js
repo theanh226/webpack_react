@@ -54,7 +54,7 @@ const Login = ({ login, isAuthenticated }) => {
           </div>
           <input
             type="submit"
-            className="btn bg-pale-green btn-lg text-light "
+            className="btn bg-main btn-lg text-light "
             value="Login"
           />
         </form>

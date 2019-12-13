@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 const ProfileBox = () => {
   return (
     <div>
-      <div className="d-flex bg-dark flex-column align-items-center pt-4 pb-3 pr-3 pl-4">
+      <div className="d-flex bg-main flex-column align-items-center pt-5 pb-3 pr-3 pl-4">
         <Link to="/">
           <div>
             <img
-              src="https://avatarfiles.alphacoders.com/150/150052.png"
+              src="https://png.pngtree.com/png-clipart/20190611/original/pngtree-master-graduate-icon-png-image_3258192.jpg"
               alt="avatar"
               width="150"
               height="150"

@@ -15,7 +15,7 @@ const Header = ({ user }) => {
   }, [user]);
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-pale-green shadow ">
+      <nav className="navbar navbar-expand-lg navbar-light bg-main shadow ">
         <div className="container">
           <Link className="navbar-brand" to="/">
             <img src={logo} alt="logo" className="img" width="100" />

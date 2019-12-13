@@ -7,8 +7,8 @@ import Alert from '../layout/Alert';
 import PrivateRoute from './PrivateRoute';
 import NotFound from '../layout/NotFound';
 import Faq from '../components/Faq';
-import Queue from '../components/View/Queue';
-import ProfilePage from '../components/Profile/ProfilePage';
+import Queue from '../components/Queue/Queue';
+import ProfilePage from '../components/View/Profile/ProfilePage';
 
 const Routes = () => {
   return (
