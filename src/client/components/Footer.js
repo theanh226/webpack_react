@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <div className="footer bg-pale-green ">
+    <div className="footer bg-pale-green">
       <div className="container">
         <div className="row">
           <div className="col-lg-4 col-xs-12 pt-4 about">
@@ -58,10 +58,7 @@ const Footer = () => {
             <h4 className="text-white pt-3">Location</h4>
             <p className="text-white-50 mb-2">Welfengarten 1, 30167 Hannover</p>
             <p className="text-white-50 mb-2">
-              <a
-                href="tel:+49-511-762-0"
-                className="text-white-50 no_underline"
-              >
+              <a href="tel:+49-511-762-0" className="text-white-50">
                 <i href="tel:" className="fa fa-phone mr-3" />
                 0511 7620
               </a>
@@ -70,7 +67,7 @@ const Footer = () => {
               <a
                 href="mailto:studium@uni-hannover.de"
                 target="_top"
-                className="text-white-50  no_underline"
+                className="text-white-50"
               >
                 <i className="fa fa-envelope mr-3" />
                 studium@uni-hannover.de
