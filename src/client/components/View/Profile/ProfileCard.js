@@ -3,10 +3,10 @@ import React from 'react';
 const ProfileCard = () => {
   return (
     <div>
-      <div className="d-flex justify-content-around bg-dark align-items-center p-2">
+      <div className="d-flex justify-content-around bg-sub-light align-items-center p-2">
         <div>
           <img
-            src="https://mmart.de/wp-content/uploads/2017/09/Avatar-Icon-1.jpg"
+            src="https://png.pngtree.com/png-clipart/20190611/original/pngtree-master-graduate-icon-png-image_3258192.jpg"
             alt="avatar"
             width="60"
             height="60"
