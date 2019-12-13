@@ -21,6 +21,7 @@ app.use(express.json({ extended: false }));
 // Define Routes
 app.use('/api/users', require('./api/userAPI'));
 app.use('/api/auth', require('./api/authAPI'));
+app.use('/api/queue', require('./api/queueAPI'));
 
 server.listen(process.env.PORT || 5000);
 console.log(`Server has started: 5000`);

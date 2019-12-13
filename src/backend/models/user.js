@@ -14,6 +14,14 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  avatar: {
+    type: String,
+    default: 'https://dummyimage.com/400x400/000/fff',
+  },
+  timeToQueue: {
+    type: Date,
+    default: Date.now,
+  },
   status: {
     type: String,
     default: 'offline',
