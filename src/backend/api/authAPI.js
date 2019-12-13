@@ -15,7 +15,6 @@ const router = express.Router();
 router.get('/', auth, async (req, res) => {
   try {
     // select('-password') that will leave off the password in the data.
-    console.log('REQ.USER', req.user);
     const user = await User.findById(req.user.id).select('-password');
     res.json(user);
   } catch (err) {
