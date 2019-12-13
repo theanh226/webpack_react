@@ -7,6 +7,9 @@
   --success-color: #28a745;
 }
 
+a:focus {
+  outline: none;
+}
 /* COLOR */
 .bg-pale-green {
   background-color: rgba(50, 58, 20, 0.7) !important;
@@ -16,7 +19,6 @@
 }
 
 .masthead {
-  height: 100vh;
   min-height: 500px;
   background: linear-gradient(
       to bottom,
@@ -40,6 +42,9 @@
 }
 .navbar .navbar-nav .btn {
   padding: 0.5rem 0.75rem !important;
+}
+.navbar .navbar-nav .btn:focus {
+  box-shadow: none !important;
 }
 /* FOOTER CSS */
 .about {

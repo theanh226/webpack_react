@@ -7,15 +7,17 @@ import Alert from '../layout/Alert';
 import PrivateRoute from './PrivateRoute';
 import NotFound from '../layout/NotFound';
 import Faq from '../components/Faq';
+import Queue from '../components/View/Queue';
 
 const Routes = () => {
   return (
-    <section className="container">
+    <section className="masthead">
       <Alert />
       <Switch>
         <Route exact path="/register" component={Register} />
         <Route exact path="/faq" component={Faq} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/queue" component={Queue} />
         <PrivateRoute exact path="/test" component={Test} />
         <Route component={NotFound} />
       </Switch>

@@ -1,0 +1,10 @@
+.list-group {
+  max-height: 200px;
+  overflow: hidden;
+  overflow-y: scroll;
+  padding-right: 17px;
+  box-sizing: content-box;
+}
+.queue {
+  overflow: hidden;
+}
