@@ -8,6 +8,7 @@ import {
   REGISTER_FAIL,
   LOGOUT,
 } from './types';
+import { SERVER_BACKEND } from '../constant/constant';
 import { setAlert } from './alert';
 import setAuthToken from '../utils/setAuthToken';
 
@@ -18,8 +19,7 @@ export const loadUser = () => async dispatch => {
   }
 
   try {
-    const res = await axios.get('http://localhost:5000/api/auth');
-    console.log(res.data);
+    const res = await axios.get(`${SERVER_BACKEND}/api/auth`);
     dispatch({
       type: USER_LOADED,
       payload: res.data,
@@ -42,11 +42,7 @@ export const login = (email, password) => async dispatch => {
   const body = JSON.stringify({ email, password });
 
   try {
-    const res = await axios.post(
-      'http://localhost:5000/api/auth',
-      body,
-      config,
-    );
+    const res = await axios.post(`${SERVER_BACKEND}/api/auth`, body, config);
 
     dispatch({
       type: LOGIN_SUCCESS,
@@ -77,11 +73,7 @@ export const register = ({ name, email, password, code }) => async dispatch => {
   const body = JSON.stringify({ name, email, password, code });
 
   try {
-    const res = await axios.post(
-      'http://localhost:5000/api/users',
-      body,
-      config,
-    );
+    const res = await axios.post(`${SERVER_BACKEND}/api/users`, body, config);
 
     dispatch({
       type: REGISTER_SUCCESS,
@@ -105,6 +97,6 @@ export const register = ({ name, email, password, code }) => async dispatch => {
 
 // Logout / Clear Profile
 export const logout = () => async dispatch => {
-  await axios.post('http://localhost:5000/api/auth/offline');
+  await axios.post(`${SERVER_BACKEND}/api/auth/offline`);
   dispatch({ type: LOGOUT });
 };

@@ -9,7 +9,7 @@
     "server": "nodemon ./src/backend/index.js",
     "build": "webpack  --config ./webpack.config.js --mode production",
     "start": "webpack-dev-server --config ./webpack.config.js --mode development",
-    "dev": "concurrently 'npm run server' 'npm run start'",
+    "dev": "concurrently \"npm run server\" \"npm run start\"",
     "test": "echo \"No test specified\" && exit 0",
     "prettier": "prettier \"src/**/*.{js,css}\"",
     "format": "npm run prettier -- --write",
