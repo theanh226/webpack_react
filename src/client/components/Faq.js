@@ -4,7 +4,7 @@ const Faq = () => {
   return (
     <div className="container pt-5">
       <h1 className="text-center text-light display-3">FAQ</h1>
-      <hr className="col-lg-1 mb-4" />
+      <p className="lead text-light text-center mb-4">How can we help you ?</p>
       <div className="row">
         <div className="col-10 mx-auto mb-5">
           <div className="accordion" id="faqExample">
@@ -29,7 +29,7 @@ const Faq = () => {
                 aria-labelledby="headingOne"
                 data-parent="#faqExample"
               >
-                <div className="card-body">
+                <div className="card-body text-white">
                   <ul>
                     <li>
                       Connecting online with students to privide help and
@@ -72,7 +72,7 @@ const Faq = () => {
                 aria-labelledby="headingTwo"
                 data-parent="#faqExample"
               >
-                <div className="card-body">
+                <div className="card-body text-white">
                   <ul>
                     <li>
                       Are available to tutor at least five hours per week.
@@ -104,7 +104,7 @@ const Faq = () => {
                 aria-labelledby="headingThree"
                 data-parent="#faqExample"
               >
-                <div className="card-body">
+                <div className="card-body text-white">
                   <p>
                     Tutor.com allows you to create a flexible schedule that fits
                     your needs. Our service is available 24 hours a day, 7 days
@@ -120,7 +120,7 @@ const Faq = () => {
               </div>
             </div>
             <div className="card">
-              <div className="card-heade p-2 text-center" id="headingFour">
+              <div className="card-header p-2 text-center" id="headingFour">
                 <h5 className="mb-0">
                   <button
                     className="btn bg-main btn-lg btn-block text-left text-white"
@@ -140,7 +140,7 @@ const Faq = () => {
                 aria-labelledby="headingFour"
                 data-parent="#faqExample"
               >
-                <div className="card-body">
+                <div className="card-body text-white">
                   <p>
                     Our convenient online classroom lets you tutor from your
                     home, office, dorm or from any computer with a stable
@@ -150,7 +150,7 @@ const Faq = () => {
               </div>
             </div>
             <div className="card">
-              <div className="card-heade p-2 text-center" id="headingFive">
+              <div className="card-header p-2 text-center" id="headingFive">
                 <h5 className="mb-0">
                   <button
                     className="btn bg-main btn-lg btn-block text-left text-white"
@@ -160,7 +160,7 @@ const Faq = () => {
                     aria-expanded="false"
                     aria-controls="collapseFive"
                   >
-                    Are you retarded ?
+                    How do I sign in ?
                   </button>
                 </h5>
               </div>
@@ -170,13 +170,13 @@ const Faq = () => {
                 aria-labelledby="Five"
                 data-parent="#faqExample"
               >
-                <div className="card-body">
-                  <p>Yes, yes you are.</p>
+                <div className="card-body text-white">
+                  <p>Click on Sign up line on the Login page </p>
                 </div>
               </div>
             </div>
             <div className="card">
-              <div className="card-heade p-2 text-center" id="headingSix">
+              <div className="card-header p-2 text-center" id="headingSix">
                 <h5 className="mb-0">
                   <button
                     className="btn bg-main btn-lg btn-block text-left text-white"
@@ -196,7 +196,7 @@ const Faq = () => {
                 aria-labelledby="headingFSix"
                 data-parent="#faqExample"
               >
-                <div className="card-body">
+                <div className="card-body text-white">
                   <p>
                     Our convenient online classroom lets you tutor from your
                     home, office, dorm or from any computer with a stable
@@ -206,7 +206,7 @@ const Faq = () => {
               </div>
             </div>
             <div className="card">
-              <div className="card-heade p-2 text-center" id="headingSeven">
+              <div className="card-header p-2 text-center" id="headingSeven">
                 <h5 className="mb-0">
                   <button
                     className="btn bg-main btn-lg btn-block text-left text-white"
@@ -226,7 +226,7 @@ const Faq = () => {
                 aria-labelledby="headingSeven"
                 data-parent="#faqExample"
               >
-                <div className="card-body">
+                <div className="card-body text-white">
                   <p>
                     Our convenient online classroom lets you tutor from your
                     home, office, dorm or from any computer with a stable
