@@ -3,7 +3,7 @@ import React from 'react';
 const ProfileCard = () => {
   return (
     <div>
-      <div className="d-flex justify-content-around bg-sub-light align-items-center p-2">
+      <div className="d-flex justify-content-between bg-sub-light align-items-center p-2">
         <div>
           <img
             src="https://png.pngtree.com/png-clipart/20190611/original/pngtree-master-graduate-icon-png-image_3258192.jpg"
@@ -13,8 +13,8 @@ const ProfileCard = () => {
             className="rounded-circle mr-2"
           />
         </div>
-        <div className="text-light">
-          <p className="lead mb-2">Minh Anh Nguyen</p>
+        <div className="text-light ml-2">
+          <p className="lead mb-0">Minh Anh Nguyen</p>
           <div>
             <div className="d-flex justify-content-start">
               <i className="fas fa-circle text-success mt-1 mr-2" />

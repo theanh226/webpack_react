@@ -26,12 +26,15 @@ a:focus {
 .color-main {
   color: rgba(25, 30, 88);
 }
-
+.border-color-sub {
+  background: rgba(84, 89, 147) !important;
+}
 /* Shape */
 .circle {
   width: 150px;
   height: 150px;
 }
+/* background picture */
 .masthead {
   min-height: 621px;
   background: linear-gradient(
@@ -165,3 +168,9 @@ button {
   background-color: rgba(8, 12, 59) !important;
 }
 /* SIGNUP/LOGIN CSS */
+
+/* SCROLL BAR CSS */
+/* width */
+::-webkit-scrollbar {
+  width: 0px;
+}
