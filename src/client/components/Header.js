@@ -1,18 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import logo from '../../../vendor/img/logo1.png';
+import { logout } from '../actions/auth';
 
-const Header = ({ user }) => {
-  console.log(user);
-  const [userName, setUserName] = useState('Hello User');
-  useEffect(() => {
-    if (user != null) {
-      setUserName(user.name);
-    }
-    return () => {};
-  }, [user]);
+const Header = ({ logout }) => {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-main shadow ">
@@ -23,11 +16,6 @@ const Header = ({ user }) => {
           <div>
             {/* User and user setting */}
             <ul className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <a className="nav-link" href="./link">
-                  <p className="text-light mt-2 mb-2">{userName}</p>
-                </a>
-              </li>
               {/* setting drop down */}
               <li className="nav-item active">
                 <div className="nav-link btn-group">
@@ -48,7 +36,11 @@ const Header = ({ user }) => {
                       Change Information
                     </a>
                     <div className="dropdown-divider" />
-                    <a className="dropdown-item text-light" href="/link">
+                    <a
+                      className="dropdown-item text-light"
+                      href="#!"
+                      onClick={logout}
+                    >
                       Log out
                     </a>
                   </div>
@@ -63,11 +55,11 @@ const Header = ({ user }) => {
 };
 
 Header.propTypes = {
-  user: PropTypes.object,
+  logout: PropTypes.func,
 };
 
 const mapStateToProps = state => ({
   user: state.auth.user,
 });
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, { logout })(Header);

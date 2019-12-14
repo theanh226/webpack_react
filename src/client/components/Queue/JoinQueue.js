@@ -10,7 +10,7 @@ const JoinQueue = () => {
       <p className="lead text-center text-light mt-3">
         Your number if drawn now:
       </p>
-      <div className="d-flex justify-content-center py-2">
+      <div className="d-none justify-content-center py-2">
         <div className="circle border border-light rounded-circle">
           <p className="display-3 mt-4  text-center">12</p>
         </div>
