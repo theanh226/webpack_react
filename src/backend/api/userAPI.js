@@ -1,6 +1,7 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const faker = require('faker');
 const { check, validationResult } = require('express-validator');
 
 const config = require('../config/default');
@@ -31,7 +32,9 @@ router.post(
     const { name, email, password, code } = req.body;
     try {
       let user = await User.findOne({ email });
-
+      // fake data
+      const avatar = faker.image.avatar();
+      const like = faker.random.number(100);
       if (user) {
         return res
           .status(400)
@@ -44,12 +47,15 @@ router.post(
           email,
           password,
           type: 'Tutor',
+          avatar,
+          like,
         });
       } else {
         user = new User({
           name,
           email,
           password,
+          avatar,
         });
       }
 

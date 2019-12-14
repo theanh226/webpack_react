@@ -46,7 +46,6 @@ router.post(
       const user = await User.findOne({
         email,
       });
-
       if (!user) {
         return res.status(400).json({
           errors: [
@@ -55,6 +54,20 @@ router.post(
             },
           ],
         });
+      }
+
+      if (user) {
+        await User.findOneAndUpdate(
+          { _id: user.id },
+          {
+            $set: {
+              status: 'Online',
+            },
+          },
+          {
+            useFindAndModify: false,
+          },
+        );
       }
 
       const isMatch = await bcrypt.compare(password, user.password);
@@ -95,5 +108,29 @@ router.post(
     }
   },
 );
+// @route    POST api/queue/join-queue
+// @desc     join to Queue
+// @access   private
+router.post('/offline', auth, async (req, res) => {
+  try {
+    await User.findOneAndUpdate(
+      { _id: req.user.id },
+      {
+        $set: {
+          status: 'Offline',
+        },
+      },
+      {
+        useFindAndModify: false,
+      },
+    );
+    res.json({
+      msg: 'user status now offline',
+    });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
 
 module.exports = router;

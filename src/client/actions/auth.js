@@ -6,6 +6,7 @@ import {
   LOGIN_FAIL,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
+  LOGOUT,
 } from './types';
 import { setAlert } from './alert';
 import setAuthToken from '../utils/setAuthToken';
@@ -18,7 +19,7 @@ export const loadUser = () => async dispatch => {
 
   try {
     const res = await axios.get('http://localhost:5000/api/auth');
-
+    console.log(res.data);
     dispatch({
       type: USER_LOADED,
       payload: res.data,
@@ -66,14 +67,14 @@ export const login = (email, password) => async dispatch => {
   }
 };
 // Register User
-export const register = ({ name, email, password }) => async dispatch => {
+export const register = ({ name, email, password, code }) => async dispatch => {
   const config = {
     headers: {
       'Content-Type': 'application/json',
     },
   };
 
-  const body = JSON.stringify({ name, email, password });
+  const body = JSON.stringify({ name, email, password, code });
 
   try {
     const res = await axios.post(
@@ -100,4 +101,10 @@ export const register = ({ name, email, password }) => async dispatch => {
       type: REGISTER_FAIL,
     });
   }
+};
+
+// Logout / Clear Profile
+export const logout = () => async dispatch => {
+  await axios.post('http://localhost:5000/api/auth/offline');
+  dispatch({ type: LOGOUT });
 };
