@@ -9,26 +9,26 @@ const Queue = () => {
         <div className="lead bg-sub-light text-center py-4 text-light">
           Q u e u e &nbsp;&nbsp; l i s t
         </div>
-        <ul className="list-group ">
-          <li className="list-group-item p-0 ml-2 border-top-0">
+        <ul className="list-group p-0">
+          <li className="list-group-item p-0 border-top-0 border-color-sub">
             <QueueCard />
           </li>
-          <li className="list-group-item p-0 ml-2">
+          <li className="list-group-item p-0 border-color-sub">
             <QueueCard />
           </li>
-          <li className="list-group-item p-0 ml-2">
+          <li className="list-group-item p-0 border-color-sub">
             <QueueCard />
           </li>
-          <li className="list-group-item p-0 ml-2">
+          <li className="list-group-item p-0 border-color-sub">
             <QueueCard />
           </li>
-          <li className="list-group-item p-0 ml-2">
+          <li className="list-group-item p-0 border-color-sub">
             <QueueCard />
           </li>
-          <li className="list-group-item p-0 ml-2">
+          <li className="list-group-item p-0 border-color-sub">
             <QueueCard />
           </li>
-          <li className="list-group-item p-0 ml-2 border-0">
+          <li className="list-group-item p-0 border-0">
             <QueueCard />
           </li>
         </ul>
