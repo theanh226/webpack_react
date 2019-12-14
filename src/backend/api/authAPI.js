@@ -108,8 +108,8 @@ router.post(
     }
   },
 );
-// @route    POST api/queue/join-queue
-// @desc     join to Queue
+// @route    POST api/auth/offline
+// @desc     set offline status
 // @access   private
 router.post('/offline', auth, async (req, res) => {
   try {
