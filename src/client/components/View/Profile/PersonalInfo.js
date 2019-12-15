@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const PersonalInfo = ({ user }) => {
-  // console.log(user.createdDate);
   const [infos, setInfos] = useState({
     status: '',
     type: '',

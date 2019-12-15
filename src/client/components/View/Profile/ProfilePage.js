@@ -18,6 +18,7 @@ const ProfilePage = ({ user }) => {
   useEffect(() => {
     if (user != null) {
       setInfos({
+        id: user.id,
         type: user.type,
         status: user.status,
       });

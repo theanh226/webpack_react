@@ -1,6 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { leaveQueue } from '../../actions/queue';
 
-const LeaveQueue = () => {
+const LeaveQueue = ({ user, leaveQueue }) => {
+  const [infos, setInfos] = useState({
+    id: '',
+  });
+  const { id } = infos;
+  useEffect(() => {
+    if (user != null) {
+      setInfos({
+        id: user._id,
+      });
+    }
+  }, [user]);
   return (
     <div className="bg-main text-light border-top border-light pb-4 align-item-center">
       <p className="lead text-center text-light mt-4">
@@ -35,6 +49,7 @@ const LeaveQueue = () => {
                 type="button"
                 className="btn bg-success text-light lead px-5 py-2"
                 data-dismiss="modal"
+                onClick={() => leaveQueue(id)}
               >
                 Yes
               </button>
@@ -52,5 +67,12 @@ const LeaveQueue = () => {
     </div>
   );
 };
+LeaveQueue.propTypes = {
+  user: PropTypes.object,
+  leaveQueue: PropTypes.func,
+};
 
-export default LeaveQueue;
+const mapStateToProps = state => ({
+  user: state.auth.user,
+});
+export default connect(mapStateToProps, { leaveQueue })(LeaveQueue);
