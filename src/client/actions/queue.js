@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import axios from 'axios';
 import {
   LOAD_QUEUE,
@@ -47,18 +48,21 @@ export const joinQueue = id => async dispatch => {
 
 // leave queue
 export const leaveQueue = id => async dispatch => {
-  try {
-    await axios.post(`${SERVER_BACKEND}/api/queue/leave-queue/${id}`);
-    dispatch({
-      type: LEAVE_QUEUE,
-    });
-    dispatch(loadUser());
-    dispatch(loadQueue());
-    dispatch(setAlert('You have left the queue', 'success'));
-  } catch (error) {
-    dispatch({
-      type: LEAVE_QUEUE_FAIL,
-    });
-    dispatch(setAlert('Leave queue failed', 'danger'));
+  if (window.confirm('Are you sure? This can NOT be undone!')) {
+    try {
+      await axios.post(`${SERVER_BACKEND}/api/queue/leave-queue/${id}`);
+      dispatch({
+        type: LEAVE_QUEUE,
+        loading: true,
+      });
+      dispatch(loadUser());
+      dispatch(loadQueue());
+      dispatch(setAlert('You have left the queue', 'success'));
+    } catch (error) {
+      dispatch({
+        type: LEAVE_QUEUE_FAIL,
+      });
+      dispatch(setAlert('Leave queue failed', 'danger'));
+    }
   }
 };
