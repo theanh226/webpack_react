@@ -1,24 +1,108 @@
-import React from 'react';
-import ProfileCard from '../View/Profile/ProfileCard';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { leaveQueue } from '../../actions/queue';
 
-const QueueCard = () => {
+const QueueCard = ({ id, name, status, avatar, leaveQueue }) => {
+  const [infos, setInfos] = useState({
+    idUser: '123456789',
+    nameUSer: 'DummyUser',
+    statusUser: 'In Queue',
+    avatarUser: 'https://dummyimage.com/400x400/000/fff',
+  });
+  const { idUser, nameUSer, statusUser, avatarUser } = infos;
+
+  useEffect(() => {
+    if (id != null && name != null && status != null) {
+      setInfos({
+        idUser: id,
+        nameUSer: name,
+        statusUser: status,
+        avatarUser: avatar,
+      });
+    }
+  }, [id, name, status]);
+
+  const removeStudentFromQueue = id => {
+    leaveQueue(id);
+  };
+
   return (
     <div>
       <div className="row bg-sub-light justify-content-around">
         <div className="p-0">
-          <ProfileCard />
+          <div className="d-flex justify-content-between bg-sub-light align-items-center p-2">
+            <div>
+              <img
+                src={avatarUser}
+                alt="avatar"
+                width="60"
+                height="60"
+                className="rounded-circle mr-2"
+              />
+            </div>
+            <div className="text-light ml-2">
+              <p className="lead mb-0">{nameUSer}</p>
+              <div>
+                <div className="d-flex justify-content-start">
+                  <div className="font-weight-light font-italic">
+                    {statusUser}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div className="p-0 bg-sub-light">
           <button
             className="btn h-50 btn-danger rounded-0 mt-3 ml-4 px-3"
             type="button"
+            onClick={() => removeStudentFromQueue(idUser)}
           >
             <i className="fas fa-times" />
           </button>
+        </div>
+      </div>
+      {/* ------------- MODAL ------------- */}
+      <div className="modal fade" id="removeUserFromQueue">
+        <div className="modal-dialog">
+          <div className="modal-content bg-sub">
+            <div className="modal-body text-center lead mt-3 mb-0 text-light">
+              You really want to delete this user from the queue?
+            </div>
+            <div className="modal-footer border-0 d-flex justify-content-around">
+              <button
+                type="button"
+                className="btn bg-success text-light lead px-5 py-2"
+                data-dismiss="modal"
+              >
+                Yes
+              </button>
+              <button
+                type="button"
+                className="btn bg-danger text-light lead px-5 py-2"
+                data-dismiss="modal"
+              >
+                No
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default QueueCard;
+QueueCard.propTypes = {
+  leaveQueue: PropTypes.func,
+  name: PropTypes.string,
+  status: PropTypes.string,
+  avatar: PropTypes.string,
+  id: PropTypes.string,
+};
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { leaveQueue })(QueueCard);
