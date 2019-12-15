@@ -27,6 +27,7 @@ module.exports = {
     'no-unused-vars': 1,
     'import/extensions': 0,
     'no-shadow': 0,
+    'no-underscore-dangle': 0,
     'import/order': 1,
     'react/prefer-stateless-function': 0,
     'no-use-before-define': 0,

@@ -7,15 +7,15 @@ const ProfileBox = ({ user }) => {
   const [infos, setInfos] = useState({
     name: 'ABC',
     avatar: 'https://dummyimage.com/400x400/000/fff',
-    type: 'TEST USER',
+    status: 'Offline',
   });
-  const { name, avatar, type } = infos;
+  const { name, avatar, status } = infos;
   useEffect(() => {
     if (user != null) {
       setInfos({
         name: user.name,
         avatar: user.avatar,
-        type: user.type,
+        status: user.status,
       });
     }
   }, [user]);
@@ -38,15 +38,11 @@ const ProfileBox = ({ user }) => {
         </Link>
 
         <div className="w-100 d-flex text-light">
-          <p className="col-3">Type:</p>
-          <p className="col-9 font-weight-light ">{type}</p>
-        </div>
-        <div className="w-100 d-flex text-light">
           <p className="col-3">Status:</p>
           <div>
             <div className="d-flex justify-content-start ml-3">
               <i className="fas fa-circle text-success mt-1 mr-2" />
-              <div className="font-weight-light font-italic">Online</div>
+              <div className="font-weight-light font-italic">{status}</div>
             </div>
             <div className="d-none justify-content-start ml-3">
               <i className="fas fa-circle text-danger mt-1 mr-2" />

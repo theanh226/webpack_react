@@ -1,6 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { joinQueue } from '../../actions/queue';
 
-const JoinQueue = () => {
+const JoinQueue = ({ user, joinQueue }) => {
+  const [infos, setInfos] = useState({
+    id: '',
+  });
+  const { id } = infos;
+  useEffect(() => {
+    if (user != null) {
+      setInfos({
+        id: user._id,
+      });
+    }
+  }, [user]);
   return (
     <div className="bg-main text-light border-top border-light pb-4 align-item-center">
       <p className="lead text-center text-light mt-4">
@@ -38,6 +52,7 @@ const JoinQueue = () => {
                 type="button"
                 className="btn bg-success text-light lead px-5 py-2"
                 data-dismiss="modal"
+                onClick={() => joinQueue(id)}
               >
                 Yes
               </button>
@@ -55,5 +70,12 @@ const JoinQueue = () => {
     </div>
   );
 };
+JoinQueue.propTypes = {
+  user: PropTypes.object,
+  joinQueue: PropTypes.func,
+};
 
-export default JoinQueue;
+const mapStateToProps = state => ({
+  user: state.auth.user,
+});
+export default connect(mapStateToProps, { joinQueue })(JoinQueue);
