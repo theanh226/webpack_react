@@ -1,0 +1,39 @@
+.chat {
+  max-height: 480px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+/* width */
+.chat ::-webkit-scrollbar {
+  width: 0px;
+}
+
+.input_msg {
+  position: relative;
+}
+
+.input_msg input {
+  background: whitesmoke none repeat scroll 0 0;
+  border: medium none;
+  color: #4c4c4c;
+  min-height: 70px;
+  width: 100%;
+}
+
+.input_msg input:focus {
+  outline: none;
+}
+
+.input_msg .btn {
+  border-radius: 50%;
+  color: #fff;
+  position: absolute;
+  right: 2%;
+  top: 23%;
+}
+
+.input_msg .btn:hover {
+  color: #fff;
+  background-color: rgba(8, 12, 59) !important;
+}
