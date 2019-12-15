@@ -26,13 +26,26 @@ a:focus {
 .color-main {
   color: rgba(25, 30, 88);
 }
+.color-sub-light {
+  color: rgba(84, 89, 147) !important;
+}
 .border-color-sub {
-  background: rgba(84, 89, 147) !important;
+  border-color: rgba(50, 55, 118) !important;
+}
+.border-color-sub-light {
+  border-color: rgba(84, 89, 147) !important;
+}
+.text-grey {
+  color: #4c4c4c;
 }
 /* Shape */
 .circle {
   width: 150px;
   height: 150px;
+}
+/* font-size */
+.font-small {
+  font-size: 12px;
 }
 /* background picture */
 .masthead {

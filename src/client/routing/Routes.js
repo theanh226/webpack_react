@@ -9,6 +9,7 @@ import NotFound from '../layout/NotFound';
 import Faq from '../components/Faq';
 import Queue from '../components/Queue/Queue';
 import ProfilePage from '../components/View/Profile/ProfilePage';
+import ChatBox from '../components/Chat/ChatBox';
 
 const Routes = () => {
   return (
@@ -19,6 +20,7 @@ const Routes = () => {
         <Route exact path="/faq" component={Faq} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/queue" component={Queue} />
+        <Route exact path="/chat" component={ChatBox} />
         <PrivateRoute exact path="/profile" component={ProfilePage} />
         <Route component={NotFound} />
       </Switch>
