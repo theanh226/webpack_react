@@ -3,10 +3,12 @@ import spinner from '../../../vendor/img/spinner.gif';
 
 export default () => (
   <Fragment>
-    <img
-      src={spinner}
-      style={{ width: '200px', margin: 'auto', display: 'block' }}
-      alt="Loading..."
-    />
+    <div className="d-flex justify-content-center align-items-center">
+      <img
+        src={spinner}
+        style={{ width: '200px', margin: 'auto', display: 'block' }}
+        alt="Loading..."
+      />
+    </div>
   </Fragment>
 );
