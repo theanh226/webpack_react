@@ -29,9 +29,9 @@ const QueueCard = ({ id, name, status, avatar, leaveQueue }) => {
 
   return (
     <div>
-      <div className="row bg-sub-light justify-content-around">
-        <div className="p-0">
-          <div className="d-flex justify-content-between bg-sub-light align-items-center p-2">
+      <div className="row bg-main justify-content-start">
+        <div className="col-8 p-0">
+          <div className=" d-flex justify-content-start bg-main align-items-center ml-3 p-2">
             <div>
               <img
                 src={avatarUser}
@@ -41,11 +41,11 @@ const QueueCard = ({ id, name, status, avatar, leaveQueue }) => {
                 className="rounded-circle mr-2"
               />
             </div>
-            <div className="text-light ml-2">
+            <div className="text-light ml-2  text-truncate">
               <p className="lead mb-0">{nameUSer}</p>
               <div>
                 <div className="d-flex justify-content-start">
-                  <div className="font-weight-light font-italic">
+                  <div className="font-weight-light font-italic ">
                     {statusUser}
                   </div>
                 </div>
@@ -53,7 +53,7 @@ const QueueCard = ({ id, name, status, avatar, leaveQueue }) => {
             </div>
           </div>
         </div>
-        <div className="p-0 bg-sub-light">
+        <div className="col-3 d-flex justify-content-end p-0 bg-main">
           <button
             className="btn h-50 btn-danger rounded-0 mt-3 ml-4 px-3"
             type="button"
