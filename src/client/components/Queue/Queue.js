@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import io from 'socket.io-client';
 import PropTypes from 'prop-types';
 import QueueCard from './QueueCard';
 import '../View/view.css';
 import { loadQueue } from '../../actions/queue';
 import Spinner from '../../layout/Spinner';
+import { END_POINT_SOCKET } from '../../constant/constant';
+
+let socket;
 
 const Queue = ({ queue, loadQueue, loading }) => {
+  // init Socket.io
+  const ENDPOINT = END_POINT_SOCKET;
+  socket = io(ENDPOINT);
+
   const [queueLists, setQueueList] = useState([]);
 
   useEffect(() => {
@@ -16,6 +24,15 @@ const Queue = ({ queue, loadQueue, loading }) => {
   useEffect(() => {
     loadQueue();
     setQueueList(queue);
+  }, [loading]);
+
+  useEffect(() => {
+    socket.on('oneStudentEnteredQueue', () => {
+      loadQueue();
+    });
+    socket.on('oneStudentLeavedQueue', () => {
+      loadQueue();
+    });
   }, [loading]);
 
   return <div>{buildViewQueue(loading, queueLists)}</div>;

@@ -9,7 +9,7 @@ const auth = require('../middleware/checkAuth');
 // @access   Private
 router.get('/', auth, async (req, res) => {
   try {
-    if (req.user.type === 'Tutor') {
+    if (true) {
       const userInQueue = await User.find({
         status: 'In Queue',
       }).sort({ timeToQueue: 1 });

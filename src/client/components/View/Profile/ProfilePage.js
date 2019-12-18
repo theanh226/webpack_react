@@ -1,13 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import io from 'socket.io-client';
 import { connect } from 'react-redux';
+// import { setAlert } from '../../../actions/alert';
 import JoinQueue from '../../Queue/JoinQueue';
 import LeaveQueue from '../../Queue/LeaveQueue';
 import OpenRoom from '../../Queue/OpenRoom';
 import ProfileBox from './ProfileBox';
 import PersonalInfo from './PersonalInfo';
+import { loadUser } from '../../../actions/auth';
+import { END_POINT_SOCKET } from '../../../constant/constant';
 
-const ProfilePage = ({ user }) => {
+let socket;
+// TODO: SET ALERT KICK OUT DEPEND ON ID
+const ProfilePage = ({ user, loadUser, setAlert }) => {
+  // init Socket.io
+  const ENDPOINT = END_POINT_SOCKET;
+  socket = io(ENDPOINT);
+
   const [infos, setInfos] = useState({
     type: 'Student',
     status: 'Online',
@@ -23,7 +33,14 @@ const ProfilePage = ({ user }) => {
         status: user.status,
       });
     }
-  }, [user]);
+  }, [user, ENDPOINT]);
+
+  useEffect(() => {
+    socket.on('listChanged', () => {
+      loadUser();
+      // setAlert('Someone has been kicked out of the queue', 'danger');
+    });
+  }, [loadUser, user]);
 
   return (
     <div className="masthead">
@@ -54,10 +71,11 @@ const viewBtn = (userType, userStatus) => {
 
 ProfilePage.propTypes = {
   user: PropTypes.object,
+  loadUser: PropTypes.func,
 };
 
 const mapStateToProps = state => ({
   user: state.auth.user,
 });
 
-export default connect(mapStateToProps)(ProfilePage);
+export default connect(mapStateToProps, { loadUser })(ProfilePage);

@@ -1,12 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { leaveQueue } from '../../actions/queue';
+import io from 'socket.io-client';
+import { leaveQueueStudent, loadQueue } from '../../actions/queue';
+import { END_POINT_SOCKET } from '../../constant/constant';
+import { getPosition } from './helpFuncQueue';
 
-const LeaveQueue = ({ user, leaveQueue }) => {
+let socket;
+const LeaveQueue = ({ user, leaveQueueStudent, queues, loadQueue }) => {
+  // init Socket.io
+  const ENDPOINT = END_POINT_SOCKET;
+  socket = io(ENDPOINT);
   const [infos, setInfos] = useState({
     id: '',
   });
+  const [lengthOfQueue, setLengthOfQueue] = useState(0);
+
   const { id } = infos;
   useEffect(() => {
     if (user != null) {
@@ -14,17 +23,36 @@ const LeaveQueue = ({ user, leaveQueue }) => {
         id: user._id,
       });
     }
-  }, [user]);
+    setLengthOfQueue(queues != null ? queues.length : 0);
+    console.log(getPosition(queues, id));
+  }, [user, queues]);
+  const studentLeaveQueue = studentId => {
+    leaveQueueStudent(studentId);
+    socket.emit('studentLeaveQueue');
+  };
+  useEffect(() => {
+    loadQueue();
+  }, [loadQueue]);
+  useEffect(() => {
+    socket.on('listChanged', () => {
+      loadQueue();
+    });
+    socket.on('oneStudentEnteredQueue', () => {
+      loadQueue();
+    });
+  }, [user, loadQueue]);
   return (
     <div className="bg-main text-light border-top border-light pb-4 align-item-center">
       <p className="lead text-center text-light mt-4">
-        Queue :<span className="text-success ml-2">100</span>
+        Queue :<span className="text-success ml-2">{lengthOfQueue}</span>
         <i className="fas fa-user ml-2 mt-1" />
       </p>
       <p className="lead text-center text-light mt-3">Below is your number:</p>
       <div className="d-flex justify-content-center py-2">
         <div className="circle border border-light rounded-circle">
-          <p className="display-3 mt-4 text-center">12</p>
+          <p className="display-3 mt-4 text-center">
+            {getPosition(queues, id)}
+          </p>
         </div>
       </div>
       <div className="text-center">
@@ -49,7 +77,7 @@ const LeaveQueue = ({ user, leaveQueue }) => {
                 type="button"
                 className="btn bg-success text-light lead px-5 py-2"
                 data-dismiss="modal"
-                onClick={() => leaveQueue(id)}
+                onClick={() => studentLeaveQueue(id)}
               >
                 Yes
               </button>
@@ -69,10 +97,15 @@ const LeaveQueue = ({ user, leaveQueue }) => {
 };
 LeaveQueue.propTypes = {
   user: PropTypes.object,
-  leaveQueue: PropTypes.func,
+  leaveQueueStudent: PropTypes.func,
+  loadQueue: PropTypes.func,
+  queues: PropTypes.array,
 };
 
 const mapStateToProps = state => ({
   user: state.auth.user,
+  queues: state.queue.queues,
 });
-export default connect(mapStateToProps, { leaveQueue })(LeaveQueue);
+export default connect(mapStateToProps, { leaveQueueStudent, loadQueue })(
+  LeaveQueue,
+);

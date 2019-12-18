@@ -1,10 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import io from 'socket.io-client';
+import { loadQueue } from '../../actions/queue';
+import { END_POINT_SOCKET } from '../../constant/constant';
 
-const OpenRoom = () => {
+let socket;
+const OpenRoom = ({ user, queues, loadQueue }) => {
+  // init Socket.io
+  const ENDPOINT = END_POINT_SOCKET;
+  socket = io(ENDPOINT);
+  const [lengthOfQueue, setLengthOfQueue] = useState(0);
+  // set length for infos Queue
+  useEffect(() => {
+    setLengthOfQueue(queues != null ? queues.length : 0);
+  }, [user, queues]);
+  // load queue lists
+  useEffect(() => {
+    loadQueue();
+    setLengthOfQueue(queues != null ? queues.length : 0);
+  }, [loadQueue]);
+  // rerender component when list in queue changed
+  useEffect(() => {
+    socket.on('listChanged', () => {
+      loadQueue();
+    });
+    socket.on('oneStudentEnteredQueue', () => {
+      loadQueue();
+    });
+    socket.on('oneStudentLeavedQueue', () => {
+      loadQueue();
+    });
+  }, [user, loadQueue]);
   return (
     <div className="bg-main text-light border-top border-light pb-4">
       <p className="lead text-center text-light mt-4">
-        Queue :<span className="text-success ml-2">100</span>
+        Queue :<span className="text-success ml-2">{lengthOfQueue}</span>
         <i className="fas fa-user ml-2 mt-1" />
       </p>
       <p className="lead text-center text-light mt-3">
@@ -49,5 +80,14 @@ const OpenRoom = () => {
     </div>
   );
 };
+OpenRoom.propTypes = {
+  user: PropTypes.object,
+  loadQueue: PropTypes.func,
+  queues: PropTypes.array,
+};
 
-export default OpenRoom;
+const mapStateToProps = state => ({
+  user: state.auth.user,
+  queues: state.queue.queues,
+});
+export default connect(mapStateToProps, { loadQueue })(OpenRoom);
