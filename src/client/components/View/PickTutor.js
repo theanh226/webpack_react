@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import QueueTutorCard from '../Queue/TutorCard';
+import TutorCard from '../Queue/TutorCard';
 
 const PickTutor = ({ user }) => {
   const [infos, setInfos] = useState({
@@ -31,14 +31,14 @@ const PickTutor = ({ user }) => {
           </div>
           <ul className="list-group p-0">
             <li className="list-group-item p-0 border-top-0 border-color-sub">
-              <QueueTutorCard />
-              <QueueTutorCard />
-              <QueueTutorCard />
-              <QueueTutorCard />
-              <QueueTutorCard />
-              <QueueTutorCard />
-              <QueueTutorCard />
-              <QueueTutorCard />
+              <TutorCard />
+              <TutorCard />
+              <TutorCard />
+              <TutorCard />
+              <TutorCard />
+              <TutorCard />
+              <TutorCard />
+              <TutorCard />
             </li>
           </ul>
         </div>
