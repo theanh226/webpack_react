@@ -6,7 +6,7 @@ import './chat.css';
 const ChatBox = () => {
   return (
     <div>
-      <div className="w-50 bg-sub pt-4 pb-4 pr-3 pl-2">
+      <div className="bg-sub pt-4 pb-4 pr-3 pl-3">
         <div className="chat">
           <ReceivedMessage />
           <SentMessage />
@@ -18,7 +18,7 @@ const ChatBox = () => {
           <SentMessage />
           <ReceivedMessage />
         </div>
-        <div className="border-top mb-4" />
+        <div className="border-top-sub-light mb-4" />
 
         <div className="input_msg">
           <input type="text" className="pl-3" placeholder="Type your message" />
