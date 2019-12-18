@@ -41,6 +41,9 @@ a:focus {
 .border-right-sub-light {
   border-right: 1px solid rgba(84, 89, 147) !important;
 }
+.border-bottom-sub-light {
+  border-bottom: 1px solid rgba(84, 89, 147) !important;
+}
 .text-grey {
   color: #4c4c4c;
 }
