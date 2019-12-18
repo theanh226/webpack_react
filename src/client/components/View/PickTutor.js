@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import QueueCard from '../Queue/QueueCard';
+import QueueTutorCard from '../Queue/TutorCard';
 
 const PickTutor = ({ user }) => {
   const [infos, setInfos] = useState({
@@ -23,23 +23,27 @@ const PickTutor = ({ user }) => {
 
   return (
     <div>
-      <div className="container d-flex bg-sub pb-4 pt-4">
+      <div className="picktutor container d-flex bg-sub pb-4 pt-4">
         {/* Here */}
         <div className="queue col-8 bg-sub pt-0 px-3 pb-3">
           <div className="lead bg-main text-center py-4 text-light">
-            Q u e u e &nbsp;&nbsp; l i s t
+            A v a i l a b l e &nbsp;&nbsp; T u t o r
           </div>
           <ul className="list-group p-0">
             <li className="list-group-item p-0 border-top-0 border-color-sub">
-              <QueueCard />
-              <QueueCard />
-              <QueueCard />
-              <QueueCard />
+              <QueueTutorCard />
+              <QueueTutorCard />
+              <QueueTutorCard />
+              <QueueTutorCard />
+              <QueueTutorCard />
+              <QueueTutorCard />
+              <QueueTutorCard />
+              <QueueTutorCard />
             </li>
           </ul>
         </div>
         {/* Endhere */}
-        <div className="col-4 bg-dark p-0">
+        <div className="col-4 bg-sub p-0">
           <div className="d-flex bg-main flex-column align-items-center pt-5 pb-3 pr-3 pl-4">
             <Link to="/">
               <div>
@@ -71,7 +75,7 @@ const PickTutor = ({ user }) => {
             </div>
           </div>
           {/* Button */}
-          <div className="bg-main text-light border-top border-light pb-4 align-item-center">
+          <div className="bg-main text-light border-top-sub-light pb-4 align-item-center">
             <p className="lead text-center text-light mt-4">
               Queue :<span className="text-success ml-2">100</span>
               <i className="fas fa-user ml-2 mt-1" />
@@ -81,9 +85,12 @@ const PickTutor = ({ user }) => {
             </p>
             <div className="d-flex justify-content-center py-2">
               <div className="circle border border-light rounded-circle">
-                <p className="display-3 mt-4 text-center">12</p>
+                <p className="display-3 mt-4 text-center">1</p>
               </div>
             </div>
+            <p className="lead text-center text-light mt-3">
+              You can now choose a Tutor to go to the Chat Room
+            </p>
             <div className="text-center">
               <button
                 className="btn btn-danger btn-lg rounded-0 my-3 px-5 py-3"
@@ -97,14 +104,14 @@ const PickTutor = ({ user }) => {
             {/* ------------- MODAL ------------- */}
             <div className="modal fade" id="exampleModal">
               <div className="modal-dialog ">
-                <div className="modal-content bg-sub">
+                <div className="modal-content bg-sub rounded-0">
                   <div className="modal-body text-center lead mt-3 mb-0">
                     Do you want to leave the queue?
                   </div>
                   <div className="modal-footer border-0 d-flex justify-content-around">
                     <button
                       type="button"
-                      className="btn bg-success text-light lead px-5 py-2"
+                      className="btn bg-success rounded-0 text-light lead px-5 py-2"
                       data-dismiss="modal"
                       //   onClick={() => PickTutor(id)}
                     >
@@ -112,7 +119,7 @@ const PickTutor = ({ user }) => {
                     </button>
                     <button
                       type="button"
-                      className="btn bg-danger text-light lead px-5 py-2"
+                      className="btn bg-danger rounded-0 text-light lead px-5 py-2"
                       data-dismiss="modal"
                     >
                       No
