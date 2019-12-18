@@ -20,7 +20,7 @@ const ChatView = () => {
             // value={code}
             options={{
               mode: 'javascript',
-              theme: 'monokai',
+              theme: 'material',
               lineNumbers: true,
             }}
             // onBeforeChange={(editor, data, value) => {

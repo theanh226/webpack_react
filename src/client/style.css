@@ -211,3 +211,8 @@ button {
 ::-webkit-scrollbar {
   width: 0px;
 }
+
+/* Z-INDEX */
+.z-1000 {
+  z-index: 1000;
+}

@@ -47,7 +47,26 @@ export const joinQueue = id => async dispatch => {
 };
 
 // leave queue
-export const leaveQueue = id => async dispatch => {
+export const leaveQueueStudent = id => async dispatch => {
+  try {
+    await axios.post(`${SERVER_BACKEND}/api/queue/leave-queue/${id}`);
+    dispatch({
+      type: LEAVE_QUEUE,
+      loading: true,
+    });
+    dispatch(loadUser());
+    dispatch(loadQueue());
+    dispatch(setAlert('You have left the queue', 'success'));
+  } catch (error) {
+    dispatch({
+      type: LEAVE_QUEUE_FAIL,
+    });
+    dispatch(setAlert('Leave queue failed', 'danger'));
+  }
+};
+
+// remove student from the queue
+export const removeStudentFromQueue = id => async dispatch => {
   if (window.confirm('Are you sure? This can NOT be undone!')) {
     try {
       await axios.post(`${SERVER_BACKEND}/api/queue/leave-queue/${id}`);
@@ -57,7 +76,12 @@ export const leaveQueue = id => async dispatch => {
       });
       dispatch(loadUser());
       dispatch(loadQueue());
-      dispatch(setAlert('You have left the queue', 'success'));
+      dispatch(
+        setAlert(
+          'You have successfully removed students from the queue',
+          'success',
+        ),
+      );
     } catch (error) {
       dispatch({
         type: LEAVE_QUEUE_FAIL,

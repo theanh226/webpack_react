@@ -1,24 +1,46 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { joinQueue } from '../../actions/queue';
+import io from 'socket.io-client';
 
-const JoinQueue = ({ user, joinQueue }) => {
+import { joinQueue, loadQueue } from '../../actions/queue';
+import { END_POINT_SOCKET } from '../../constant/constant';
+
+let socket;
+const JoinQueue = ({ user, joinQueue, queues, loadQueue }) => {
+  const ENDPOINT = END_POINT_SOCKET;
+  socket = io(ENDPOINT);
   const [infos, setInfos] = useState({
     id: '',
   });
+  const [lengthOfQueue, setLengthOfQueue] = useState(0);
+
   const { id } = infos;
   useEffect(() => {
-    if (user != null) {
-      setInfos({
-        id: user._id,
-      });
-    }
-  }, [user]);
+    setInfos({
+      id: user != null ? user._id : '',
+    });
+    setLengthOfQueue(queues != null ? queues.length : 0);
+  }, [user, queues]);
+
+  useEffect(() => {
+    loadQueue();
+  }, [loadQueue]);
+
+  useEffect(() => {
+    socket.on('listChanged', () => {
+      loadQueue();
+    });
+  }, [user, loadQueue]);
+
+  const studentJoinQueue = studentId => {
+    joinQueue(studentId);
+    socket.emit('studentJoinQueue');
+  };
   return (
     <div className="bg-main text-light border-top border-light pb-4 align-item-center">
       <p className="lead text-center text-light mt-4">
-        Queue :<span className="text-success ml-2">100</span>
+        Queue :<span className="text-success ml-2">{lengthOfQueue}</span>
         <i className="fas fa-user ml-2 mt-1" />
       </p>
       <p className="lead text-center text-light mt-3">
@@ -52,7 +74,7 @@ const JoinQueue = ({ user, joinQueue }) => {
                 type="button"
                 className="btn bg-success text-light lead px-5 py-2"
                 data-dismiss="modal"
-                onClick={() => joinQueue(id)}
+                onClick={() => studentJoinQueue(id)}
               >
                 Yes
               </button>
@@ -73,9 +95,12 @@ const JoinQueue = ({ user, joinQueue }) => {
 JoinQueue.propTypes = {
   user: PropTypes.object,
   joinQueue: PropTypes.func,
+  queues: PropTypes.array,
+  loadQueue: PropTypes.func,
 };
 
 const mapStateToProps = state => ({
   user: state.auth.user,
+  queues: state.queue.queues,
 });
-export default connect(mapStateToProps, { joinQueue })(JoinQueue);
+export default connect(mapStateToProps, { joinQueue, loadQueue })(JoinQueue);

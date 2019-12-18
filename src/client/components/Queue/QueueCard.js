@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import io from 'socket.io-client';
 import PropTypes from 'prop-types';
-import { leaveQueue } from '../../actions/queue';
+import { removeStudentFromQueue } from '../../actions/queue';
+import { END_POINT_SOCKET } from '../../constant/constant';
 
-const QueueCard = ({ id, name, status, avatar, leaveQueue }) => {
+let socket;
+
+const QueueCard = ({ id, name, status, avatar, removeStudentFromQueue }) => {
+  const ENDPOINT = END_POINT_SOCKET;
+  socket = io(ENDPOINT);
+
   const [infos, setInfos] = useState({
     idUser: '123456789',
     nameUSer: 'DummyUser',
@@ -23,8 +30,9 @@ const QueueCard = ({ id, name, status, avatar, leaveQueue }) => {
     }
   }, [id, name, status]);
 
-  const removeStudentFromQueue = id => {
-    leaveQueue(id);
+  const removeStudentFromQueueBtn = id => {
+    removeStudentFromQueue(id);
+    socket.emit('listQueueOrListTuorChange');
   };
 
   return (
@@ -57,7 +65,7 @@ const QueueCard = ({ id, name, status, avatar, leaveQueue }) => {
           <button
             className="btn h-50 btn-danger rounded-0 mt-3 ml-4 px-3"
             type="button"
-            onClick={() => removeStudentFromQueue(idUser)}
+            onClick={() => removeStudentFromQueueBtn(idUser)}
           >
             <i className="fas fa-times" />
           </button>
@@ -94,7 +102,7 @@ const QueueCard = ({ id, name, status, avatar, leaveQueue }) => {
 };
 
 QueueCard.propTypes = {
-  leaveQueue: PropTypes.func,
+  removeStudentFromQueue: PropTypes.func,
   name: PropTypes.string,
   status: PropTypes.string,
   avatar: PropTypes.string,
@@ -105,4 +113,4 @@ const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps, { leaveQueue })(QueueCard);
+export default connect(mapStateToProps, { removeStudentFromQueue })(QueueCard);
