@@ -1,0 +1,31 @@
+.card {
+  background-color: #4c6291 !important;
+}
+.card .btn:hover {
+  background-color: rgba(8, 12, 59) !important ;
+}
+/* SCROLL */
+.accordion {
+  position: relative;
+  height: 280px;
+  overflow: auto;
+}
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: #f5f5f5;
+}
+::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #2e385c;
+}
+::-webkit-scrollbar-track-piece {
+  background: #4c6291;
+}
+/* BUTTON */
+.btLandingPage:hover {
+  background-color: rgba(8, 12, 59) !important;
+}
