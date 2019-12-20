@@ -37,3 +37,20 @@
   color: #fff;
   background-color: rgba(8, 12, 59) !important;
 }
+
+.codemirror .btn:hover {
+  color: #fff;
+  background-color: rgba(8, 12, 59) !important;
+}
+
+/* code mirror */
+.react-codemirror2 {
+  height: 400px;
+}
+.cm-s-monokai.CodeMirror {
+  height: 100%;
+}
+
+.chatView .list-group {
+  max-height: 395px !important;
+}
