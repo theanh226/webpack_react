@@ -9,17 +9,15 @@ const auth = require('../middleware/checkAuth');
 // @access   Private
 router.get('/', auth, async (req, res) => {
   try {
-    if (true) {
-      const userInQueue = await User.find({
-        status: 'In Queue',
-      }).sort({ timeToQueue: 1 });
-      if (!userInQueue) {
-        return res.status(400).json({
-          errors: [{ msg: 'No user in Queue' }],
-        });
-      }
-      res.send(userInQueue);
+    const userInQueue = await User.find({
+      status: 'In Queue',
+    }).sort({ timeToQueue: 1 });
+    if (!userInQueue) {
+      return res.status(400).json({
+        errors: [{ msg: 'No user in Queue' }],
+      });
     }
+    res.send(userInQueue);
   } catch (error) {
     console.error(error.message);
     res.status(500).send('Server error');
