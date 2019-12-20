@@ -1,11 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import io from 'socket.io-client';
 import { connect } from 'react-redux';
 import logo from '../../../vendor/img/logo1.png';
+import { leaveQueueStudent } from '../actions/queue';
+import { END_POINT_SOCKET } from '../constant/constant';
 import { logout } from '../actions/auth';
 
-const Header = ({ logout }) => {
+let socket;
+const Header = ({ logout, leaveQueueStudent, user }) => {
+  // init Socket.io
+  const ENDPOINT = END_POINT_SOCKET;
+  socket = io(ENDPOINT);
+  const [infos, setInfos] = useState({
+    id: '',
+  });
+  const { id } = infos;
+  useEffect(() => {
+    setInfos({
+      id: user != null ? user._id : 1,
+    });
+  }, [user]);
+  const useLogout = async studentId => {
+    leaveQueueStudent(studentId);
+    socket.emit('studentLeaveQueue');
+    logout();
+  };
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-main shadow ">
@@ -38,8 +59,8 @@ const Header = ({ logout }) => {
                     <div className="dropdown-divider" />
                     <a
                       className="dropdown-item text-light"
-                      href="#!"
-                      onClick={logout}
+                      href="/login"
+                      onClick={() => useLogout(id)}
                     >
                       Log out
                     </a>
@@ -56,10 +77,15 @@ const Header = ({ logout }) => {
 
 Header.propTypes = {
   logout: PropTypes.func,
+  leaveQueueStudent: PropTypes.func,
+  user: PropTypes.object,
 };
 
 const mapStateToProps = state => ({
   user: state.auth.user,
 });
 
-export default connect(mapStateToProps, { logout })(Header);
+export default connect(mapStateToProps, {
+  logout,
+  leaveQueueStudent,
+})(Header);

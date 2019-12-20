@@ -38,7 +38,14 @@ const UserSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
-  subject: [{ name: String }],
+  room: {
+    type: Number,
+    default: 0,
+  },
+  roomStatus: {
+    type: String,
+    default: 'off',
+  },
 });
 
 // eslint-disable-next-line no-undef

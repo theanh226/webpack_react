@@ -7,7 +7,9 @@ const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 const connectDB = require('./config/db');
+// const generateUse = require('./faker_students');
 
+// generateUse();
 app.use(cors());
 // Connect Database MongoDB
 connectDB();

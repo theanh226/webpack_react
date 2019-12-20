@@ -15,23 +15,25 @@ const OpenRoom = ({ user, queues, loadQueue }) => {
   useEffect(() => {
     setLengthOfQueue(queues != null ? queues.length : 0);
   }, [user, queues]);
-  // load queue lists
+
+  // get Queue from Server
   useEffect(() => {
     loadQueue();
-    setLengthOfQueue(queues != null ? queues.length : 0);
-  }, [loadQueue]);
+  }, []);
   // rerender component when list in queue changed
   useEffect(() => {
     socket.on('listChanged', () => {
       loadQueue();
     });
     socket.on('oneStudentEnteredQueue', () => {
+      console.log('oneStudentEnteredQueue');
       loadQueue();
     });
     socket.on('oneStudentLeavedQueue', () => {
+      console.log('oneStudentLeavedQueue');
       loadQueue();
     });
-  }, [user, loadQueue]);
+  }, []);
   return (
     <div className="bg-main text-light border-top border-light pb-4">
       <p className="lead text-center text-light mt-4">
