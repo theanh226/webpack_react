@@ -48,32 +48,69 @@ const OpenRoom = ({ user, queues, loadQueue }) => {
           className="btn btn-success btn-lg rounded-0 my-3 px-5 py-3"
           type="button"
           data-toggle="modal"
-          data-target="#exampleModal"
+          data-target="#enterroominfo"
         >
           <p className="lead mb-1">Open Room</p>
         </button>
       </div>
       {/* ------------- MODAL ------------- */}
-      <div className="modal fade" id="exampleModal">
+      {/* <div className="modal fade" id="openreadycheck">
         <div className="modal-dialog">
-          <div className="modal-content bg-sub">
+          <div className="modal-content bg-sub rounded-0">
             <div className="modal-body text-center lead mt-3 mb-0">
               Are you ready to take on the queue?
             </div>
             <div className="modal-footer border-0 d-flex justify-content-around">
               <button
                 type="button"
-                className="btn bg-success text-light lead px-5 py-2"
-                data-dismiss="modal"
+                className="btn bg-success rounded-0 text-light lead px-5 py-2"
+                data-toggle="modal"
+                data-target="#roominfo"
               >
                 Yes
               </button>
               <button
                 type="button"
-                className="btn bg-danger text-light lead px-5 py-2"
+                className="btn bg-danger rounded-0 text-light lead px-5 py-2"
                 data-dismiss="modal"
               >
                 No
+              </button>
+            </div>
+          </div>
+        </div>
+      </div> */}
+      {/* ------------- MODAL2 ------------- */}
+      <div className="modal fade" id="enterroominfo">
+        <div className="modal-dialog">
+          <div className="modal-content rounded-0 bg-sub">
+            <div className="modal-body rounded-0 text-center lead mt-3 mb-0">
+              Enter room number:
+            </div>
+            <div className="text-center">
+              <input
+                className="pl-3 w-50"
+                type="text"
+                placeholder="Eg: 111, 231, ..."
+              />
+            </div>
+
+            <div className="modal-footer rounded-0 border-0 d-flex justify-content-around">
+              <button
+                type="button"
+                className="btn bg-success rounded-0 text-light lead px-3 py-2"
+                data-toggle="modal"
+                data-target="#roominfo"
+                data-dismiss="modal"
+              >
+                Goto Room
+              </button>
+              <button
+                type="button"
+                className="btn bg-danger rounded-0 text-light lead px-4 py-2"
+                data-dismiss="modal"
+              >
+                Cancel
               </button>
             </div>
           </div>
