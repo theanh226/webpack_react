@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import io from 'socket.io-client';
 import { loadQueue } from '../../actions/queue';
@@ -36,10 +37,21 @@ const OpenRoom = ({ user, queues, loadQueue }) => {
   }, []);
   return (
     <div className="bg-main text-light border-top border-light pb-4">
-      <p className="lead text-center text-light mt-4">
-        Queue :<span className="text-success ml-2">{lengthOfQueue}</span>
-        <i className="fas fa-user ml-2 mt-1" />
-      </p>
+      <div className=" mt-4 d-flex justify-content-center">
+        <p className="lead text-center text-light mt-1">
+          Queue :<span className="text-success ml-2">{lengthOfQueue}</span>{' '}
+          Students
+        </p>
+        <Link to="/queue">
+          <button
+            className="btn bg-success ml-2 rounded-circle py-2"
+            type="button"
+          >
+            <i className="text-light fas fa-users mt-1" />
+          </button>
+        </Link>
+      </div>
+
       <p className="lead text-center text-light mt-3">
         Students are waiting for you.
       </p>
