@@ -76,18 +76,17 @@ const PersonalInfo = ({ user }) => {
         </div>
       </div>
       <div className="d-flex justify-content-between">
-        <div className="col-xl-2 col-lg-3 col-md-4 text-light mt-3 p-0">
-          <Link to="/faq">
-            <button
-              className="btn bg-main text-light rounded-0 pt-3 px-3"
-              type="button"
-            >
-              <p className="lead">Go to Faq</p>
-            </button>
-          </Link>
-        </div>
+        <Link to="/faq">
+          <button
+            className="btn bg-main text-light rounded-0 pt-3 px-3 text-light mt-3"
+            type="button"
+          >
+            <p className="lead">Go to Faq</p>
+          </button>
+        </Link>
+        {viewBtn(type)}
         <button
-          className="btn bg-main rounded-0 col-xl-4 col-lg-3 col-md-4 text-light mt-3 pt-3"
+          className="btn bg-main rounded-0 text-light mt-3 pt-3"
           type="button"
         >
           <p className="lead">Change Information</p>
@@ -95,6 +94,24 @@ const PersonalInfo = ({ user }) => {
       </div>
     </div>
   );
+};
+
+const viewBtn = userType => {
+  let view;
+  if (userType === 'Tutor') {
+    view = (
+      <Link to="/queue">
+        <button
+          className="btn bg-main rounded-0 text-light mt-3 pt-3"
+          type="button"
+        >
+          {' '}
+          <p className="lead">View Queue</p>
+        </button>
+      </Link>
+    );
+  }
+  return view;
 };
 
 PersonalInfo.propTypes = {
