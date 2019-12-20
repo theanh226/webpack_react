@@ -10,6 +10,7 @@ import Queue from '../components/Queue/Queue';
 import ProfilePage from '../components/View/Profile/ProfilePage';
 import ChatBox from '../components/Chat/ChatBox';
 import ChatView from '../components/Chat/ChatView';
+import TutorCard from '../components/Queue/TutorCard';
 
 const Routes = () => {
   return (
@@ -24,6 +25,7 @@ const Routes = () => {
         <Route exact path="/queue" component={Queue} />
         <Route exact path="/chat" component={ChatBox} />
         <Route exact path="/chat-view" component={ChatView} />
+        <Route exact path="/tutor-card" component={TutorCard} />
 
         <PrivateRoute exact path="/profile" component={ProfilePage} />
         <Route component={NotFound} />

@@ -23,15 +23,22 @@ const JoinQueue = ({ user, joinQueue, queues, loadQueue }) => {
     setLengthOfQueue(queues != null ? queues.length : 0);
   }, [user, queues]);
 
+  // get Queue for first time
   useEffect(() => {
     loadQueue();
-  }, [loadQueue]);
+  }, []);
 
   useEffect(() => {
     socket.on('listChanged', () => {
       loadQueue();
     });
-  }, [user, loadQueue]);
+    socket.on('oneStudentEnteredQueue', () => {
+      loadQueue();
+    });
+    socket.on('oneStudentLeavedQueue', () => {
+      loadQueue();
+    });
+  }, []);
 
   const studentJoinQueue = studentId => {
     joinQueue(studentId);

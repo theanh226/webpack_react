@@ -17,6 +17,7 @@ const LeaveQueue = ({ user, leaveQueueStudent, queues, loadQueue }) => {
   const [lengthOfQueue, setLengthOfQueue] = useState(0);
 
   const { id } = infos;
+
   useEffect(() => {
     if (user != null) {
       setInfos({
@@ -24,15 +25,13 @@ const LeaveQueue = ({ user, leaveQueueStudent, queues, loadQueue }) => {
       });
     }
     setLengthOfQueue(queues != null ? queues.length : 0);
-    console.log(getPosition(queues, id));
   }, [user, queues]);
-  const studentLeaveQueue = studentId => {
-    leaveQueueStudent(studentId);
-    socket.emit('studentLeaveQueue');
-  };
+
+  // get Queue from Server
   useEffect(() => {
     loadQueue();
-  }, [loadQueue]);
+  }, []);
+
   useEffect(() => {
     socket.on('listChanged', () => {
       loadQueue();
@@ -40,7 +39,15 @@ const LeaveQueue = ({ user, leaveQueueStudent, queues, loadQueue }) => {
     socket.on('oneStudentEnteredQueue', () => {
       loadQueue();
     });
-  }, [user, loadQueue]);
+    socket.on('oneStudentLeavedQueue', () => {
+      loadQueue();
+    });
+  }, []);
+
+  const studentLeaveQueue = studentId => {
+    leaveQueueStudent(studentId);
+    socket.emit('studentLeaveQueue');
+  };
   return (
     <div className="bg-main text-light border-top border-light pb-4 align-item-center">
       <p className="lead text-center text-light mt-4">

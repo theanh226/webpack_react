@@ -97,6 +97,6 @@ export const register = ({ name, email, password, code }) => async dispatch => {
 
 // Logout / Clear Profile
 export const logout = () => async dispatch => {
-  await axios.post(`${SERVER_BACKEND}/api/auth/offline`);
   dispatch({ type: LOGOUT });
+  await axios.post(`${SERVER_BACKEND}/api/auth/offline`);
 };
