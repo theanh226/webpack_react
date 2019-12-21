@@ -75,22 +75,17 @@ const PersonalInfo = ({ user }) => {
           <p className="col-6 font-weight-light">{createdDate}</p>
         </div>
       </div>
-      <div className="d-flex justify-content-between">
-        <div className="col-xl-2 col-lg-3 col-md-4 text-light mt-3 p-0">
-          <Link to="/faq">
-            <button
-              className="btn bg-main text-light rounded-0 pt-3 px-3"
-              type="button"
-            >
-              <p className="lead">Go to Faq</p>
-            </button>
-          </Link>
-        </div>
-        <button
-          className="btn bg-main rounded-0 col-xl-4 col-lg-3 col-md-4 text-light mt-3 pt-3"
-          type="button"
-        >
-          <p className="lead">Change Information</p>
+      <div className="d-flex justify-content-between mt-2">
+        <Link to="/faq">
+          <button
+            className="btn bg-main text-light rounded-0 pt-3 px-3 text-light mt-3"
+            type="button"
+          >
+            <p className="lead">Go to Faq</p>
+          </button>
+        </Link>
+        <button className="btn bg-main rounded-0 mt-3 pt-3" type="button">
+          <p className="lead text-light">Change Information</p>
         </button>
       </div>
     </div>
