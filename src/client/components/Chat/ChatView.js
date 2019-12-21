@@ -1,7 +1,7 @@
 import React from 'react';
 import { Controlled as CodeMirror } from 'react-codemirror2';
 import ChatBox from './ChatBox';
-import QueueCard from '../Queue/QueueCard';
+import Queue from '../Queue/Queue';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/material.css';
 import 'codemirror/theme/monokai.css';
@@ -45,35 +45,7 @@ const ChatView = () => {
           <ChatBox />
         </div>
         <div className="chatView col-3 bg-sub border-left-sub-light p-3">
-          <div className="lead bg-main text-center py-4 text-light">
-            Q u e u e
-          </div>
-          <ul className="list-group p-0">
-            <li className="list-group-item p-0 border-top-0 border-bottom-0">
-              <QueueCard />
-            </li>
-            <li className="list-group-item p-0 border-bottom-0 border-top-sub-light">
-              <QueueCard />
-            </li>
-            <li className="list-group-item p-0 border-bottom-0 border-top-sub-light">
-              <QueueCard />
-            </li>
-            <li className="list-group-item p-0 border-bottom-0 border-top-sub-light">
-              <QueueCard />
-            </li>
-            <li className="list-group-item p-0 border-bottom-0 border-top-sub-light">
-              <QueueCard />
-            </li>
-            <li className="list-group-item p-0 border-bottom-0 border-top-sub-light">
-              <QueueCard />
-            </li>
-            <li className="list-group-item p-0 border-bottom-0 border-top-sub-light">
-              <QueueCard />
-            </li>
-            <li className="list-group-item p-0 border-bottom-0 border-top-sub-light">
-              <QueueCard />
-            </li>
-          </ul>
+          <Queue />
           <div className="border-top-sub-light  text-center">
             <button
               className="btn btn-danger btn-lg rounded-0 mt-4 w-100 pt-3 pb-1"

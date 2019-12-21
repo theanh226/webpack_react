@@ -43,25 +43,23 @@ const buildViewQueue = (loading, queueLists) => {
     view = <Spinner />;
   } else {
     view = (
-      <div className="d-flex justify-content-sm-center justify-content-md-start justify-content-lg-start">
-        <div className="queue col-12 col-sm-10 col-md-8 col-lg-5 bg-sub p-3">
-          <div className="lead bg-sub-light text-center py-4 text-light">
-            Q u e u e &nbsp;&nbsp; l i s t
-          </div>
-          <ul className="list-group p-0">
-            {queueLists.map(user => (
-              <li className="list-group-item p-0 border-top-0 border-color-sub">
-                <QueueCard
-                  key={user._id}
-                  id={user._id}
-                  name={user.name}
-                  status={user.status}
-                  avatar={user.avatar}
-                />
-              </li>
-            ))}
-          </ul>
+      <div className="queue bg-sub">
+        <div className="lead bg-sub-light text-center py-4 text-light">
+          Q u e u e &nbsp;&nbsp; l i s t
         </div>
+        <ul className="list-group p-0">
+          {queueLists.map(user => (
+            <li className="list-group-item p-0 border-top-0 border-color-sub">
+              <QueueCard
+                key={user._id}
+                id={user._id}
+                name={user.name}
+                status={user.status}
+                avatar={user.avatar}
+              />
+            </li>
+          ))}
+        </ul>
       </div>
     );
   }

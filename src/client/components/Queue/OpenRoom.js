@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import io from 'socket.io-client';
 import { loadQueue } from '../../actions/queue';
+import { createRoomChat } from '../../actions/tutorRoom';
 import { END_POINT_SOCKET } from '../../constant/constant';
 
 let socket;
-const OpenRoom = ({ user, queues, loadQueue }) => {
+const OpenRoom = ({ user, queues, loadQueue, createRoomChat }) => {
   // init Socket.io
   const ENDPOINT = END_POINT_SOCKET;
   socket = io(ENDPOINT);
   const [lengthOfQueue, setLengthOfQueue] = useState(0);
+  const [room, setRoom] = useState(0);
+  const [redirect, setRedirect] = useState(false);
   // set length for infos Queue
   useEffect(() => {
     setLengthOfQueue(queues != null ? queues.length : 0);
@@ -27,14 +30,21 @@ const OpenRoom = ({ user, queues, loadQueue }) => {
       loadQueue();
     });
     socket.on('oneStudentEnteredQueue', () => {
-      console.log('oneStudentEnteredQueue');
       loadQueue();
     });
     socket.on('oneStudentLeavedQueue', () => {
-      console.log('oneStudentLeavedQueue');
       loadQueue();
     });
   }, []);
+
+  const onSubmit = e => {
+    e.preventDefault();
+    createRoomChat(room);
+    setRedirect(!redirect);
+  };
+  if (redirect) {
+    return <Redirect to={`/chat?room=${room}`} />;
+  }
   return (
     <div className="bg-main text-light border-top border-light">
       <div className="border-bottom mt-2 d-flex justify-content-center">
@@ -66,6 +76,7 @@ const OpenRoom = ({ user, queues, loadQueue }) => {
         </button>
       </div>
       {/* ------------- MODAL ------------- */}
+
       <div className="modal fade" id="enterroominfo">
         <div className="modal-dialog">
           <div className="modal-content rounded-0 bg-sub">
@@ -76,17 +87,20 @@ const OpenRoom = ({ user, queues, loadQueue }) => {
               <input
                 className="pl-3 w-50"
                 type="text"
+                name="room"
                 placeholder="Eg: 111, 231, ..."
+                onChange={e => setRoom(e.target.value)}
               />
             </div>
 
             <div className="modal-footer rounded-0 border-0 d-flex justify-content-around">
               <button
-                type="button"
+                type="submit"
                 className="btn bg-success rounded-0 text-light lead px-3 py-2"
                 data-toggle="modal"
                 data-target="#roominfo"
                 data-dismiss="modal"
+                onClick={e => onSubmit(e)}
               >
                 Goto Room
               </button>
@@ -108,10 +122,13 @@ OpenRoom.propTypes = {
   user: PropTypes.object,
   loadQueue: PropTypes.func,
   queues: PropTypes.array,
+  createRoomChat: PropTypes.func,
 };
 
 const mapStateToProps = state => ({
   user: state.auth.user,
   queues: state.queue.queues,
 });
-export default connect(mapStateToProps, { loadQueue })(OpenRoom);
+export default connect(mapStateToProps, { loadQueue, createRoomChat })(
+  OpenRoom,
+);

@@ -8,9 +8,9 @@ import NotFound from '../layout/NotFound';
 import Faq from '../components/Faq/Faq';
 import Queue from '../components/Queue/Queue';
 import ProfilePage from '../components/View/Profile/ProfilePage';
-import ChatBox from '../components/Chat/ChatBox';
 import ChatView from '../components/Chat/ChatView';
 import TutorCard from '../components/Queue/TutorCard';
+import PickTutor from '../components/View/PickTutor';
 
 const Routes = () => {
   return (
@@ -23,8 +23,8 @@ const Routes = () => {
         <Route exact path="/faq" component={Faq} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/queue" component={Queue} />
-        <Route exact path="/chat" component={ChatBox} />
-        <Route exact path="/chat-view" component={ChatView} />
+        <Route exact path="/pick-tutor" component={PickTutor} />
+        <Route exact path="/chat" component={ChatView} />
         <Route exact path="/tutor-card" component={TutorCard} />
 
         <PrivateRoute exact path="/profile" component={ProfilePage} />

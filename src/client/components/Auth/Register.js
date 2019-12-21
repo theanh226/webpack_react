@@ -28,10 +28,6 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
       setGoToLogin(!goToLogin);
     }
   };
-
-  if (isAuthenticated) {
-    return <Redirect to="/test" />;
-  }
   if (goToLogin) {
     return <Redirect to="/login" />;
   }
