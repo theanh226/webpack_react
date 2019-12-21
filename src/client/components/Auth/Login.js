@@ -24,8 +24,8 @@ const Login = ({ login, isAuthenticated }) => {
     return <Redirect to="/profile" />;
   }
   return (
-    <div className="container text-light p-5 col-lg-5 col-md-8">
-      <div className="p-5">
+    <div className="container text-light col-lg-5 col-md-6 col-sm-7 col-12">
+      <div className="p-3">
         <h2 className="color-pale-green text-light">Sign In</h2>
         <p className="lead">
           <i className="fas fa-user color-pale-green text-light mr-2" /> Sign
@@ -61,7 +61,7 @@ const Login = ({ login, isAuthenticated }) => {
         <p className="my-1 text-light d-flex">
           Do not have an account?{' '}
           <Link to="/register">
-            <p className="text-white-50 ml-2">Sign Up</p>
+            <p className="text-warning ml-2">Sign Up</p>
           </Link>
         </p>
       </div>

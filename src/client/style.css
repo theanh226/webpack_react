@@ -176,33 +176,6 @@ button {
 .table th {
   background: var(--light-color);
 }
-/* FAQ CSS */
-/* .card-header .btn:focus {
-  box-shadow: 0 0 0 0.2rem rgba(119, 135, 54, 0.7) !important;
-} */
-.card {
-  background-color: #4c6291 !important;
-}
-.accordion {
-  position: relative;
-  height: 375px;
-  overflow: auto;
-}
-::-webkit-scrollbar {
-  width: 5px;
-  background-color: #f5f5f5;
-}
-::-webkit-scrollbar-track {
-  background-color: #f5f5f5;
-  border-radius: 10px;
-}
-::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background: #2e385c;
-}
-::-webkit-scrollbar-track-piece {
-  background: #4c6291;
-}
 /* PROFILEPAGE CSS */
 .personalInfo .btn:hover {
   background-color: rgba(8, 12, 59) !important;
@@ -218,4 +191,17 @@ button {
 /* Z-INDEX */
 .z-1000 {
   z-index: 1000;
+}
+/* RESPONSIVE MASTHEAD */
+/* FOR IPAD PRO*/
+@media only screen and (min-width: 768px) and (max-height: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
+  .masthead {
+    min-height: 660px;
+  }
+}
+/* FOR IPAD PRO */
+@media only screen and (min-width: 1024px) and (max-height: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
+  .masthead {
+    min-height: 1050px;
+  }
 }
