@@ -1,0 +1,5 @@
+@media only screen and (max-width: 576px) {
+  .wc-board {
+    font-size: 25px !important;
+  }
+}

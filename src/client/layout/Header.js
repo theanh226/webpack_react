@@ -31,7 +31,7 @@ const Header = ({ logout, leaveQueueStudent, user }) => {
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-main shadow ">
         <div className="container">
-          <Link className="navbar-brand" to="/">
+          <Link className="navbar-brand pl-4" to="/">
             <img src={logo} alt="logo" className="img" width="100" />
           </Link>
           <div>

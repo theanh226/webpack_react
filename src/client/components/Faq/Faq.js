@@ -7,7 +7,7 @@ const Faq = () => {
       <h1 className="text-center text-light display-3">FAQ</h1>
       <p className="lead text-light text-center mb-4">How can we help you ?</p>
       <div className="row">
-        <div className="col-10 mx-auto mb-5">
+        <div className="col-12 col-sm-12 col-lg-10 col-xl-8 mx-auto mb-5">
           <div className="accordion" id="faqExample">
             <div className="card">
               <div className="card-header pt-1 px-1 pb-0" id="headingOne">
@@ -255,10 +255,10 @@ const Faq = () => {
               </div>
             </div>
           </div>
-          <div className="d-flex justify-content-between mt-4">
+          <div className="containButton d-sm-flex d-lg-flex justify-content-between mt-4">
             <Link to="/">
               <button
-                className="btLandingPage btn bg-main rounded-0 pt-3 text-light px-5"
+                className="col-12 btLandingPage btn bg-main rounded-0 text-light px-4 pt-3 mb-3"
                 type="button"
               >
                 <p className="lead">Go to Landing Page</p>
@@ -266,7 +266,7 @@ const Faq = () => {
             </Link>
             <Link to="/profile">
               <button
-                className="btn btn-danger rounded-0 pt-3 px-5"
+                className="btn btn-danger col-12 rounded-0 pt-3 px-5"
                 type="button"
               >
                 <p className="lead">Go to Lounge</p>

@@ -29,3 +29,9 @@
 .btLandingPage:hover {
   background-color: rgba(8, 12, 59) !important;
 }
+/* RESPONSIVE */
+@media only screen and (max-width: 414px) {
+  .containButton {
+    text-align: center;
+  }
+}

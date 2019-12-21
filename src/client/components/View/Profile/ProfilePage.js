@@ -57,11 +57,11 @@ const ProfilePage = ({ user, loadUser, setAlert }) => {
 
   return (
     <div className="masthead">
-      <div className="container d-flex bg-sub pb-4 pt-4">
-        <div className="personalInfo col-8 pl-4">
+      <div className="container d-md-flex bg-sub pb-4 pt-4">
+        <div className="personalInfo col-12 col-sm-12 col-md-7 pl-3">
           <PersonalInfo user={user} />
         </div>
-        <div className="col-4">
+        <div className="col-12 col-sm-12 col-md-5 col-lg-4 mt-3 mt-sm-3 mt-md-0 mt-lg-0">
           <ProfileBox />
           {viewBtn(type, status)}
         </div>
