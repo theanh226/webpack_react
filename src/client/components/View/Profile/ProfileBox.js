@@ -21,7 +21,7 @@ const ProfileBox = ({ user }) => {
   }, [user]);
   return (
     <div>
-      <div className="d-flex bg-main flex-column align-items-center pt-5 pb-3 pr-3 pl-4">
+      <div className="d-flex bg-main flex-column align-items-center pt-4 pb-3 pr-3 pl-4">
         <Link to="/">
           <div>
             <img

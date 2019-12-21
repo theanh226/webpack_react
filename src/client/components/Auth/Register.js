@@ -102,7 +102,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
         <p className="my-1 text-light d-flex">
           Already have an account?{' '}
           <Link to="/login">
-            <p className="text-white-50 ml-2">Sign In</p>
+            <p className="text-warning ml-2">Sign In</p>
           </Link>
         </p>
       </div>

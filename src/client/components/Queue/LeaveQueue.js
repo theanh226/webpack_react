@@ -64,7 +64,7 @@ const LeaveQueue = ({ user, leaveQueueStudent, queues, loadQueue }) => {
       </div>
       <div className="text-center">
         <button
-          className="btn btn-danger btn-lg rounded-0 my-3 px-5 py-3"
+          className="btn btn-danger btn-lg rounded-0 my-3 px-4 py-3"
           type="button"
           data-toggle="modal"
           data-target="#exampleModal"
