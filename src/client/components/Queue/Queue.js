@@ -43,7 +43,7 @@ const buildViewQueue = (loading, queueLists) => {
     view = <Spinner />;
   } else {
     view = (
-      <div className="queue col-4 bg-sub p-3">
+      <div className="queue bg-sub">
         <div className="lead bg-sub-light text-center py-4 text-light">
           Q u e u e &nbsp;&nbsp; l i s t
         </div>

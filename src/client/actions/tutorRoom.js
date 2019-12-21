@@ -1,0 +1,92 @@
+import axios from 'axios';
+import {
+  LOAD_ROOM,
+  LOAD_ROOM_FAIL,
+  STUDENT_JOIN_ROOM,
+  STUDENT_JOIN_ROOM_FAIL,
+  TUTOR_CREATE_ROOM,
+  TUTOR_CREATE_ROOM_FAIL,
+  TUTOR_CLOSE_ROOM,
+  TUTOR_CLOSE_ROOM_FAIL,
+} from './types';
+import { SERVER_BACKEND } from '../constant/constant';
+import { setAlert } from './alert';
+
+// load queue
+export const loadRoom = () => async dispatch => {
+  try {
+    const res = await axios.get(`${SERVER_BACKEND}/api/room`);
+    dispatch({
+      type: LOAD_ROOM,
+      payload: res.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: LOAD_ROOM_FAIL,
+    });
+    dispatch(setAlert('Load Room Failed', 'danger'));
+  }
+};
+
+// student join chat room
+export const joinChat = id => async dispatch => {
+  // eslint-disable-next-line no-alert
+  if (window.confirm('Join this room?')) {
+    try {
+      await axios.post(`${SERVER_BACKEND}/api/room/in-chat/${id}`);
+      dispatch({
+        type: STUDENT_JOIN_ROOM,
+      });
+      dispatch(loadRoom());
+    } catch (error) {
+      dispatch({
+        type: STUDENT_JOIN_ROOM_FAIL,
+      });
+      dispatch(setAlert('Join queue failed', 'danger'));
+    }
+  }
+};
+
+// tutor close room
+export const closeRoom = () => async dispatch => {
+  try {
+    await axios.post(`${SERVER_BACKEND}/api/room/close`);
+    dispatch({
+      type: TUTOR_CLOSE_ROOM,
+    });
+    dispatch(loadRoom());
+    dispatch(setAlert('You have successfully closed the room', 'success'));
+  } catch (error) {
+    dispatch({
+      type: TUTOR_CLOSE_ROOM_FAIL,
+    });
+    dispatch(setAlert('close room failed', 'danger'));
+  }
+};
+
+// tutor create Room
+export const createRoomChat = room => async dispatch => {
+  console.log('ROOM TUTOR:', room);
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
+  const body = JSON.stringify({ room });
+
+  try {
+    await axios.post(`${SERVER_BACKEND}/api/room/open`, body, config);
+    dispatch({
+      type: TUTOR_CREATE_ROOM,
+    });
+    dispatch(loadRoom());
+    dispatch(setAlert('Create Room Success', 'success'));
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: TUTOR_CREATE_ROOM_FAIL,
+    });
+    dispatch(setAlert('Create Room Failed', 'danger'));
+  }
+};

@@ -1,11 +1,11 @@
 const express = require('express');
-const User = require('../models/user');
 const { check, validationResult } = require('express-validator');
+const User = require('../models/user');
 
 const router = express.Router();
 const auth = require('../middleware/checkAuth');
 
-// @route    GET api/room/open
+// @route    GET api/room/
 // @desc     Get room tutor available
 // @access   Private
 router.get('/', auth, async (req, res) => {
@@ -25,11 +25,11 @@ router.get('/', auth, async (req, res) => {
   }
 });
 
-// @route    POST api/room/open/:id
+// @route    POST api/room/open/
 // @desc     create room and change room status to on
 // @access   private
 router.post(
-  '/open/:id',
+  '/open',
   [
     check('room', 'room number is required')
       .not()
@@ -45,7 +45,7 @@ router.post(
     try {
       if (req.user.type === 'Tutor') {
         await User.findOneAndUpdate(
-          { _id: req.params.id },
+          { _id: req.user.id },
           {
             $set: {
               roomStatus: 'on',
@@ -127,10 +127,10 @@ router.post('/in-chat/:id', auth, async (req, res) => {
 // @route    POST api/room/close/:id
 // @desc     change room status to off
 // @access   private
-router.post('/close/:id', auth, async (req, res) => {
+router.post('/close', auth, async (req, res) => {
   try {
     await User.findOneAndUpdate(
-      { _id: req.params.id },
+      { _id: req.user.id },
       {
         $set: {
           roomStatus: 'off',
