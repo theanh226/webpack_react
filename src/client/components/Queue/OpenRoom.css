@@ -1,0 +1,6 @@
+input:focus::-webkit-input-placeholder {
+  opacity: 0;
+}
+input:focus {
+  outline: none;
+}

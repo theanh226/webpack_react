@@ -11,6 +11,7 @@ import ProfilePage from '../components/View/Profile/ProfilePage';
 import ChatView from '../components/Chat/ChatView';
 import TutorCard from '../components/Queue/TutorCard';
 import PickTutor from '../components/View/PickTutor';
+import QueueView from '../components/Queue/QueueView';
 
 const Routes = () => {
   return (
@@ -28,6 +29,7 @@ const Routes = () => {
         <Route exact path="/tutor-card" component={TutorCard} />
 
         <PrivateRoute exact path="/profile" component={ProfilePage} />
+        <PrivateRoute exact path="/queue-view" component={QueueView} />
         <Route component={NotFound} />
       </Switch>
     </section>
