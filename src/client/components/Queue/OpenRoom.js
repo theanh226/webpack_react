@@ -6,6 +6,7 @@ import io from 'socket.io-client';
 import { loadQueue } from '../../actions/queue';
 import { createRoomChat } from '../../actions/tutorRoom';
 import { END_POINT_SOCKET } from '../../constant/constant';
+import './OpenRoom.css';
 
 let socket;
 const OpenRoom = ({ user, queues, loadQueue, createRoomChat }) => {
@@ -49,7 +50,7 @@ const OpenRoom = ({ user, queues, loadQueue, createRoomChat }) => {
     <div className="bg-main text-light border-top border-light">
       <div className="border-bottom mt-2 d-flex justify-content-center">
         <p className="lead text-center text-light">View Queue:</p>
-        <Link to="/queue">
+        <Link to="/queue-view">
           <button className="btn bg-success rounded-0 ml-2 px-4" type="button">
             <i className="text-light fas fa-users mt-1" />
           </button>
@@ -80,33 +81,35 @@ const OpenRoom = ({ user, queues, loadQueue, createRoomChat }) => {
       <div className="modal fade" id="enterroominfo">
         <div className="modal-dialog">
           <div className="modal-content rounded-0 bg-sub">
-            <div className="modal-body rounded-0 text-center lead mt-3 mb-0">
-              Enter room number:
+            {/* <div className="modal-header">
+              <h5 className="modal-title lead text-center">Create Room</h5>
+            </div> */}
+            <div className="modal-body">
+              <div className="text-center">
+                <p className="lead">Enter Room Number:</p>
+                <input
+                  className="w-100 col-10 pl-0 py-2 text-center rounded"
+                  type="text"
+                  name="room"
+                  placeholder="Eg: 111, 231, ..."
+                  onChange={e => setRoom(e.target.value)}
+                />
+              </div>
             </div>
-            <div className="text-center">
-              <input
-                className="pl-3 w-50"
-                type="text"
-                name="room"
-                placeholder="Eg: 111, 231, ..."
-                onChange={e => setRoom(e.target.value)}
-              />
-            </div>
-
-            <div className="modal-footer rounded-0 border-0 d-flex justify-content-around">
+            <div className="modal-footer rounded-0 d-flex justify-content-around border-0">
               <button
                 type="submit"
-                className="btn bg-success rounded-0 text-light lead px-3 py-2"
+                className="btn bg-success text-light px-5 py-2"
                 data-toggle="modal"
                 data-target="#roominfo"
                 data-dismiss="modal"
                 onClick={e => onSubmit(e)}
               >
-                Goto Room
+                Open
               </button>
               <button
                 type="button"
-                className="btn bg-danger rounded-0 text-light lead px-4 py-2"
+                className="btn bg-danger text-light px-5 py-2"
                 data-dismiss="modal"
               >
                 Cancel
