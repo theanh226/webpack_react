@@ -4,36 +4,27 @@
   overflow-y: scroll;
 }
 
+.w-80 {
+  width: 80%;
+}
+
 /* width */
 .chat ::-webkit-scrollbar {
   width: 0px;
 }
 
-.input_msg {
-  position: relative;
+.chat-area textarea {
+  resize: none;
+  height: 70px !important;
 }
 
-.input_msg input {
-  background: whitesmoke none repeat scroll 0 0;
-  border: medium none;
-  color: #4c4c4c;
-  min-height: 70px;
-  width: 100%;
-}
-
-.input_msg input:focus {
+.chat-area textarea:focus {
   outline: none;
+  box-shadow: none;
+  border-color: #cccccc;
 }
 
-.input_msg .btn {
-  border-radius: 50%;
-  color: #fff;
-  position: absolute;
-  right: 2%;
-  top: 23%;
-}
-
-.input_msg .btn:hover {
+.chat-area .btn:hover {
   color: #fff;
   background-color: rgba(8, 12, 59) !important;
 }
@@ -47,6 +38,7 @@
 .react-codemirror2 {
   height: 400px;
 }
+
 .cm-s-monokai.CodeMirror {
   height: 100%;
 }

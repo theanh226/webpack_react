@@ -34,40 +34,43 @@ const Header = ({ logout, leaveQueueStudent, user }) => {
           <Link className="navbar-brand pl-4" to="/">
             <img src={logo} alt="logo" className="img" width="100" />
           </Link>
-          <div>
-            {/* User and user setting */}
-            <ul className="navbar-nav ml-auto">
-              {/* setting drop down */}
-              <li className="nav-item active">
-                <div className="nav-link btn-group">
-                  <button
-                    type="button"
-                    className="btn shadow-none"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    <i className="fas fa-cogs text-light mt-1" />
-                  </button>
-                  <div className="dropdown-menu dropdown-menu-right bg-dark">
-                    <a className="dropdown-item text-light" href="/link">
-                      Your Account
-                    </a>
-                    <a className="dropdown-item text-light" href="/link">
-                      Change Information
-                    </a>
-                    <div className="dropdown-divider" />
-                    <a
-                      className="dropdown-item text-light"
-                      href="/login"
-                      onClick={() => useLogout(id)}
-                    >
-                      Log out
-                    </a>
-                  </div>
-                </div>
-              </li>
-            </ul>
+          <a
+            className="d-flex mt-2 mr-3"
+            href="/"
+            data-toggle="modal"
+            data-target="#logoutModal"
+          >
+            <p className="lead text-light mr-1">Logout</p>
+            <i className="fas fa-sign-out-alt fa-1x text-light mt-2" />
+          </a>
+        </div>
+
+        {/* ------------- MODAL ------------- */}
+        <div className="modal fade" id="logoutModal">
+          <div className="modal-dialog">
+            <div className="modal-content bg-sub">
+              <div className="modal-body text-center text-light lead mt-3 mb-0">
+                Do you want to log out?
+              </div>
+              <div className="modal-footer border-top-0 justify-content-around">
+                <a
+                  className="btn bg-success text-light lead px-5 py-2"
+                  href="/login"
+                  type="submit"
+                  // data-dismiss="modal"
+                  onClick={() => useLogout(id)}
+                >
+                  Yes
+                </a>
+                <button
+                  className="btn btn-danger text-light lead px-5 py-2"
+                  type="button"
+                  data-dismiss="modal"
+                >
+                  No
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </nav>

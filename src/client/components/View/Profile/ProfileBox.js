@@ -31,16 +31,15 @@ const ProfileBox = ({ user }) => {
               height="150"
               className="rounded-circle"
             />
-            <p className="lead text-light text-center mt-3 mb-4 text-uppercase">
+            <p className="lead text-light text-center m-0 mt-3 text-uppercase">
               {name}
             </p>
           </div>
         </Link>
 
-        <div className="w-100 d-flex text-light">
-          <p className="col-3">Status:</p>
+        <div className="w-100 pr-2 text-light">
           <div>
-            <div className="d-flex justify-content-start ml-3">
+            <div className="d-flex justify-content-center">
               <i className="fas fa-circle text-success mt-1 mr-2" />
               <div className="font-weight-light font-italic">{status}</div>
             </div>
