@@ -22,8 +22,8 @@ const Header = ({ logout, leaveQueueStudent, user }) => {
       id: user != null ? user._id : 1,
     });
   }, [user]);
-  const useLogout = async studentId => {
-    leaveQueueStudent(studentId);
+  const useLogout = async () => {
+    leaveQueueStudent();
     socket.emit('studentLeaveQueue');
     logout();
   };

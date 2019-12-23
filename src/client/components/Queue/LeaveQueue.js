@@ -44,8 +44,8 @@ const LeaveQueue = ({ user, leaveQueueStudent, queues, loadQueue }) => {
     });
   }, []);
 
-  const studentLeaveQueue = studentId => {
-    leaveQueueStudent(studentId);
+  const studentLeaveQueue = () => {
+    leaveQueueStudent();
     socket.emit('studentLeaveQueue');
   };
   return (
@@ -84,7 +84,7 @@ const LeaveQueue = ({ user, leaveQueueStudent, queues, loadQueue }) => {
                 type="button"
                 className="btn bg-success text-light lead px-5 py-2"
                 data-dismiss="modal"
-                onClick={() => studentLeaveQueue(id)}
+                onClick={() => studentLeaveQueue()}
               >
                 Yes
               </button>

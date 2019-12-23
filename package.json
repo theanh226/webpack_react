@@ -60,6 +60,7 @@
     "mongoose": "^5.8.0",
     "nodemon": "^2.0.1",
     "prettier": "^1.19.1",
+    "query-string": "^6.9.0",
     "react-codemirror2": "^6.0.0",
     "react-hot-loader": "^4.12.10",
     "react-redux": "^7.1.3",

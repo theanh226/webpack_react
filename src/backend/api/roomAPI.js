@@ -34,6 +34,9 @@ router.post(
     check('room', 'room number is required')
       .not()
       .isEmpty(),
+    check('room', 'Please enter a room number with 3 or more number').isLength({
+      min: 3,
+    }),
   ],
   auth,
   async (req, res) => {
@@ -43,7 +46,8 @@ router.post(
     }
     const { room } = req.body;
     try {
-      if (req.user.type === 'Tutor') {
+      const existRoom = await User.findOne({ room });
+      if (req.user.type === 'Tutor' && existRoom === null) {
         await User.findOneAndUpdate(
           { _id: req.user.id },
           {
@@ -61,8 +65,8 @@ router.post(
           msg: 'room available',
         });
       } else {
-        res.json({
-          msg: 'you are not tutor',
+        res.status(400).json({
+          errors: [{ msg: 'Room already exists' }],
         });
       }
     } catch (err) {
@@ -72,13 +76,13 @@ router.post(
   },
 );
 
-// @route    POST api/room/on/:id
+// @route    POST api/room/on/
 // @desc     change room status to on
 // @access   private
-router.post('/on/:id', auth, async (req, res) => {
+router.post('/on/:roomNumber', auth, async (req, res) => {
   try {
     await User.findOneAndUpdate(
-      { _id: req.params.id },
+      { room: req.params.roomNumber },
       {
         $set: {
           roomStatus: 'on',
@@ -124,7 +128,7 @@ router.post('/in-chat/:id', auth, async (req, res) => {
   }
 });
 
-// @route    POST api/room/close/:id
+// @route    POST api/room/close/
 // @desc     change room status to off
 // @access   private
 router.post('/close', auth, async (req, res) => {
@@ -134,6 +138,7 @@ router.post('/close', auth, async (req, res) => {
       {
         $set: {
           roomStatus: 'off',
+          room: -1,
         },
       },
       {

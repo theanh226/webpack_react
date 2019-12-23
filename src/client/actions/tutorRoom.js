@@ -8,11 +8,14 @@ import {
   TUTOR_CREATE_ROOM_FAIL,
   TUTOR_CLOSE_ROOM,
   TUTOR_CLOSE_ROOM_FAIL,
+  STUDENT_LEAVE_ROOM,
+  STUDENT_LEAVE_ROOM_FAIL,
 } from './types';
 import { SERVER_BACKEND } from '../constant/constant';
 import { setAlert } from './alert';
+import { leaveQueueStudent } from './queue';
 
-// load queue
+// load Room
 export const loadRoom = () => async dispatch => {
   try {
     const res = await axios.get(`${SERVER_BACKEND}/api/room`);
@@ -38,6 +41,7 @@ export const joinChat = id => async dispatch => {
         type: STUDENT_JOIN_ROOM,
       });
       dispatch(loadRoom());
+      dispatch(leaveQueueStudent());
     } catch (error) {
       dispatch({
         type: STUDENT_JOIN_ROOM_FAIL,
@@ -64,9 +68,25 @@ export const closeRoom = () => async dispatch => {
   }
 };
 
+// tutor close room
+export const studentLeaveChat = roomNumber => async dispatch => {
+  try {
+    await axios.post(`${SERVER_BACKEND}/api/room/on/${roomNumber}`);
+    dispatch({
+      type: STUDENT_LEAVE_ROOM,
+    });
+    dispatch(loadRoom());
+    dispatch(setAlert('You have left the room', 'success'));
+  } catch (error) {
+    dispatch({
+      type: STUDENT_LEAVE_ROOM_FAIL,
+    });
+    dispatch(setAlert('Leaving the room failed', 'danger'));
+  }
+};
+
 // tutor create Room
 export const createRoomChat = room => async dispatch => {
-  console.log('ROOM TUTOR:', room);
   const config = {
     headers: {
       'Content-Type': 'application/json',
@@ -83,6 +103,10 @@ export const createRoomChat = room => async dispatch => {
     dispatch(loadRoom());
     dispatch(setAlert('Create Room Success', 'success'));
   } catch (error) {
+    const { errors } = error.response.data;
+    if (errors) {
+      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+    }
     console.log(error);
     dispatch({
       type: TUTOR_CREATE_ROOM_FAIL,

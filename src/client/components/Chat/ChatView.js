@@ -1,14 +1,60 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Controlled as CodeMirror } from 'react-codemirror2';
+import { connect } from 'react-redux';
+import queryString from 'query-string';
+import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import ChatBox from './ChatBox';
 import Queue from '../Queue/Queue';
+import ProfileBox from '../View/Profile/ProfileBox';
+import InfoBox from '../View/Profile/InfoBox';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/material.css';
 import 'codemirror/theme/monokai.css';
 import 'codemirror/mode/javascript/javascript.js';
 import 'codemirror/mode/python/python';
+import { closeRoom, studentLeaveChat } from '../../actions/tutorRoom';
+import { loadUser } from '../../actions/auth';
 
-const ChatView = () => {
+const ChatView = ({
+  user,
+  closeRoom,
+  studentLeaveChat,
+  location,
+  createRoomSuccess,
+}) => {
+  const [infos, setInfos] = useState({
+    type: '',
+  });
+  const [room, setRoom] = useState('');
+  const [useLeaveChat, setUseLeaveChat] = useState(false);
+  const { type } = infos;
+
+  useEffect(() => {
+    const { room } = queryString.parse(location.search);
+    setInfos({ type: user != null ? user.type : '' });
+    setRoom(room);
+  }, [user, location.search]);
+
+  useEffect(() => {
+    loadUser();
+  }, []);
+
+  const leaveRoomChat = typeUser => {
+    if (typeUser === 'Tutor') {
+      closeRoom();
+      setUseLeaveChat(!useLeaveChat);
+    } else {
+      studentLeaveChat(room);
+      setUseLeaveChat(!useLeaveChat);
+    }
+  };
+
+  if (useLeaveChat) {
+    if (createRoomSuccess === false) {
+      return <Redirect to="/profile" />;
+    }
+  }
   return (
     <div className="container">
       <div className="d-flex ">
@@ -45,7 +91,7 @@ const ChatView = () => {
           <ChatBox />
         </div>
         <div className="chatView col-3 bg-sub border-left-sub-light p-3">
-          <Queue />
+          {viewBox(type)}
           <div className="border-top-sub-light  text-center">
             <button
               className="btn btn-danger btn-lg rounded-0 mt-4 w-100 pt-3 pb-1"
@@ -68,7 +114,7 @@ const ChatView = () => {
                     type="button"
                     className="btn bg-success text-light lead px-5 py-2"
                     data-dismiss="modal"
-                    // onClick={() => leaveQueue(id)}
+                    onClick={() => leaveRoomChat(type)}
                   >
                     Yes
                   </button>
@@ -90,4 +136,33 @@ const ChatView = () => {
   );
 };
 
-export default ChatView;
+const viewBox = userType => {
+  let view;
+  if (userType === 'Student') {
+    view = (
+      <div>
+        <ProfileBox />
+        <InfoBox />
+      </div>
+    );
+  } else if (userType === 'Tutor') {
+    view = <Queue />;
+  }
+  return view;
+};
+ChatView.propTypes = {
+  user: PropTypes.object,
+  closeRoom: PropTypes.func,
+  studentLeaveChat: PropTypes.func,
+  location: PropTypes.object,
+  createRoomSuccess: PropTypes.bool,
+};
+
+const mapStateToProps = state => ({
+  user: state.auth.user,
+  createRoomSuccess: state.tutorRoom.createRoomSuccess,
+});
+
+export default connect(mapStateToProps, { studentLeaveChat, closeRoom })(
+  ChatView,
+);
