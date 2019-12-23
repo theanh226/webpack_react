@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Controlled as CodeMirror } from 'react-codemirror2';
 import { connect } from 'react-redux';
 import queryString from 'query-string';
+import io from 'socket.io-client';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ChatBox from './ChatBox';
@@ -15,31 +16,85 @@ import 'codemirror/mode/javascript/javascript.js';
 import 'codemirror/mode/python/python';
 import { closeRoom, studentLeaveChat } from '../../actions/tutorRoom';
 import { loadUser } from '../../actions/auth';
+import { END_POINT_SOCKET } from '../../constant/constant';
+import Input from './Input';
 
+let socket;
 const ChatView = ({
   user,
   closeRoom,
   studentLeaveChat,
   location,
   createRoomSuccess,
+  loadUser,
 }) => {
+  // init Socket.io
+
   const [infos, setInfos] = useState({
     type: '',
+    idUser: '',
   });
+  const [name, setName] = useState('');
   const [room, setRoom] = useState('');
+  const [emailUser, setEmailUser] = useState('');
   const [useLeaveChat, setUseLeaveChat] = useState(false);
+  const [message, setMessage] = useState('');
+  const [messages, setMessages] = useState([]);
   const { type } = infos;
 
+  // USER JOIN THE ROOM CHAT
   useEffect(() => {
-    const { room } = queryString.parse(location.search);
-    setInfos({ type: user != null ? user.type : '' });
+    const ENDPOINT = END_POINT_SOCKET;
+    socket = io(ENDPOINT);
+    const { name, room, email } = queryString.parse(location.search);
     setRoom(room);
-  }, [user, location.search]);
+    setName(name);
+    setEmailUser(email);
+    setInfos({
+      type: user != null ? user.type : '',
+      name: user != null ? user.name : '',
+    });
+    socket.emit('join', { name, room, emailUser }, error => {
+      if (error) {
+        console.log(error);
+      }
+    });
+  }, [location.search, END_POINT_SOCKET]);
+
+  // CHAT AND SEND CODE
+  useEffect(() => {
+    socket.on('message', message => {
+      // console.log(message);
+      setMessages([...messages, message]);
+    });
+
+    // socket.on('codeTransaction', code => {
+    //   setCodes(code);
+    // });
+
+    return () => {
+      socket.emit('disconnect');
+
+      socket.off();
+    };
+  }, [messages]);
 
   useEffect(() => {
     loadUser();
   }, []);
-
+  const sendMessage = event => {
+    event.preventDefault();
+    if (message) {
+      socket.emit('sendMessage', { message, name }, () => setMessage(''));
+    }
+  };
+  // const sendCode = event => {
+  //   // event.preventDefault();
+  //   console.log(event);
+  //   if (code) {
+  //     socket.emit('sendCode', code, () => setCode(code));
+  //   }
+  // };
   const leaveRoomChat = typeUser => {
     if (typeUser === 'Tutor') {
       closeRoom();
@@ -88,9 +143,14 @@ const ChatView = ({
           {/* --------------- End-Modal Submit code --------------- */}
         </div>
         <div className="col-5 p-0">
-          <ChatBox />
+          <ChatBox messages={messages} name={name} />
+          <Input
+            message={message}
+            setMessage={setMessage}
+            sendMessage={sendMessage}
+          />
         </div>
-        <div className="chatView col-3 bg-sub border-left-sub-light p-3">
+        <div className="chatView d-flex flex-column justify-content-between col-3 bg-sub border-left-sub-light p-3">
           {viewBox(type)}
           <div className="border-top-sub-light  text-center">
             <button
@@ -156,6 +216,7 @@ ChatView.propTypes = {
   studentLeaveChat: PropTypes.func,
   location: PropTypes.object,
   createRoomSuccess: PropTypes.bool,
+  loadUser: PropTypes.func,
 };
 
 const mapStateToProps = state => ({
@@ -163,6 +224,8 @@ const mapStateToProps = state => ({
   createRoomSuccess: state.tutorRoom.createRoomSuccess,
 });
 
-export default connect(mapStateToProps, { studentLeaveChat, closeRoom })(
-  ChatView,
-);
+export default connect(mapStateToProps, {
+  studentLeaveChat,
+  closeRoom,
+  loadUser,
+})(ChatView);

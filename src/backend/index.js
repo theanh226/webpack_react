@@ -15,7 +15,7 @@ app.use(cors());
 connectDB();
 
 // connect to socket io in socketManager.js
-require('./socketManager')(io);
+require('./socket/socketManager')(io);
 
 // Init Middleware
 app.use(express.json({ extended: false }));

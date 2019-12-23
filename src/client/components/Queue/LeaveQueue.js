@@ -8,9 +8,6 @@ import { getPosition } from './helpFuncQueue';
 
 let socket;
 const LeaveQueue = ({ user, leaveQueueStudent, queues, loadQueue }) => {
-  // init Socket.io
-  const ENDPOINT = END_POINT_SOCKET;
-  socket = io(ENDPOINT);
   const [infos, setInfos] = useState({
     id: '',
   });
@@ -19,13 +16,16 @@ const LeaveQueue = ({ user, leaveQueueStudent, queues, loadQueue }) => {
   const { id } = infos;
 
   useEffect(() => {
+    // init Socket.io
+    const ENDPOINT = END_POINT_SOCKET;
+    socket = io(ENDPOINT);
     if (user != null) {
       setInfos({
         id: user._id,
       });
     }
     setLengthOfQueue(queues != null ? queues.length : 0);
-  }, [user, queues]);
+  }, [user, queues, END_POINT_SOCKET]);
 
   // get Queue from Server
   useEffect(() => {
