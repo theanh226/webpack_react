@@ -9,7 +9,7 @@ import { END_POINT_SOCKET } from '../constant/constant';
 import { logout } from '../actions/auth';
 
 let socket;
-const Header = ({ logout, leaveQueueStudent, user }) => {
+const Header = ({ logout, leaveQueueStudent, user, isAuthenticated }) => {
   // init Socket.io
   const ENDPOINT = END_POINT_SOCKET;
   socket = io(ENDPOINT);
@@ -22,11 +22,23 @@ const Header = ({ logout, leaveQueueStudent, user }) => {
       id: user != null ? user._id : 1,
     });
   }, [user]);
-  const useLogout = async () => {
-    leaveQueueStudent();
+  const useLogout = studentId => {
+    leaveQueueStudent(studentId);
     socket.emit('studentLeaveQueue');
     logout();
   };
+  const logoutView = (
+    <a
+      className="d-flex mt-2 mr-3"
+      href="/"
+      data-toggle="modal"
+      data-target="#logoutModal"
+    >
+      <p className="lead text-light mr-1">Logout</p>
+      <i className="fas fa-sign-out-alt fa-1x text-light mt-2" />
+    </a>
+  );
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-main shadow ">
@@ -34,15 +46,7 @@ const Header = ({ logout, leaveQueueStudent, user }) => {
           <Link className="navbar-brand pl-4" to="/">
             <img src={logo} alt="logo" className="img" width="100" />
           </Link>
-          <a
-            className="d-flex mt-2 mr-3"
-            href="/"
-            data-toggle="modal"
-            data-target="#logoutModal"
-          >
-            <p className="lead text-light mr-1">Logout</p>
-            <i className="fas fa-sign-out-alt fa-1x text-light mt-2" />
-          </a>
+          {isAuthenticated && logoutView}
         </div>
 
         {/* ------------- MODAL ------------- */}
@@ -82,10 +86,12 @@ Header.propTypes = {
   logout: PropTypes.func,
   leaveQueueStudent: PropTypes.func,
   user: PropTypes.object,
+  isAuthenticated: PropTypes.bool,
 };
 
 const mapStateToProps = state => ({
   user: state.auth.user,
+  isAuthenticated: state.auth.isAuthenticated,
 });
 
 export default connect(mapStateToProps, {

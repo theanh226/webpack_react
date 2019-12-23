@@ -45,8 +45,8 @@ const JoinQueue = ({ user, joinQueue, queues, loadQueue }) => {
     socket.emit('studentJoinQueue');
   };
   return (
-    <div className="bg-main text-light border-top border-light pb-4 align-item-center">
-      <p className="lead text-center text-light mt-4">
+    <div className="bg-main text-light border-top border-light pb-4 pb-md-3 pb-lg-3 align-item-center">
+      <p className="lead text-center text-light mt-4 mt-lg-3">
         Queue :<span className="text-success ml-2">{lengthOfQueue}</span>
         <i className="fas fa-user ml-2 mt-1" />
       </p>

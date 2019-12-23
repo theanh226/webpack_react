@@ -1,6 +1,7 @@
 .list-group {
-  min-height: 395px;
-  max-height: 621px;
+  height: 393px;
+  /* min-height: 393px;
+  max-height: 621px; */
   overflow: hidden;
   overflow-y: scroll;
   padding-right: 17px;

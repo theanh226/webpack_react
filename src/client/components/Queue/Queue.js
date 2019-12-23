@@ -4,6 +4,7 @@ import io from 'socket.io-client';
 import PropTypes from 'prop-types';
 import QueueCard from './QueueCard';
 import '../View/view.css';
+import './queue.css';
 import { loadQueue } from '../../actions/queue';
 import Spinner from '../../layout/Spinner';
 import { END_POINT_SOCKET } from '../../constant/constant';
@@ -43,10 +44,11 @@ const buildViewQueue = (loading, queueLists) => {
     view = <Spinner />;
   } else {
     view = (
-      <div className="queue bg-sub">
+      <div className="bg-sub">
         <div className="lead bg-main text-center py-4 text-light">
           Q u e u e &nbsp;&nbsp; l i s t
         </div>
+
         <ul className="list-group p-0">
           {queueLists.map(user => (
             <li className="list-group-item p-0 border-top-0 border-color-sub">
@@ -59,6 +61,12 @@ const buildViewQueue = (loading, queueLists) => {
               />
             </li>
           ))}
+          <li className="list-group-item bg-sub p-0 border-top-0 border-color-sub phantom-user">
+            |
+            <li className="list-group-item bg-sub p-0 border-top-0 border-color-sub phantom-user">
+              |
+            </li>
+          </li>
         </ul>
       </div>
     );

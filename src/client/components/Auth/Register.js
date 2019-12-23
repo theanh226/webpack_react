@@ -33,7 +33,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   }
 
   return (
-    <div className="container text-light p-5 col-lg-5 col-md-8">
+    <div className="container text-light pt-5 col-lg-4 col-md-6">
       <div className="p-4">
         <h2 className="color-pale-green text-light">Sign Up</h2>
         <p className="lead">

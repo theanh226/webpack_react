@@ -4,3 +4,17 @@
 .font-extra-small {
   font-size: 0.75rem !important;
 }
+/* TEMPORAL SOLUTION FOR QUEUE LIST */
+.queue {
+  position: relative;
+}
+
+.position-end {
+  position: absolute;
+  bottom: 0;
+  width: 96%;
+}
+.phantom-user {
+  height: 3em;
+  color: rgba(50, 55, 118) !important;
+}

@@ -30,7 +30,7 @@ const PersonalInfo = ({ user }) => {
   }, [user]);
   return (
     <div>
-      <div className="d-flex bg-main flex-column align-items-center pt-5 pb-5 pr-3 pl-3 rounded-0">
+      <div className="d-flex bg-main flex-column align-items-center pt-5 pb-5 pb-md-4 pr-3 pl-3 rounded-0">
         <div className="text-light mb-4 d-md-flex d-lg-flex justify-content-center">
           <h1 className="lead f-3">W E L C O M E &nbsp;</h1>
           <h1 className="lead f-3 pl-2">{name}</h1>
@@ -78,20 +78,22 @@ const PersonalInfo = ({ user }) => {
           </p>
         </div>
       </div>
-      <div className="d-flex justify-content-between mt-2">
+      <div className="d-flex justify-content-between mt-2 mt-md-3 mt-lg-4">
         <Link to="/faq">
           <button
-            className="btn bg-main text-light rounded-0 pt-3 px-3 text-light mt-3 pb-3"
+            className="btn bg-main text-light rounded-0 pt-lg-4 px-lg-3 text-light"
             type="button"
           >
-            <p className="lead pt-2">Go to Faq</p>
+            <p className="lead pt-lg-1 pt-md-3 pb-lg-1 mb-3 pt-3">Go to Faq</p>
           </button>
         </Link>
         <button
-          className="btn bg-main rounded-0 col-xl-4 col-lg-3 col-md-4 col-6 text-light mt-3 p-0"
+          className="btn bg-main rounded-0 col-xl-4 col-lg-3 col-md-4 col-6 text-light"
           type="button"
         >
-          <p className="lead text-light pt-2">Change Information</p>
+          <p className="lead mb-md-0 pt-md-0 pt-lg-1 pb-lg-1 mb-0">
+            Change Information
+          </p>
         </button>
       </div>
     </div>
