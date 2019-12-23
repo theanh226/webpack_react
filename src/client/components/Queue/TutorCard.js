@@ -17,10 +17,6 @@ const TutorCard = ({
   loadRoom,
   user,
 }) => {
-  // init Socket.io
-  const ENDPOINT = END_POINT_SOCKET;
-  socket = io(ENDPOINT);
-
   const [infos, setInfos] = useState({
     idTutor: '123456789',
     nameTutor: 'DummyUser',
@@ -30,12 +26,16 @@ const TutorCard = ({
   });
   const [studentInfo, setStudentInfo] = useState({
     nameStudent: 'Dummy Name',
+    emailStudent: 'abc@gmail.com',
   });
 
   const { idTutor, nameTutor, avatarTutor, likeTutor, roomNumber } = infos;
-  const { nameStudent } = studentInfo;
+  const { nameStudent, emailStudent } = studentInfo;
 
   useEffect(() => {
+    // init Socket.io
+    const ENDPOINT = END_POINT_SOCKET;
+    socket = io(ENDPOINT);
     if (id != null && name != null && room != null) {
       setInfos({
         idTutor: id,
@@ -45,8 +45,11 @@ const TutorCard = ({
         roomNumber: room,
       });
     }
-    setStudentInfo({ nameStudent: user != null ? user.name : 'Thomas' });
-  }, [id, name, room]);
+    setStudentInfo({
+      nameStudent: user != null ? user.name : 'Thomas',
+      emailStudent: user != null ? user.email : 'abc@gmail.com',
+    });
+  }, [id, name, room, END_POINT_SOCKET]);
 
   const studentJoinChat = tutorID => {
     joinChat(tutorID);
@@ -82,7 +85,7 @@ const TutorCard = ({
         <div className="col-3 d-flex justify-content-end p-0 bg-main pt-2">
           <Link
             onClick={() => studentJoinChat(idTutor)}
-            to={`/chat?name=${nameStudent}&room=${roomNumber}`}
+            to={`/chat?name=${nameStudent}&room=${roomNumber}&email=${emailStudent}`}
           >
             <button
               className="btn h-50 btn-success rounded-0 mt-4 ml-4 px-3 pb-4"

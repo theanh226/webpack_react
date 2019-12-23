@@ -9,9 +9,6 @@ import { END_POINT_SOCKET } from '../../constant/constant';
 let socket;
 
 const QueueCard = ({ id, name, status, avatar, removeStudentFromQueue }) => {
-  const ENDPOINT = END_POINT_SOCKET;
-  socket = io(ENDPOINT);
-
   const [infos, setInfos] = useState({
     idUser: '123456789',
     nameUSer: 'DummyUser',
@@ -21,6 +18,9 @@ const QueueCard = ({ id, name, status, avatar, removeStudentFromQueue }) => {
   const { idUser, nameUSer, statusUser, avatarUser } = infos;
 
   useEffect(() => {
+    const ENDPOINT = END_POINT_SOCKET;
+    socket = io(ENDPOINT);
+
     if (id != null && name != null && status != null) {
       setInfos({
         idUser: id,
@@ -29,7 +29,7 @@ const QueueCard = ({ id, name, status, avatar, removeStudentFromQueue }) => {
         avatarUser: avatar,
       });
     }
-  }, [id, name, status]);
+  }, [id, name, status, END_POINT_SOCKET]);
 
   const removeStudentFromQueueBtn = id => {
     removeStudentFromQueue(id);

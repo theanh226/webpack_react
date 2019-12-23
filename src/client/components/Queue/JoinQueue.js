@@ -8,8 +8,6 @@ import { END_POINT_SOCKET } from '../../constant/constant';
 
 let socket;
 const JoinQueue = ({ user, joinQueue, queues, loadQueue }) => {
-  const ENDPOINT = END_POINT_SOCKET;
-  socket = io(ENDPOINT);
   const [infos, setInfos] = useState({
     id: '',
   });
@@ -17,11 +15,14 @@ const JoinQueue = ({ user, joinQueue, queues, loadQueue }) => {
 
   const { id } = infos;
   useEffect(() => {
+    // init Socket.io
+    const ENDPOINT = END_POINT_SOCKET;
+    socket = io(ENDPOINT);
     setInfos({
       id: user != null ? user._id : '',
     });
     setLengthOfQueue(queues != null ? queues.length : 0);
-  }, [user, queues]);
+  }, [user, queues, END_POINT_SOCKET]);
 
   // get Queue for first time
   useEffect(() => {

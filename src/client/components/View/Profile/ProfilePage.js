@@ -14,10 +14,6 @@ import { END_POINT_SOCKET } from '../../../constant/constant';
 let socket;
 // TODO: SET ALERT KICK OUT DEPEND ON ID
 const ProfilePage = ({ user, loadUser, setAlert }) => {
-  // init Socket.io
-  const ENDPOINT = END_POINT_SOCKET;
-  socket = io(ENDPOINT);
-
   const [infos, setInfos] = useState({
     type: 'Student',
     status: 'Online',
@@ -26,6 +22,9 @@ const ProfilePage = ({ user, loadUser, setAlert }) => {
   const { type, status } = infos;
 
   useEffect(() => {
+    // init Socket.io
+    const ENDPOINT = END_POINT_SOCKET;
+    socket = io(ENDPOINT);
     if (user != null) {
       setInfos({
         id: user.id,
@@ -33,7 +32,7 @@ const ProfilePage = ({ user, loadUser, setAlert }) => {
         status: user.status,
       });
     }
-  }, [user, ENDPOINT]);
+  }, [user, END_POINT_SOCKET]);
 
   useEffect(() => {
     socket.on('oneStudentEnteredQueue', () => {

@@ -18,16 +18,20 @@ const OpenRoom = ({
   setAlert,
   createRoomSuccess,
 }) => {
-  // init Socket.io
-  const ENDPOINT = END_POINT_SOCKET;
-  socket = io(ENDPOINT);
   const [lengthOfQueue, setLengthOfQueue] = useState(0);
   const [room, setRoom] = useState(0);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
   // const [redirect, setRedirect] = useState(false);
   // set length for infos Queue
   useEffect(() => {
+    // init Socket.io
+    const ENDPOINT = END_POINT_SOCKET;
+    socket = io(ENDPOINT);
+    setName(user != null ? user.name : '');
+    setEmail(user != null ? user.email : '');
     setLengthOfQueue(queues != null ? queues.length : 0);
-  }, [user, queues]);
+  }, [user, queues, END_POINT_SOCKET]);
 
   // get Queue from Server
   useEffect(() => {
@@ -57,7 +61,7 @@ const OpenRoom = ({
     }
   };
   if (createRoomSuccess === true) {
-    return <Redirect to={`/chat?room=${room}`} />;
+    return <Redirect to={`/chat?name=${name}&room=${room}&email=${email}`} />;
   }
   return (
     <div className="bg-main text-light border-top border-light">

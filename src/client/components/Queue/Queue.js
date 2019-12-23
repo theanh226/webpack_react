@@ -27,13 +27,16 @@ const Queue = ({ queue, loadQueue, loading }) => {
   }, [loading]);
 
   useEffect(() => {
+    socket.on('listChanged', () => {
+      loadQueue();
+    });
     socket.on('oneStudentEnteredQueue', () => {
       loadQueue();
     });
     socket.on('oneStudentLeavedQueue', () => {
       loadQueue();
     });
-  }, [loading]);
+  }, []);
 
   return <div>{buildViewQueue(loading, queueLists)}</div>;
 };
