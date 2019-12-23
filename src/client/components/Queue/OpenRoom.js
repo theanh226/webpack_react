@@ -69,7 +69,7 @@ const OpenRoom = ({
           </button>
         </Link>
       </div>
-      <div className="d-flex justify-content-center mt-2">
+      <div className="d-flex justify-content-center mt-2 mt-lg-1">
         <p className="lead text-center text-light mb-0">
           Queue:
           <span className="text-success ml-2">{lengthOfQueue}</span> Students
