@@ -47,9 +47,9 @@ export const joinQueue = id => async dispatch => {
 };
 
 // leave queue
-export const leaveQueueStudent = id => async dispatch => {
+export const leaveQueueStudent = () => async dispatch => {
   try {
-    await axios.post(`${SERVER_BACKEND}/api/queue/leave-queue/${id}`);
+    await axios.post(`${SERVER_BACKEND}/api/queue/leave-queue/`);
     dispatch({
       type: LEAVE_QUEUE,
       loading: true,

@@ -4,18 +4,26 @@ import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import io from 'socket.io-client';
 import { loadQueue } from '../../actions/queue';
+import { setAlert } from '../../actions/alert';
 import { createRoomChat } from '../../actions/tutorRoom';
 import { END_POINT_SOCKET } from '../../constant/constant';
 import './OpenRoom.css';
 
 let socket;
-const OpenRoom = ({ user, queues, loadQueue, createRoomChat }) => {
+const OpenRoom = ({
+  user,
+  queues,
+  loadQueue,
+  createRoomChat,
+  setAlert,
+  createRoomSuccess,
+}) => {
   // init Socket.io
   const ENDPOINT = END_POINT_SOCKET;
   socket = io(ENDPOINT);
   const [lengthOfQueue, setLengthOfQueue] = useState(0);
   const [room, setRoom] = useState(0);
-  const [redirect, setRedirect] = useState(false);
+  // const [redirect, setRedirect] = useState(false);
   // set length for infos Queue
   useEffect(() => {
     setLengthOfQueue(queues != null ? queues.length : 0);
@@ -38,12 +46,17 @@ const OpenRoom = ({ user, queues, loadQueue, createRoomChat }) => {
     });
   }, []);
 
+  // open room func
   const onSubmit = e => {
     e.preventDefault();
-    createRoomChat(room);
-    setRedirect(!redirect);
+    if (room === 0) {
+      setAlert('Please enter the room number', 'danger', 3500);
+    } else {
+      createRoomChat(room);
+      // setRedirect(!redirect);
+    }
   };
-  if (redirect) {
+  if (createRoomSuccess === true) {
     return <Redirect to={`/chat?room=${room}`} />;
   }
   return (
@@ -126,12 +139,17 @@ OpenRoom.propTypes = {
   loadQueue: PropTypes.func,
   queues: PropTypes.array,
   createRoomChat: PropTypes.func,
+  setAlert: PropTypes.func,
+  createRoomSuccess: PropTypes.bool,
 };
 
 const mapStateToProps = state => ({
   user: state.auth.user,
   queues: state.queue.queues,
+  createRoomSuccess: state.tutorRoom.createRoomSuccess,
 });
-export default connect(mapStateToProps, { loadQueue, createRoomChat })(
-  OpenRoom,
-);
+export default connect(mapStateToProps, {
+  loadQueue,
+  createRoomChat,
+  setAlert,
+})(OpenRoom);

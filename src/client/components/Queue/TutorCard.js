@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import io from 'socket.io-client';
 import PropTypes from 'prop-types';
 import { joinChat, loadRoom } from '../../actions/tutorRoom';
+import { END_POINT_SOCKET } from '../../constant/constant';
 
+let socket;
 const TutorCard = ({
   id,
   name,
@@ -14,6 +17,10 @@ const TutorCard = ({
   loadRoom,
   user,
 }) => {
+  // init Socket.io
+  const ENDPOINT = END_POINT_SOCKET;
+  socket = io(ENDPOINT);
+
   const [infos, setInfos] = useState({
     idTutor: '123456789',
     nameTutor: 'DummyUser',
@@ -21,7 +28,9 @@ const TutorCard = ({
     likeTutor: 0,
     roomNumber: -1,
   });
-  const [studentInfo, setStudentInfo] = useState({ nameStudent: 'Dummy Name' });
+  const [studentInfo, setStudentInfo] = useState({
+    nameStudent: 'Dummy Name',
+  });
 
   const { idTutor, nameTutor, avatarTutor, likeTutor, roomNumber } = infos;
   const { nameStudent } = studentInfo;
@@ -41,6 +50,7 @@ const TutorCard = ({
 
   const studentJoinChat = tutorID => {
     joinChat(tutorID);
+    socket.emit('studentLeaveQueue');
     loadRoom();
   };
   return (

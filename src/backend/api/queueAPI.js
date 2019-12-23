@@ -57,7 +57,7 @@ router.post('/join-queue/:id', auth, async (req, res) => {
   }
 });
 
-// @route    POST api/queue/leave-queue
+// @route    POST api/queue/leave-queue/:id
 // @desc     Leave to Queue
 // @access   private
 router.post('/leave-queue/:id', auth, async (req, res) => {
@@ -97,6 +97,39 @@ router.post('/leave-queue/:id', auth, async (req, res) => {
         });
       }
       return;
+    }
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
+
+// @route    POST api/queue/leave-queue/
+// @desc     Leave to Queue
+// @access   private
+router.post('/leave-queue/', auth, async (req, res) => {
+  try {
+    await User.findOneAndUpdate(
+      { _id: req.user.id },
+      {
+        $set: {
+          status: 'Online',
+        },
+      },
+      {
+        useFindAndModify: false,
+      },
+    );
+    if (req.user.type === 'Student') {
+      res.json({
+        success: true,
+        msg: 'You have been leave from the queue',
+      });
+    } else {
+      res.json({
+        success: true,
+        msg: 'You have successfully deleted the user from the queue',
+      });
     }
   } catch (err) {
     console.error(err.message);
