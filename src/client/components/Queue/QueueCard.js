@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import './queue.css';
 import io from 'socket.io-client';
 import PropTypes from 'prop-types';
 import { removeStudentFromQueue } from '../../actions/queue';
@@ -44,16 +45,16 @@ const QueueCard = ({ id, name, status, avatar, removeStudentFromQueue }) => {
               <img
                 src={avatarUser}
                 alt="avatar"
-                width="60"
-                height="60"
+                width="40"
+                height="40"
                 className="rounded-circle mr-2"
               />
             </div>
-            <div className="text-light ml-2  text-truncate">
-              <p className="lead mb-0">{nameUSer}</p>
+            <div className="text-light ml-2 text-truncate">
+              <p className="lead mb-0 font-small">{nameUSer}</p>
               <div>
-                <div className="d-flex justify-content-start">
-                  <div className="font-weight-light font-italic ">
+                <div className="d-none justify-content-start">
+                  <div className="font-weight-light font-italic font-small">
                     {statusUser}
                   </div>
                 </div>
@@ -61,9 +62,9 @@ const QueueCard = ({ id, name, status, avatar, removeStudentFromQueue }) => {
             </div>
           </div>
         </div>
-        <div className="col-3 d-flex justify-content-end p-0 bg-main">
+        <div className="col-3 d-flex justify-content-end py-2 ml-2 bg-main">
           <button
-            className="btn h-50 btn-danger rounded-0 mt-3 ml-4 px-3"
+            className="btn btn-danger rounded-0"
             type="button"
             onClick={() => removeStudentFromQueueBtn(idUser)}
           >

@@ -44,7 +44,7 @@ const buildViewQueue = (loading, queueLists) => {
   } else {
     view = (
       <div className="queue bg-sub">
-        <div className="lead bg-sub-light text-center py-4 text-light">
+        <div className="lead bg-main text-center py-4 text-light">
           Q u e u e &nbsp;&nbsp; l i s t
         </div>
         <ul className="list-group p-0">

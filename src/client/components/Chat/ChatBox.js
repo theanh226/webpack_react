@@ -20,10 +20,13 @@ const ChatBox = () => {
         </div>
         <div className="border-top-sub-light mb-4" />
 
-        <div className="input_msg">
-          <input type="text" className="pl-3" placeholder="Type your message" />
-          <button className="btn bg-main" type="button">
-            <i className="far fa-paper-plane" />
+        <div className="chat-area input-group">
+          <textarea
+            className="pl-3 form-control rounded-0"
+            placeholder="Type your message"
+          />
+          <button className="btn bg-main rounded-0" type="button">
+            <i className="far fa-paper-plane text-light" />
           </button>
         </div>
       </div>

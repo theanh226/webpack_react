@@ -20,6 +20,9 @@ a:focus {
 .bg-sub {
   background-color: rgba(50, 55, 118) !important;
 }
+.bg-sub-80 {
+  background-color: rgba(50, 55, 118, 0.8) !important;
+}
 .bg-sub-light {
   background-color: rgba(84, 89, 147) !important;
 }

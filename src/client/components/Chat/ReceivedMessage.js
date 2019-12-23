@@ -13,7 +13,7 @@ const ReceivedMessage = () => {
             className="rounded-circle mt-4"
           />
         </div>
-        <div className="text-light w-75">
+        <div className="text-light w-80">
           <p className="ml-3 font-italic mb-0 font-small">Dummy User</p>
           <p className="ml-2 py-2 pl-3 bg-sub-light ">
             ReceivedMessage is this line. Lorem ipsum dolor sit amet,
