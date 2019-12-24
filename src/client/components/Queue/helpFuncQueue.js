@@ -6,7 +6,7 @@ export const getPosition = (queue, useID) => {
     useID === undefined ||
     useID === null
   ) {
-    position = 0;
+    position = -1;
   } else {
     position = queue.findIndex(student => student._id === useID);
   }
