@@ -8,18 +8,21 @@ import LeaveQueue from '../../Queue/LeaveQueue';
 import OpenRoom from '../../Queue/OpenRoom';
 import ProfileBox from './ProfileBox';
 import PersonalInfo from './PersonalInfo';
+import { getPosition } from '../../Queue/helpFuncQueue';
+import { loadQueue } from '../../../actions/queue';
 import { loadUser } from '../../../actions/auth';
 import { END_POINT_SOCKET } from '../../../constant/constant';
+import PickTutor from '../PickTutor';
 
 let socket;
 // TODO: SET ALERT KICK OUT DEPEND ON ID
-const ProfilePage = ({ user, loadUser, setAlert }) => {
+const ProfilePage = ({ user, loadUser, setAlert, queues, loadQueue }) => {
   const [infos, setInfos] = useState({
     type: 'Student',
     status: 'Online',
+    id: '',
   });
-
-  const { type, status } = infos;
+  const { type, status, id } = infos;
 
   useEffect(() => {
     // init Socket.io
@@ -27,25 +30,32 @@ const ProfilePage = ({ user, loadUser, setAlert }) => {
     socket = io(ENDPOINT);
     if (user != null) {
       setInfos({
-        id: user.id,
+        id: user._id,
         type: user.type,
         status: user.status,
       });
     }
-  }, [user, END_POINT_SOCKET]);
+  }, [user, queues, END_POINT_SOCKET]);
+
+  useEffect(() => {
+    loadQueue();
+  }, []);
 
   useEffect(() => {
     socket.on('oneStudentEnteredQueue', () => {
       loadUser();
+      loadQueue();
     });
     socket.on('oneStudentLeavedQueue', () => {
       loadUser();
+      loadQueue();
     });
     socket.on('listChanged', () => {
       loadUser();
+      loadQueue();
       // setAlert('Someone has been kicked out of the queue', 'danger');
     });
-  }, [loadUser, user]);
+  }, []);
 
   // useEffect(() => {
   //   socket.on('listChanged', () => {
@@ -58,7 +68,7 @@ const ProfilePage = ({ user, loadUser, setAlert }) => {
     <div className="masthead">
       <div className="container d-md-flex bg-sub pb-4 pt-4">
         <div className="personalInfo col-12 col-sm-12 col-md-7 col-lg-8 pl-3">
-          <PersonalInfo user={user} />
+          {viewRoomTutorOrBasicInfos(getPosition(queues, id), user)}
         </div>
         <div className="col-12 col-sm-12 col-md-5 col-lg-4 mt-3 mt-sm-3 mt-md-0 mt-lg-0">
           <ProfileBox />
@@ -81,14 +91,29 @@ const viewBtn = (userType, userStatus) => {
   return view;
 };
 
+const viewRoomTutorOrBasicInfos = (position, user) => {
+  let view;
+  if (position === 1) {
+    view = <PickTutor />;
+  } else {
+    view = <PersonalInfo user={user} />;
+  }
+  return view;
+};
+
 ProfilePage.propTypes = {
   user: PropTypes.object,
   loadUser: PropTypes.func,
   setAlert: PropTypes.func,
+  queues: PropTypes.array,
+  loadQueue: PropTypes.func,
 };
 
 const mapStateToProps = state => ({
   user: state.auth.user,
+  queues: state.queue.queues,
 });
 
-export default connect(mapStateToProps, { loadUser, setAlert })(ProfilePage);
+export default connect(mapStateToProps, { loadUser, setAlert, loadQueue })(
+  ProfilePage,
+);

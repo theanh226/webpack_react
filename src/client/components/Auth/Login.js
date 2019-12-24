@@ -24,8 +24,8 @@ const Login = ({ login, isAuthenticated }) => {
     return <Redirect to="/profile" />;
   }
   return (
-    <div className="container text-light col-lg-5 col-md-6 col-sm-7 col-12">
-      <div className="p-3">
+    <div className="container text-light col-lg-4 col-md-6 col-sm-7 col-12 pt-5">
+      <div className="p-4">
         <h2 className="color-pale-green text-light">Sign In</h2>
         <p className="lead">
           <i className="fas fa-user color-pale-green text-light mr-2" /> Sign
@@ -54,7 +54,7 @@ const Login = ({ login, isAuthenticated }) => {
           </div>
           <input
             type="submit"
-            className="btn bg-main btn-lg text-light "
+            className="btn bg-main btn-lg text-light"
             value="Login"
           />
         </form>
