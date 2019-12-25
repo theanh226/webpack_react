@@ -13,6 +13,7 @@ import { loadQueue } from '../../../actions/queue';
 import { loadUser } from '../../../actions/auth';
 import { END_POINT_SOCKET } from '../../../constant/constant';
 import PickTutor from '../PickTutor';
+import '../../../style.css';
 
 let socket;
 // TODO: SET ALERT KICK OUT DEPEND ON ID
@@ -66,8 +67,8 @@ const ProfilePage = ({ user, loadUser, setAlert, queues, loadQueue }) => {
 
   return (
     <div className="masthead">
-      <div className="container d-md-flex bg-sub pb-4 pt-4">
-        <div className="personalInfo col-12 col-sm-12 col-md-7 col-lg-8 pl-3">
+      <div className="container fix-height d-md-flex bg-sub pb-4 pt-4">
+        <div className="col-12 col-sm-12 col-md-7 col-lg-8 pl-3">
           {viewRoomTutorOrBasicInfos(getPosition(queues, id), user)}
         </div>
         <div className="col-12 col-sm-12 col-md-5 col-lg-4 mt-3 mt-sm-3 mt-md-0 mt-lg-0">

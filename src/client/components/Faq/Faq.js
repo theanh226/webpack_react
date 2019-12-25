@@ -133,7 +133,7 @@ const Faq = () => {
               >
                 <h5 className="mb-0">
                   <button
-                    className="btn bg-main btn-lg btn-block text-left text-white"
+                    className="btn bg-main btn-lg btn-block text-left text-white rounded-0"
                     type="button"
                     data-toggle="collapse"
                     data-target="#collapseFour"
