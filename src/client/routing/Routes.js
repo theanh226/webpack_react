@@ -30,7 +30,7 @@ const Routes = () => {
 
         <PrivateRoute exact path="/profile" component={ProfilePage} />
         <PrivateRoute exact path="/queue-view" component={QueueView} />
-        <Route exact path="/404" component={NotFound} />
+        <Route component={NotFound} />
       </Switch>
     </section>
   );

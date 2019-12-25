@@ -27,7 +27,7 @@ const InfoBox = ({ user }) => {
             </div>
           </div>
         </div>
-        <div className="w-100 d-flex text-light">
+        <div className="w-100 d-flex text-light text-truncate">
           <p className="col-3 pl-1">Mail:</p>
           <div>
             <div className="d-flex justify-content-start ml-3 text-truncate">
@@ -35,7 +35,7 @@ const InfoBox = ({ user }) => {
             </div>
           </div>
         </div>
-        <div className="w-100 d-flex text-light">
+        <div className="w-100 d-flex text-light text-truncate">
           <p className="col-3 pl-1">Motto:</p>
           <div>
             <div className="d-flex justify-content-start ml-3">

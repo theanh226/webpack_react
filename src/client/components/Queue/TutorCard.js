@@ -91,7 +91,7 @@ const TutorCard = ({
               className="btn h-50 btn-success rounded-0 mt-4 ml-4 px-3 pb-4"
               type="button"
             >
-              <p className="lead mb-0">Join Room</p>
+              <p className="lead mb-0 mt-1 mt-md-0">Join</p>
             </button>
           </Link>
         </div>
