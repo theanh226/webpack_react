@@ -10,6 +10,7 @@ import {
   TUTOR_CLOSE_ROOM_FAIL,
   STUDENT_LEAVE_ROOM,
   STUDENT_LEAVE_ROOM_FAIL,
+  STUDENT_IN_ROOM,
 } from './types';
 import { SERVER_BACKEND } from '../constant/constant';
 import { setAlert } from './alert';
@@ -41,13 +42,25 @@ export const joinChat = id => async dispatch => {
         type: STUDENT_JOIN_ROOM,
       });
       dispatch(loadRoom());
+      dispatch(studentInChat());
       dispatch(leaveQueueStudent());
     } catch (error) {
       dispatch({
         type: STUDENT_JOIN_ROOM_FAIL,
       });
-      dispatch(setAlert('Join queue failed', 'danger'));
+      dispatch(setAlert('Join Room failed', 'danger'));
     }
+  }
+};
+
+// Student in Room Chat
+export const studentInChat = () => async dispatch => {
+  try {
+    dispatch({
+      type: STUDENT_IN_ROOM,
+    });
+  } catch (error) {
+    console.log(error);
   }
 };
 
