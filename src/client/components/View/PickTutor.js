@@ -6,6 +6,7 @@ import { END_POINT_SOCKET } from '../../constant/constant';
 import TutorCard from '../Queue/TutorCard';
 import Spinner from '../../layout/Spinner';
 import { loadRoom } from '../../actions/tutorRoom';
+import './view.css';
 
 let socket;
 const PickTutor = ({ roomLists, loading, loadRoom }) => {
@@ -51,12 +52,12 @@ const buidViewTutorRoom = listRoom => {
     view = <Spinner />;
   } else {
     view = (
-      <div className="picktutor container d-flex bg-sub pb-4 pt-4">
-        <div className="queue col-12 bg-sub pt-0 px-3 pb-3">
+      <div className="picktutor container fix-height d-flex bg-sub pb-4 px-0">
+        <div className="queue col-12 bg-sub pt-0 pb-3 px-0">
           <div className="lead bg-main text-center py-4 text-light">
             A v a i l a b l e &nbsp;&nbsp; T u t o r
           </div>
-          <ul className="list-group p-0">
+          <ul className="list-group-tutor p-0">
             <li className="list-group-item p-0 border-top-0 border-color-sub">
               {listRoom.map(tutor => (
                 <TutorCard

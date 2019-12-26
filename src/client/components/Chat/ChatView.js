@@ -113,45 +113,86 @@ const ChatView = ({
   }
   return (
     <div className="container">
-      <div className="d-flex ">
-        <div className="codemirror col-4 p-3 bg-sub border-right-sub-light">
-          <h2 className="lead bg-main text-light text-center py-4">
-            C O D E _ S N I P P E T
-          </h2>
-          <CodeMirror
-            // value={code}
-            options={{
-              mode: 'javascript',
-              theme: 'material',
-              lineNumbers: true,
-            }}
-            // onBeforeChange={(editor, data, value) => {
-            //   console.log(editor);
-            //     setCode(value);
-            // }}
-            // onChange={(editor, data, value) => {}}
-          />
-          <button
-            className="btn bg-main text-light rounded-0 mt-4 w-100 pt-4 pb-4"
-            type="submit"
-            // onClick={() => setSendCode(!sendCode)}
-            data-toggle="modal"
-            data-target="#exampleModal"
-          >
-            Submit Code
-          </button>
+      <div className="d-lg-flex">
+        <div className="d-md-flex col-lg-9 p-0">
+          <div className="codemirror col-4 col-md-6 col-lg-6 p-3 bg-sub border-right-sub-light">
+            <h2 className="lead bg-main text-light text-center py-4">
+              C O D E _ S N I P P E T
+            </h2>
+            <CodeMirror
+              // value={}
+              options={{
+                mode: 'javascript',
+                theme: 'material',
+                lineNumbers: true,
+              }}
+              // onBeforeChange={(editor, data, value) => {
+              //   console.log(editor);
+              //     setCode(value);
+              // }}
+              // onChange={(editor, data, value) => {}}
+            />
+            <button
+              className="btn bg-main text-light mt-5 rounded-0 w-100 pt-3 pb-1"
+              type="submit"
+              // onClick={() => setSendCode(!sendCode)}
+              data-toggle="modal"
+              data-target="#submitModal"
+            >
+              <p className="lead">Submit Code</p>
+            </button>
+          </div>
           {/* --------------- Modal Submit code --------------- */}
+          <div className="modal fade" id="submitModal">
+            <div className="modal-dialog" role="document">
+              <div className="modal-content bg-sub">
+                <p className="h3 text-center text-light mt-3">
+                  Submit your code here:
+                </p>
+                <div className="modal-body">
+                  <CodeMirror
+                    // value={`console.log()`}
+                    options={{
+                      mode: 'javascript',
+                      theme: 'material',
+                      lineNumbers: true,
+                    }}
+                    // onBeforeChange={(editor, data, value) => {
+                    //   console.log(editor);
+                    //     setCode(value);
+                    // }}
+                    // onChange={(editor, data, value) => {}}
+                  />
+                  <div className="mt-5 d-flex justify-content-between">
+                    <button
+                      type="submit"
+                      className="btn btn-submit bg-main btn-lg px-5"
+                    >
+                      <p className="lead text-light mb-0">Submit</p>
+                    </button>
+                    <button
+                      type="submit"
+                      className="btn btn-danger btn-lg px-5"
+                      data-dismiss="modal"
+                    >
+                      <p className="lead text-light mb-0">Cancel</p>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           {/* --------------- End-Modal Submit code --------------- */}
+          <div className="bg-sub col-5 col-md-6 col-lg-6 p-0 px-3">
+            <ChatBox messages={messages} name={name} />
+            <Input
+              message={message}
+              setMessage={setMessage}
+              sendMessage={sendMessage}
+            />
+          </div>
         </div>
-        <div className="col-5 p-0">
-          <ChatBox messages={messages} name={name} />
-          <Input
-            message={message}
-            setMessage={setMessage}
-            sendMessage={sendMessage}
-          />
-        </div>
-        <div className="chatView d-flex flex-column justify-content-between col-3 bg-sub border-left-sub-light p-3">
+        <div className="chatView d-flex flex-column justify-content-between col-3 col-md-12 col-lg-3 bg-sub border-left-sub-light p-3">
           {viewBox(type)}
           <div className="border-top-sub-light  text-center">
             <button

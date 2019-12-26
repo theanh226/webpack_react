@@ -59,9 +59,12 @@ a:focus {
 .font-small {
   font-size: 12px;
 }
+.fix-height {
+  min-height: 67vh;
+}
 /* background picture */
 .masthead {
-  min-height: 621px;
+  min-height: 67vh;
   background: linear-gradient(
       to bottom,
       rgba(50, 55, 118, 0.5) 0,
@@ -178,10 +181,6 @@ button {
 
 .table th {
   background: var(--light-color);
-}
-/* PROFILEPAGE CSS */
-.personalInfo .btn:hover {
-  background-color: rgba(8, 12, 59) !important;
 }
 /* SIGNUP/LOGIN CSS */
 

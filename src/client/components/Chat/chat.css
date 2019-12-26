@@ -7,7 +7,13 @@
 .w-80 {
   width: 80%;
 }
-
+/* height */
+.h-66vh {
+  height: 67vh;
+}
+.chat {
+  max-height: 512px;
+}
 /* width */
 .chat ::-webkit-scrollbar {
   width: 0px;
@@ -15,7 +21,7 @@
 
 .chat-area textarea {
   resize: none;
-  height: 70px !important;
+  height: 68px !important;
 }
 
 .chat-area textarea:focus {
@@ -29,14 +35,9 @@
   background-color: rgba(8, 12, 59) !important;
 }
 
-.codemirror .btn:hover {
-  color: #fff;
-  background-color: rgba(8, 12, 59) !important;
-}
-
 /* code mirror */
 .react-codemirror2 {
-  height: 400px;
+  height: 427px;
 }
 
 .cm-s-monokai.CodeMirror {
@@ -45,4 +46,25 @@
 
 .chatView .list-group {
   max-height: 395px !important;
+}
+.CodeMirror {
+  min-height: 107%;
+  max-height: 107%;
+}
+.codemirror .btn:hover {
+  color: #fff;
+  background-color: rgba(8, 12, 59) !important;
+}
+.btn-submit:hover {
+  background-color: rgba(8, 12, 59) !important;
+}
+/* CHATBOX */
+.messages-view {
+  height: 59vh;
+}
+/* RESPONSIVE FOR IPAD PORTRAIT SCREEN */
+@media only screen and (min-width: 768px) and (max-height: 1024px) and (orientation: portrait) {
+  .react-codemirror2 {
+    height: 479px;
+  }
 }

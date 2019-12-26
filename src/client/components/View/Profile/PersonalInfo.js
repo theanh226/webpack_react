@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import './PersonalInfo.css';
 
 const PersonalInfo = ({ user }) => {
   const [infos, setInfos] = useState({
@@ -78,7 +79,7 @@ const PersonalInfo = ({ user }) => {
           </p>
         </div>
       </div>
-      <div className="d-flex justify-content-between mt-2 mt-md-3 mt-lg-4">
+      <div className="personalInfo d-flex justify-content-between mt-2 mt-md-3 mt-lg-4">
         <Link to="/faq">
           <button
             className="btn bg-main text-light rounded-0 pt-lg-4 px-lg-3 text-light"
