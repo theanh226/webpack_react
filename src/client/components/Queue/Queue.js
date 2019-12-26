@@ -49,7 +49,7 @@ const buildViewQueue = (loading, queueLists) => {
     view = (
       <div className="bg-sub">
         <div className="lead bg-main text-center py-4 text-light">
-          Q u e u e &nbsp;&nbsp; l i s t
+          Q u e u e &nbsp;&nbsp; L i s t
         </div>
 
         <ul className="list-group p-0">
