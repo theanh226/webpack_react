@@ -36,6 +36,8 @@ const ChatView = ({
   });
   const [name, setName] = useState('');
   const [room, setRoom] = useState('');
+  const [code, setCode] = useState('');
+  const [codes, setCodes] = useState('');
   const [emailUser, setEmailUser] = useState('');
   const [useLeaveChat, setUseLeaveChat] = useState(false);
   const [message, setMessage] = useState('');
@@ -68,9 +70,9 @@ const ChatView = ({
       setMessages([...messages, message]);
     });
 
-    // socket.on('codeTransaction', code => {
-    //   setCodes(code);
-    // });
+    socket.on('codeTransaction', ({ code }) => {
+      setCodes(code);
+    });
 
     return () => {
       socket.emit('disconnect');
@@ -88,13 +90,14 @@ const ChatView = ({
       socket.emit('sendMessage', { message, name }, () => setMessage(''));
     }
   };
-  // const sendCode = event => {
-  //   // event.preventDefault();
-  //   console.log(event);
-  //   if (code) {
-  //     socket.emit('sendCode', code, () => setCode(code));
-  //   }
-  // };
+
+  const sendCode = code => {
+    console.log(code);
+    if (code) {
+      socket.emit('sendCode', code, () => setCode(code));
+    }
+  };
+
   const leaveRoomChat = typeUser => {
     if (typeUser === 'Tutor') {
       closeRoom();
@@ -119,7 +122,7 @@ const ChatView = ({
               C O D E _ S N I P P E T
             </h2>
             <CodeMirror
-              // value={}
+              value={codes}
               options={{
                 mode: 'javascript',
                 theme: 'material',
@@ -150,22 +153,23 @@ const ChatView = ({
                 </p>
                 <div className="modal-body">
                   <CodeMirror
-                    // value={`console.log()`}
+                    value={code}
                     options={{
                       mode: 'javascript',
                       theme: 'material',
                       lineNumbers: true,
                     }}
-                    // onBeforeChange={(editor, data, value) => {
-                    //   console.log(editor);
-                    //     setCode(value);
-                    // }}
+                    onBeforeChange={(editor, data, value) => {
+                      setCode(value);
+                    }}
                     // onChange={(editor, data, value) => {}}
                   />
                   <div className="mt-5 d-flex justify-content-between">
                     <button
                       type="submit"
                       className="btn btn-submit bg-main btn-lg px-5"
+                      onClick={() => sendCode(code)}
+                      data-dismiss="modal"
                     >
                       <p className="lead text-light mb-0">Submit</p>
                     </button>
