@@ -37,7 +37,7 @@
 
 /* code mirror */
 .react-codemirror2 {
-  height: 426px;
+  height: 427px;
 }
 
 .cm-s-monokai.CodeMirror {
@@ -48,8 +48,8 @@
   max-height: 395px !important;
 }
 .CodeMirror {
-  min-height: 108%;
-  max-height: 108%;
+  min-height: 107%;
+  max-height: 107%;
 }
 .codemirror .btn:hover {
   color: #fff;
@@ -61,4 +61,10 @@
 /* CHATBOX */
 .messages-view {
   height: 59vh;
+}
+/* RESPONSIVE FOR IPAD PORTRAIT SCREEN */
+@media only screen and (min-width: 768px) and (max-height: 1024px) and (orientation: portrait) {
+  .react-codemirror2 {
+    height: 479px;
+  }
 }
