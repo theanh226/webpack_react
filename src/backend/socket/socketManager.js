@@ -62,15 +62,14 @@ module.exports = io => {
     });
 
     // CHAT SEND CODE
-    // socket.on('sendCode', (code, callback) => {
-    //   const user = getUser(socket.id);
-    //   console.log('CODE:', code);
-    //   io.to(user.room).emit('codeTransaction', {
-    //     user: user.name,
-    //     code,
-    //   });
-    //   callback();
-    // });
+    socket.on('sendCode', (code, callback) => {
+      const user = getUser(socket.id);
+      io.to(user.room).emit('codeTransaction', {
+        user: user.name,
+        code,
+      });
+      callback();
+    });
 
     // USER DISCONNECT
     socket.on('disconnect', () => {
