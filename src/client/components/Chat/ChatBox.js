@@ -8,7 +8,7 @@ import AggregateChat from './AggregateChat';
 const ChatBox = ({ messages, name }) => {
   return (
     <div>
-      <div className="bg-sub pt-4 pb-4 pr-3 pl-3">
+      <div className="messages-view bg-sub pt-3 pb-4 pr-3 pl-3">
         <div>
           <ScrollToBottom className="chat">
             {messages.map((message, index) => (
@@ -18,7 +18,6 @@ const ChatBox = ({ messages, name }) => {
             ))}
           </ScrollToBottom>
         </div>
-        <div className="border-top-sub-light mb-2" />
       </div>
     </div>
   );

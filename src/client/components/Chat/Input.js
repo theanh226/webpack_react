@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './chat.css';
 
 const Input = ({ setMessage, sendMessage, message }) => (
-  <form className="form chat-area input-group">
+  <form className="form chat-area input-group pb-3 pt-4 border-top-sub-light">
     <textarea
       className="pl-3 form-control rounded-0"
       type="text"
