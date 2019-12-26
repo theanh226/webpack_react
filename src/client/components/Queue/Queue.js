@@ -37,7 +37,11 @@ const Queue = ({ queue, loadQueue, loading }) => {
     socket.on('oneStudentLeavedQueue', () => {
       loadQueue();
     });
-  }, []);
+    socket.on('TutorHasBeenSelected', () => {
+      loadQueue();
+    });
+    loadQueue();
+  }, [loading]);
 
   return <div>{buildViewQueue(loading, queueLists)}</div>;
 };

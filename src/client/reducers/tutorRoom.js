@@ -8,6 +8,7 @@ import {
   STUDENT_LEAVE_ROOM,
   STUDENT_LEAVE_ROOM_FAIL,
   STUDENT_JOIN_ROOM,
+  STUDENT_IN_ROOM,
   STUDENT_JOIN_ROOM_FAIL,
 } from '../actions/types';
 
@@ -15,6 +16,8 @@ const initaleState = {
   tutorRoomLists: null,
   loading: true,
   createRoomSuccess: false,
+  studentJoinRoom: false,
+  tutorCloseRoom: false,
 };
 
 export default function(state = initaleState, action) {
@@ -23,15 +26,27 @@ export default function(state = initaleState, action) {
     case TUTOR_CREATE_ROOM:
       return {
         ...state,
-        loading: false,
         createRoomSuccess: true,
+        loading: false,
       };
     case STUDENT_JOIN_ROOM:
       return {
         ...state,
-        createRoomSuccess: true,
+        studentJoinRoom: true,
+        loading: false,
+      };
+    case STUDENT_IN_ROOM:
+      return {
+        ...state,
+        studentJoinRoom: false,
+        loading: false,
       };
     case LOAD_ROOM:
+      return {
+        ...state,
+        tutorRoomLists: payload,
+        loading: false,
+      };
     case STUDENT_LEAVE_ROOM:
       return {
         ...state,
@@ -53,6 +68,8 @@ export default function(state = initaleState, action) {
         ...state,
         loading: false,
         createRoomSuccess: false,
+        tutorCloseRoom: true,
+        tutorRoomLists: payload,
       };
     default:
       return state;

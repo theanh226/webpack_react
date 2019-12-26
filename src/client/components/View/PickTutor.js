@@ -1,28 +1,52 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import io from 'socket.io-client';
+import { END_POINT_SOCKET } from '../../constant/constant';
 import TutorCard from '../Queue/TutorCard';
 import Spinner from '../../layout/Spinner';
 import { loadRoom } from '../../actions/tutorRoom';
 
+let socket;
 const PickTutor = ({ roomLists, loading, loadRoom }) => {
+  // init Socket.io
+  const ENDPOINT = END_POINT_SOCKET;
+  socket = io(ENDPOINT);
+
   const [tutorRoomLists, setTutorRoomLists] = useState([]);
 
   useEffect(() => {
     setTutorRoomLists(roomLists);
-  }, [loading, tutorRoomLists, roomLists]);
+  }, [loading, loadRoom, tutorRoomLists, roomLists]);
 
   // Load room List frist time
   useEffect(() => {
     loadRoom();
     setTutorRoomLists(roomLists);
-  }, [loading]);
+  }, [loadRoom, loading]);
 
+  useEffect(() => {
+    socket.on('chatRoomHasBeenOpened', () => {
+      console.log('TUTOR OPEN THE ROOM, UPDATE PAGE');
+      loadRoom();
+    });
+    socket.on('TutorHasBeenSelected', () => {
+      loadRoom();
+    });
+    socket.on('chatRoomHasBeenClosed', () => {
+      loadRoom();
+    });
+    socket.on('studentHasLeftTheRoom', () => {
+      loadRoom();
+    });
+    loadRoom();
+  }, [loading]);
   return <div>{buidViewTutorRoom(tutorRoomLists)}</div>;
 };
 
 const buidViewTutorRoom = listRoom => {
   let view;
+  console.log(listRoom);
   if (listRoom === undefined || listRoom === null) {
     view = <Spinner />;
   } else {
