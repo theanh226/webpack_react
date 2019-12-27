@@ -6,7 +6,7 @@ import Header from './layout/Header';
 import './style.css';
 import './components/Faq/Faq.css';
 import Routes from './routing/Routes';
-import LandingPage from './layout/LandingPage';
+import LandingPage from './layout/LandingPage/LandingPage';
 import Footer from './layout/Footer';
 import setAuthToken from './utils/setAuthToken';
 import { loadUser } from './actions/auth';

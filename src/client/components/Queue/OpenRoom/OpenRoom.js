@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import io from 'socket.io-client';
-import { loadQueue } from '../../actions/queue';
-import { setAlert } from '../../actions/alert';
-import { createRoomChat } from '../../actions/tutorRoom';
-import { END_POINT_SOCKET } from '../../constant/constant';
+import { loadQueue } from '../../../actions/queue';
+import { setAlert } from '../../../actions/alert';
+import { createRoomChat } from '../../../actions/tutorRoom';
+import { END_POINT_SOCKET } from '../../../constant/constant';
 import './OpenRoom.css';
 
 let socket;
