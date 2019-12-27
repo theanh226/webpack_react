@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Queue from './Queue';
 import ProfileBox from '../View/Profile/ProfileBox';
-import OpenRoom from './OpenRoom';
+import OpenRoom from './OpenRoom/OpenRoom';
 import './queue.css';
 
 const QueueView = () => {
