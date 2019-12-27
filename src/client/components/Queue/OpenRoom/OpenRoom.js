@@ -1,11 +1,8 @@
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { Link, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import io from 'socket.io-client';
-import React, {
-  useState,
-  useEffect,
-} from '../../../../.././node_modules/react';
-import { connect } from '../../../../.././node_modules/react-redux';
-import { Link, Redirect } from '../../../../.././node_modules/react-router-dom';
-import PropTypes from '../../../../.././node_modules/prop-types';
 import { loadQueue } from '../../../actions/queue';
 import { setAlert } from '../../../actions/alert';
 import { createRoomChat } from '../../../actions/tutorRoom';
@@ -59,6 +56,8 @@ const OpenRoom = ({
     if (room === 0) {
       setAlert('Please enter the room number', 'danger', 3500);
     } else {
+      socket.emit('tutorOpenRoomChat');
+      console.log('tutorOpenRoomChat');
       createRoomChat(room);
       // setRedirect(!redirect);
     }

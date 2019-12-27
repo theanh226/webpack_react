@@ -9,7 +9,7 @@ const ReceivedMessage = ({ text, name }) => {
           <p className="ml-3 font-italic mb-0 font-small text-capitalize">
             {name}
           </p>
-          <p className="ml-2 py-2 pl-3 bg-sub-light ">{text}</p>
+          <p className="ml-2 py-2 pl-3 pr-3 bg-sub-light text-break">{text}</p>
         </div>
       </div>
     </div>

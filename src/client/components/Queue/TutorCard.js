@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import io from 'socket.io-client';
 import PropTypes from 'prop-types';
 import { joinChat, loadRoom } from '../../actions/tutorRoom';
@@ -16,6 +16,7 @@ const TutorCard = ({
   joinChat,
   loadRoom,
   user,
+  studentJoinRoom,
 }) => {
   const [infos, setInfos] = useState({
     idTutor: '123456789',
@@ -54,8 +55,17 @@ const TutorCard = ({
   const studentJoinChat = tutorID => {
     joinChat(tutorID);
     socket.emit('studentLeaveQueue');
+    socket.emit('studentPickOneTutor');
     loadRoom();
   };
+
+  if (studentJoinRoom) {
+    return (
+      <Redirect
+        to={`/chat?name=${nameStudent}&room=${roomNumber}&email=${emailStudent}`}
+      />
+    );
+  }
   return (
     <div>
       <div className="row bg-main justify-content-start border-bottom-sub-light">
@@ -83,17 +93,13 @@ const TutorCard = ({
           </div>
         </div>
         <div className="col-3 d-flex justify-content-end p-0 bg-main pt-2">
-          <Link
+          <button
+            className="btn h-50 btn-success rounded-0 mt-4 ml-4 px-3 pb-4"
+            type="button"
             onClick={() => studentJoinChat(idTutor)}
-            to={`/chat?name=${nameStudent}&room=${roomNumber}&email=${emailStudent}`}
           >
-            <button
-              className="btn h-50 btn-success rounded-0 mt-4 ml-4 px-3 pb-4"
-              type="button"
-            >
-              <p className="lead mb-0 mt-1 mt-md-0">Join</p>
-            </button>
-          </Link>
+            <p className="lead mb-0">Join Room</p>
+          </button>
         </div>
       </div>
     </div>
@@ -109,12 +115,14 @@ TutorCard.propTypes = {
   loadRoom: PropTypes.func,
   joinChat: PropTypes.func,
   user: PropTypes.object,
+  studentJoinRoom: PropTypes.bool,
 };
 
 const mapStateToProps = state => ({
   user: state.auth.user,
   roomLists: state.tutorRoom.tutorRoomLists,
   loading: state.tutorRoom.loading,
+  studentJoinRoom: state.tutorRoom.studentJoinRoom,
 });
 
 export default connect(mapStateToProps, { loadRoom, joinChat })(TutorCard);

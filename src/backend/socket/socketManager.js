@@ -20,6 +20,22 @@ module.exports = io => {
       socket.broadcast.emit('oneStudentLeavedQueue');
     });
 
+    // ROOM CHAT ACTIONS
+    // Student picked one Tutor room chat
+    socket.on('studentPickOneTutor', () => {
+      socket.broadcast.emit('TutorHasBeenSelected');
+    });
+    socket.on('studentLeaveRoomChat', () => {
+      socket.broadcast.emit('studentHasLeftTheRoom');
+    });
+    socket.on('tutorCloseTheRoom', () => {
+      socket.broadcast.emit('chatRoomHasBeenClosed');
+    });
+    // Tutor open room chat
+    socket.on('tutorOpenRoomChat', () => {
+      socket.broadcast.emit('chatRoomHasBeenOpened');
+    });
+
     // CHAT USER JOIN ROOM
     socket.on('join', ({ name, room, emailUser }, callback) => {
       const { error, user } = addUser({ id: socket.id, name, room, emailUser });
