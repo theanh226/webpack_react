@@ -4,7 +4,7 @@ import Register from '../components/Auth/Register';
 import Login from '../components/Auth/Login';
 import Alert from '../layout/Alert';
 import PrivateRoute from './PrivateRoute';
-import NotFound from '../layout/NotFound';
+import NotFound from '../layout/NotFound/NotFound';
 import Faq from '../components/Faq/Faq';
 import Queue from '../components/Queue/Queue';
 import ProfilePage from '../components/View/Profile/ProfilePage';
