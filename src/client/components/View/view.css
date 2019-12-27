@@ -1,16 +1,14 @@
 .list-group {
-  height: 34vh;
-  /* min-height: 393px;
-  max-height: 621px; */
+  min-height: 295px;
+  max-height: 621px;
   overflow: hidden;
   overflow-y: scroll;
   padding-right: 17px;
   box-sizing: content-box;
 }
 .list-group-tutor {
-  height: 61vh;
-  /* min-height: 393px;
-  max-height: 621px; */
+  min-height: 393px;
+  max-height: 621px;
   overflow: hidden;
   overflow-y: scroll;
   padding-right: 17px;
