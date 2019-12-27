@@ -8,11 +8,9 @@
   width: 80%;
 }
 /* height */
-.h-66vh {
-  height: 67vh;
-}
 .chat {
-  max-height: 512px;
+  max-height: 513px;
+  min-height: 514px;
 }
 /* width */
 .chat ::-webkit-scrollbar {
@@ -59,12 +57,14 @@
   background-color: rgba(8, 12, 59) !important;
 }
 /* CHATBOX */
-.messages-view {
-  height: 59vh;
-}
+
 /* RESPONSIVE FOR IPAD PORTRAIT SCREEN */
 @media only screen and (min-width: 768px) and (max-height: 1024px) and (orientation: portrait) {
-  .react-codemirror2 {
+  /* .react-codemirror2 {
     height: 479px;
   }
+  .chat {
+    max-height: 566px;
+    min-height: 566px;
+} */
 }

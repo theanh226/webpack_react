@@ -35,6 +35,9 @@ a:focus {
 .border-color-sub {
   border-color: rgba(50, 55, 118) !important;
 }
+.border-color-sub-light {
+  border: 1px solid rgba(84, 89, 147) !important;
+}
 .border-left-sub-light {
   border-left: 1px solid rgba(84, 89, 147) !important;
 }

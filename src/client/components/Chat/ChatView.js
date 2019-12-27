@@ -66,7 +66,6 @@ const ChatView = ({
   // CHAT AND SEND CODE
   useEffect(() => {
     socket.on('message', message => {
-      // console.log(message);
       setMessages([...messages, message]);
     });
 
@@ -102,9 +101,11 @@ const ChatView = ({
     if (typeUser === 'Tutor') {
       closeRoom();
       setUseLeaveChat(!useLeaveChat);
+      socket.emit('tutorCloseTheRoom');
     } else {
       studentLeaveChat(room);
       setUseLeaveChat(!useLeaveChat);
+      socket.emit('studentLeaveRoomChat');
     }
   };
 

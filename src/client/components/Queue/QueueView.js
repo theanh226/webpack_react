@@ -17,7 +17,7 @@ const QueueView = () => {
                 className="btn btn-danger btn-lg btn-block rounded-0 text-light py-3 px-5"
                 type="button"
               >
-                <p className="lead mb-0">Lounge</p>
+                <p className="lead mb-1">Lounge</p>
               </button>
             </Link>
           </div>
