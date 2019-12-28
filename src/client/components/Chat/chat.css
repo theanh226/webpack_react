@@ -12,6 +12,12 @@
   max-height: 513px;
   min-height: 514px;
 }
+.tutor-chat-room {
+  min-height: 321px;
+  max-height: 321px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
 /* width */
 .chat ::-webkit-scrollbar {
   width: 0px;
