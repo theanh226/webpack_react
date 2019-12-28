@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import io from 'socket.io-client';
 import { connect } from 'react-redux';
-import logo from '../../../vendor/img/logo1.png';
-import { leaveQueueStudent } from '../actions/queue';
-import { END_POINT_SOCKET } from '../constant/constant';
-import { logout } from '../actions/auth';
+import logo from '../../../../vendor/img/logo1.png';
+import { leaveQueueStudent } from '../../actions/queue';
+import { END_POINT_SOCKET } from '../../constant/constant';
+import { logout } from '../../actions/auth';
+import './Header.css';
 
 let socket;
 const Header = ({ logout, leaveQueueStudent, user, isAuthenticated }) => {
@@ -15,11 +16,13 @@ const Header = ({ logout, leaveQueueStudent, user, isAuthenticated }) => {
   socket = io(ENDPOINT);
   const [infos, setInfos] = useState({
     id: '',
+    type: 'Student',
   });
-  const { id } = infos;
+  const { id, type } = infos;
   useEffect(() => {
     setInfos({
       id: user != null ? user._id : 1,
+      type: user != null ? user.type : 1,
     });
   }, [user]);
   const useLogout = studentId => {
@@ -39,6 +42,21 @@ const Header = ({ logout, leaveQueueStudent, user, isAuthenticated }) => {
     </a>
   );
 
+  const ViewBtnTutorchat = userType => {
+    let view;
+    if (userType === 'Tutor') {
+      view = (
+        <button
+          className="btnTutor btn bg-main border text-light mr-4 p-0 px-3"
+          type="button"
+        >
+          Tutor Chatroom
+        </button>
+      );
+    }
+    return view;
+  };
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-main shadow ">
@@ -46,7 +64,10 @@ const Header = ({ logout, leaveQueueStudent, user, isAuthenticated }) => {
           <Link className="navbar-brand pl-4" to="/">
             <img src={logo} alt="logo" className="img" width="100" />
           </Link>
-          {isAuthenticated && logoutView}
+          <div className="d-flex">
+            {isAuthenticated && ViewBtnTutorchat(type)}
+            {isAuthenticated && logoutView}
+          </div>
         </div>
 
         {/* ------------- MODAL ------------- */}

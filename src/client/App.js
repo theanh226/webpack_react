@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 // import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Header from './layout/Header';
+import Header from './layout/Header/Header';
 import './style.css';
 import './components/Faq/Faq.css';
 import Routes from './routing/Routes';

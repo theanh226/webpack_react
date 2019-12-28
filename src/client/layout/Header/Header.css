@@ -1,0 +1,6 @@
+.btnTutor:hover {
+  background-color: rgba(25, 30, 88) !important;
+  color: white !important;
+  border: 1px solid white !important;
+  font-weight: bold;
+}
