@@ -12,6 +12,7 @@ import ChatView from '../components/Chat/ChatView';
 import TutorCard from '../components/Queue/TutorCard';
 import PickTutor from '../components/View/PickTutor';
 import QueueView from '../components/Queue/QueueView';
+import TutorChatRoom from '../components/Chat/TutorChatRoom';
 
 const Routes = () => {
   return (
@@ -26,7 +27,7 @@ const Routes = () => {
         <Route exact path="/queue" component={Queue} />
         <Route exact path="/pick-tutor" component={PickTutor} />
         <Route exact path="/chat" component={ChatView} />
-        <Route exact path="/tutor-card" component={TutorCard} />
+        <Route exact path="/tutor-room" component={TutorChatRoom} />
 
         <PrivateRoute exact path="/profile" component={ProfilePage} />
         <PrivateRoute exact path="/queue-view" component={QueueView} />

@@ -1,16 +1,62 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import io from 'socket.io-client';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import queryString from 'query-string';
 import ProfileBox from '../View/Profile/ProfileBox';
 import ChatBox from './ChatBox';
 import Input from './Input';
+import { loadUser } from '../../actions/auth';
+import { END_POINT_SOCKET } from '../../constant/constant';
 import OpenRoom from '../Queue/OpenRoom/OpenRoom';
 // for chat box display
-import ScrollToBottom from 'react-scroll-to-bottom';
-import ReceivedMessage from './ReceivedMessage';
-import SentMessage from './SentMessage';
 import './chat.css';
 
-const TutorChatRoom = () => {
+let socket;
+const TutorChatRoom = ({ location, loadUser }) => {
+  const [name, setName] = useState('');
+  // eslint-disable-next-line no-unused-vars
+  const [room, setRoom] = useState('');
+  const [message, setMessage] = useState('');
+  const [messages, setMessages] = useState([]);
+  // USER JOIN THE ROOM CHAT
+  useEffect(() => {
+    const ENDPOINT = END_POINT_SOCKET;
+    socket = io(ENDPOINT);
+    const { name, room } = queryString.parse(location.search);
+    setRoom(room);
+    setName(name);
+    socket.emit('join', { name, room }, error => {
+      if (error) {
+        console.log(error);
+      }
+    });
+  }, [location.search, END_POINT_SOCKET]);
+
+  // CHAT AND SEND
+  useEffect(() => {
+    socket.on('message', message => {
+      setMessages([...messages, message]);
+    });
+
+    return () => {
+      socket.emit('disconnect');
+
+      socket.off();
+    };
+  }, [messages]);
+
+  useEffect(() => {
+    loadUser();
+  }, []);
+
+  const sendMessage = event => {
+    event.preventDefault();
+    if (message) {
+      socket.emit('sendMessage', { message, name }, () => setMessage(''));
+    }
+  };
   return (
     <div className="container">
       <div className="d-lg-flex">
@@ -21,39 +67,15 @@ const TutorChatRoom = () => {
           {/* start chatbox */}
           <div className="bg-sub pt-3 pb-4 pr-3 pl-3">
             <div>
-              <ScrollToBottom className="tutor-chat-room">
-                <ReceivedMessage />
-                <SentMessage />
-                <ReceivedMessage />
-                <SentMessage />
-                <SentMessage />
-                <ReceivedMessage />
-                <SentMessage />
-                <ReceivedMessage />
-                <SentMessage />
-                <SentMessage />
-                <ReceivedMessage />
-                <ReceivedMessage />
-                <SentMessage />
-                <ReceivedMessage />
-                <SentMessage />
-                <ReceivedMessage />
-                <SentMessage />
-                <SentMessage />
-                <ReceivedMessage />
-                <SentMessage />
-                <ReceivedMessage />
-                <SentMessage />
-                <SentMessage />
-                <ReceivedMessage />
-                <ReceivedMessage />
-                <SentMessage />
-                <ReceivedMessage />
-              </ScrollToBottom>
+              <ChatBox messages={messages} name={name} />
+              <Input
+                message={message}
+                setMessage={setMessage}
+                sendMessage={sendMessage}
+              />
             </div>
           </div>
           {/* End chat box */}
-          <Input />
         </div>
         <div className="d-flex flex-column col-3 col-md-12 col-lg-4 bg-sub border-left-sub-light p-3">
           <ProfileBox />
@@ -75,4 +97,16 @@ const TutorChatRoom = () => {
   );
 };
 
-export default TutorChatRoom;
+TutorChatRoom.propTypes = {
+  location: PropTypes.object,
+  loadUser: PropTypes.func,
+};
+
+const mapStateToProps = state => ({
+  user: state.auth.user,
+  createRoomSuccess: state.tutorRoom.createRoomSuccess,
+});
+
+export default connect(mapStateToProps, {
+  loadUser,
+})(TutorChatRoom);

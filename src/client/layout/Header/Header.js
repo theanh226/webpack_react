@@ -5,7 +5,7 @@ import io from 'socket.io-client';
 import { connect } from 'react-redux';
 import logo from '../../../../vendor/img/logo1.png';
 import { leaveQueueStudent } from '../../actions/queue';
-import { END_POINT_SOCKET } from '../../constant/constant';
+import { END_POINT_SOCKET, TUTOR_ROOM } from '../../constant/constant';
 import { logout } from '../../actions/auth';
 import './Header.css';
 
@@ -15,14 +15,16 @@ const Header = ({ logout, leaveQueueStudent, user, isAuthenticated }) => {
   const ENDPOINT = END_POINT_SOCKET;
   socket = io(ENDPOINT);
   const [infos, setInfos] = useState({
+    nameTutor: '',
     id: '',
     type: 'Student',
   });
-  const { id, type } = infos;
+  const { id, type, nameTutor } = infos;
   useEffect(() => {
     setInfos({
       id: user != null ? user._id : 1,
       type: user != null ? user.type : 1,
+      nameTutor: user != null ? user.name : 'dummy',
     });
   }, [user]);
   const useLogout = studentId => {
@@ -46,12 +48,17 @@ const Header = ({ logout, leaveQueueStudent, user, isAuthenticated }) => {
     let view;
     if (userType === 'Tutor') {
       view = (
-        <button
-          className="btnTutor btn bg-main border text-light mr-4 p-0 px-3"
-          type="button"
+        <Link
+          target="_blank"
+          to={`/tutor-room?name=${nameTutor}&room=${TUTOR_ROOM}`}
         >
-          Tutor Chatroom
-        </button>
+          <button
+            className="btnTutor btn bg-main border text-light mr-4 p-0 px-3"
+            type="button"
+          >
+            Tutor Chatroom
+          </button>
+        </Link>
       );
     }
     return view;
