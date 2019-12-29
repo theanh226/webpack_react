@@ -34,7 +34,7 @@ const Header = ({ logout, leaveQueueStudent, user, isAuthenticated }) => {
   };
   const logoutView = (
     <a
-      className="d-flex mt-2 mr-3"
+      className="d-flex mt-3 mr-3"
       href="/"
       data-toggle="modal"
       data-target="#logoutModal"
@@ -53,7 +53,7 @@ const Header = ({ logout, leaveQueueStudent, user, isAuthenticated }) => {
           to={`/tutor-room?name=${nameTutor}&room=${TUTOR_ROOM}`}
         >
           <button
-            className="btnTutor btn bg-main border text-light mr-4 p-0 px-3"
+            className="btnTutor btn bg-main border text-light mt-1 mb-1 mr-4 py-3 px-3"
             type="button"
           >
             Tutor Chatroom
