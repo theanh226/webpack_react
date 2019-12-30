@@ -9,8 +9,8 @@
 }
 /* height */
 .chat {
-  max-height: 513px;
-  min-height: 514px;
+  max-height: 465px;
+  min-height: 465px;
 }
 .tutor-chat-room {
   min-height: 321px;
@@ -41,7 +41,7 @@
 
 /* code mirror */
 .react-codemirror2 {
-  height: 427px;
+  height: 378px;
 }
 
 .cm-s-monokai.CodeMirror {
@@ -74,3 +74,11 @@
     min-height: 566px;
 } */
 }
+
+/* test
+.tutor-chat-room {
+  position: relative;
+}
+.tutor-chat-room-header {
+  position: absolute;
+} */

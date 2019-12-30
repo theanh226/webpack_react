@@ -60,12 +60,9 @@ const TutorChatRoom = ({ location, loadUser }) => {
   return (
     <div className="container">
       <div className="d-lg-flex">
-        <div className="col-4 col-md-12 col-lg-8 p-3 bg-sub border-right-sub-light">
-          <h2 className="lead bg-main text-light text-center py-4">
-            T U T O R _ C H A T R O O M
-          </h2>
+        <div className="col-4 col-md-12 col-lg-8 bg-sub border-right-sub-light">
           {/* start chatbox */}
-          <div className="bg-sub pt-3 pb-4 pr-3 pl-3">
+          <div className="bg-sub">
             <div>
               <ChatBox messages={messages} name={name} />
               <Input
@@ -77,15 +74,20 @@ const TutorChatRoom = ({ location, loadUser }) => {
           </div>
           {/* End chat box */}
         </div>
-        <div className="d-flex flex-column col-3 col-md-12 col-lg-4 bg-sub border-left-sub-light p-3">
+        <div className="d-flex flex-column col-3 col-md-12 col-lg-4 bg-sub border-left-sub-light px-3 py-2">
+          <h2 className="lead bg-main text-light text-center py-4 mb-0 border-bottom">
+            T U T O R _ C H A T R O O M
+          </h2>
           <ProfileBox />
           <div className="border-top bg-main d-flex justify-content-center pt-2">
-            <p className="lead text-center text-light">Back to Lounge:</p>
+            <p className="lead text-center text-light">Go to Profile:</p>
             <Link to="/profile">
               <button
                 className="btn bg-danger rounded-0 ml-2 px-4"
                 type="button"
               >
+                {' '}
+                &nbsp;
                 <i className="fas fa-sign-out-alt fa text-light" />
               </button>
             </Link>
