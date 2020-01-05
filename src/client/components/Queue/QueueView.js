@@ -11,7 +11,7 @@ const QueueView = () => {
       <div className="container fix-height bg-sub d-md-flex d-lg-flex pb-4 pt-4">
         <div className="queue col-12 col-sm-12 col-md-7 col-lg-8 pl-3">
           <Queue />
-          <div className="mt-2 pb-2">
+          <div className="mt-custom">
             <Link to="/profile">
               <button
                 className="btn btn-danger btn-lg btn-block rounded-0 text-light py-3 px-5"
