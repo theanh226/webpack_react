@@ -9,6 +9,7 @@
 }
 /* height */
 .chat {
+  height: 465px;
   max-height: 465px;
   min-height: 465px;
 }
