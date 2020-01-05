@@ -58,9 +58,9 @@ const TutorChatRoom = ({ location, loadUser }) => {
     }
   };
   return (
-    <div className="container">
+    <div className="container bg-sub fix-height">
       <div className="d-lg-flex">
-        <div className="col-4 col-md-12 col-lg-8 bg-sub border-right-sub-light">
+        <div className="col-12 col-md-12 col-lg-8 bg-sub border-right-sub-light">
           {/* start chatbox */}
           <div className="bg-sub">
             <div>
@@ -74,8 +74,8 @@ const TutorChatRoom = ({ location, loadUser }) => {
           </div>
           {/* End chat box */}
         </div>
-        <div className="d-flex flex-column col-3 col-md-12 col-lg-4 bg-sub border-left-sub-light px-3 py-2">
-          <h2 className="lead bg-main text-light text-center py-4 mb-0 border-bottom">
+        <div className="d-flex flex-column col-12 col-md-12 col-lg-4 bg-sub border-left-sub-light px-3 py-2">
+          <h2 className="lead bg-main text-light text-center py-3 mt-2 mb-1 border">
             T U T O R _ C H A T R O O M
           </h2>
           <ProfileBox />

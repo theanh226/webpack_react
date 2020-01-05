@@ -23,6 +23,9 @@ a:focus {
 .bg-sub-80 {
   background-color: rgba(50, 55, 118, 0.8) !important;
 }
+.bg-sub-50 {
+  background-color: rgba(50, 55, 118, 0.5) !important;
+}
 .bg-sub-light {
   background-color: rgba(84, 89, 147) !important;
 }
@@ -63,7 +66,7 @@ a:focus {
   font-size: 12px;
 }
 .fix-height {
-  min-height: 67vh;
+  min-height: 69vh !important;
 }
 /* background picture */
 .masthead {

@@ -24,7 +24,7 @@ const Login = ({ login, isAuthenticated }) => {
     return <Redirect to="/profile" />;
   }
   return (
-    <div className="container text-light col-lg-4 col-md-6 col-sm-7 col-12 pt-5">
+    <div className="container fix-height text-light col-lg-4 col-md-6 col-sm-7 col-12 pt-5">
       <div className="p-4">
         <h2 className="color-pale-green text-light">Sign In</h2>
         <p className="lead">

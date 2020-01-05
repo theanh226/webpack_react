@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 
 const Faq = () => {
   return (
-    <div className="container pt-5">
-      <h1 className="text-center text-light display-3">FAQ</h1>
+    <div className="container fix-height bg-sub-50 pt-5">
+      <p className="text-center text-light display-4">
+        Frequently asked Questions
+      </p>
       <p className="lead text-light text-center mb-4">How can we help you ?</p>
       <div className="row">
         <div className="col-12 col-sm-12 col-lg-10 col-xl-8 mx-auto mb-5">
@@ -258,7 +260,7 @@ const Faq = () => {
           <div className="containButton d-sm-flex d-lg-flex justify-content-between mt-4">
             <Link to="/">
               <button
-                className="col-12 btLandingPage btn bg-main rounded-0 text-light px-4 pt-3 mb-3"
+                className="col-12 btLandingPage btn bg-main rounded text-light px-4 pt-3 mb-3"
                 type="button"
               >
                 <p className="lead">Go to Landing Page</p>
@@ -266,7 +268,7 @@ const Faq = () => {
             </Link>
             <Link to="/profile">
               <button
-                className="btn btn-danger col-12 rounded-0 pt-3 px-5"
+                className="btn btn-danger col-12 rounded pt-3 px-5"
                 type="button"
               >
                 <p className="lead">Go to Lounge</p>

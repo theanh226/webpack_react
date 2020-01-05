@@ -48,9 +48,6 @@ const PersonalInfo = ({ user }) => {
             <div className="d-flex justify-content-start ml-3">
               <div className="font-weight-light font-italic">{status}</div>
             </div>
-            <div className="d-none justify-content-start ml-3">
-              <div className="font-weight-light font-italic">Offline</div>
-            </div>
           </div>
         </div>
         <div className="w-100 d-flex text-light">
@@ -80,16 +77,16 @@ const PersonalInfo = ({ user }) => {
         </div>
       </div>
       <div className="personalInfo d-flex justify-content-between mt-2 mt-md-3 mt-lg-4">
-        <Link to="/faq">
+        <Link to="/faq" className="w-100">
           <button
-            className="btn bg-main text-light rounded-0 pt-lg-4 px-lg-3 text-light"
+            className="btn w-100 bg-main text-light rounded-0 pt-lg-4 px-lg-4 text-light"
             type="button"
           >
             <p className="lead pt-lg-1 pt-md-3 pb-lg-1 mb-3 pt-3">Go to Faq</p>
           </button>
         </Link>
         <button
-          className="btn bg-main rounded-0 col-xl-4 col-lg-3 col-md-4 col-6 text-light"
+          className="d-none btn bg-main rounded-0 col-xl-4 col-lg-3 col-md-4 col-6 text-light"
           type="button"
         >
           <p className="lead mb-md-0 pt-md-0 pt-lg-1 pb-lg-1 mb-0">

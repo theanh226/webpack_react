@@ -5,7 +5,7 @@ import './LandingPage.css';
 const Landingpage = () => {
   return (
     <div>
-      <div className="masthead d-flex align-items-center text-center">
+      <div className="masthead d-flex align-items-center text-center fix-height">
         <div className="container">
           <div className="row">
             <div className="col-12">

@@ -115,10 +115,10 @@ const ChatView = ({
     }
   }
   return (
-    <div className="container">
+    <div className="container bg-sub fix-height">
       <div className="d-lg-flex">
-        <div className="d-md-flex col-lg-9 p-0">
-          <div className="codemirror col-4 col-md-6 col-lg-6 p-3 bg-sub border-right-sub-light">
+        <div className="d-md-flex col-lg-9 col-12 p-0">
+          <div className="codemirror col-12 col-md-6 col-lg-6 p-3 bg-sub border-right-sub-light">
             <h2 className="lead bg-main text-light text-center py-4">
               C O D E _ S N I P P E T
             </h2>
@@ -187,7 +187,7 @@ const ChatView = ({
             </div>
           </div>
           {/* --------------- End-Modal Submit code --------------- */}
-          <div className="bg-sub col-5 col-md-6 col-lg-6 p-0 px-3">
+          <div className="bg-sub col-12 col-md-6 col-lg-6 p-0 px-3">
             <ChatBox messages={messages} name={name} />
             <Input
               message={message}
@@ -196,7 +196,7 @@ const ChatView = ({
             />
           </div>
         </div>
-        <div className="chatView d-flex flex-column justify-content-between col-3 col-md-12 col-lg-3 bg-sub border-left-sub-light p-3">
+        <div className="chatView d-flex flex-column justify-content-between col-12 col-md-12 col-lg-3 bg-sub border-left-sub-light p-3">
           {viewBox(type)}
           <div className="border-top-sub-light  text-center">
             <button
