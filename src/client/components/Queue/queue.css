@@ -4,6 +4,10 @@
 .font-extra-small {
   font-size: 0.75rem !important;
 }
+
+.mt-custom {
+  margin-top: 1.9rem !important;
+}
 /* TEMPORAL SOLUTION FOR QUEUE LIST */
 .queue {
   position: relative;
