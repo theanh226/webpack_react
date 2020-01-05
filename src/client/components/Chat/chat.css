@@ -9,12 +9,10 @@
 }
 /* height */
 .chat {
-  max-height: 465px;
-  min-height: 465px;
+  height: 465px;
 }
 .tutor-chat-room {
-  min-height: 321px;
-  max-height: 321px;
+  height: 321px;
   overflow: hidden;
   overflow-y: scroll;
 }
