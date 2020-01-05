@@ -38,7 +38,6 @@ const ChatView = ({
   const [room, setRoom] = useState('');
   const [code, setCode] = useState('');
   const [codes, setCodes] = useState('');
-  const [emailUser, setEmailUser] = useState('');
   const [useLeaveChat, setUseLeaveChat] = useState(false);
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
@@ -48,15 +47,14 @@ const ChatView = ({
   useEffect(() => {
     const ENDPOINT = END_POINT_SOCKET;
     socket = io(ENDPOINT);
-    const { name, room, email } = queryString.parse(location.search);
+    const { name, room } = queryString.parse(location.search);
     setRoom(room);
     setName(name);
-    setEmailUser(email);
     setInfos({
       type: user != null ? user.type : '',
       name: user != null ? user.name : '',
     });
-    socket.emit('join', { name, room, emailUser }, error => {
+    socket.emit('join', { name, room }, error => {
       if (error) {
         console.log(error);
       }
@@ -83,6 +81,14 @@ const ChatView = ({
   useEffect(() => {
     loadUser();
   }, []);
+  // Update Profile user
+  useEffect(() => {
+    setInfos({
+      type: user != null ? user.type : '',
+      name: user != null ? user.name : '',
+    });
+  }, [user]);
+
   const sendMessage = event => {
     event.preventDefault();
     if (message) {
@@ -91,7 +97,6 @@ const ChatView = ({
   };
 
   const sendCode = code => {
-    console.log(code);
     if (code) {
       socket.emit('sendCode', code, () => setCode(code));
     }
