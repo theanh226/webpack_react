@@ -57,7 +57,6 @@ const OpenRoom = ({
       setAlert('Please enter the room number', 'danger', 3500);
     } else {
       socket.emit('tutorOpenRoomChat');
-      console.log('tutorOpenRoomChat');
       createRoomChat(room);
       // setRedirect(!redirect);
     }

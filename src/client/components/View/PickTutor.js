@@ -28,7 +28,6 @@ const PickTutor = ({ roomLists, loading, loadRoom }) => {
 
   useEffect(() => {
     socket.on('chatRoomHasBeenOpened', () => {
-      console.log('TUTOR OPEN THE ROOM, UPDATE PAGE');
       loadRoom();
     });
     socket.on('TutorHasBeenSelected', () => {
@@ -47,7 +46,6 @@ const PickTutor = ({ roomLists, loading, loadRoom }) => {
 
 const buidViewTutorRoom = listRoom => {
   let view;
-  console.log(listRoom);
   if (listRoom === undefined || listRoom === null) {
     view = <Spinner />;
   } else {
