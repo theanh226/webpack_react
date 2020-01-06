@@ -9,7 +9,7 @@ import Faq from '../components/Faq/Faq';
 import Queue from '../components/Queue/Queue';
 import ProfilePage from '../components/View/Profile/ProfilePage';
 import ChatView from '../components/Chat/ChatView';
-import TutorCard from '../components/Queue/TutorCard';
+// import TutorCard from '../components/Queue/TutorCard';
 import PickTutor from '../components/View/PickTutor';
 import QueueView from '../components/Queue/QueueView';
 import TutorChatRoom from '../components/Chat/TutorChatRoom';
@@ -31,7 +31,7 @@ const Routes = () => {
 
         <PrivateRoute exact path="/profile" component={ProfilePage} />
         <PrivateRoute exact path="/queue-view" component={QueueView} />
-        <Route exact path="/404" component={NotFound} />
+        <Route component={NotFound} />
       </Switch>
     </section>
   );
