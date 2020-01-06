@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import io from 'socket.io-client';
 import { connect } from 'react-redux';
-import logo from '../../../../vendor/img/logo1.png';
+import logo from '../../../../vendor/img/logo3.png';
 import { leaveQueueStudent } from '../../actions/queue';
 import { END_POINT_SOCKET, TUTOR_ROOM } from '../../constant/constant';
 import { logout } from '../../actions/auth';

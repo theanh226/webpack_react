@@ -5,14 +5,17 @@ const Footer = () => {
     <div className="footer bg-main">
       <div className="container">
         <div className="row d-md-flex d-lg-flex justify-content-between">
-          <div className="col-md-3 col-lg-3 col-xs-12 pt-4 pr-2">
+          <div className="col-md-3 col-lg-4 col-xs-12 pt-4 pr-2">
             <h2 className="text-white pt-3">About us</h2>
+            <p className="text-white-50 mb-0">
+              Group 22 HCI Wintersemester 2019/2020.
+            </p>
             <p className="text-white-50">
-              A group of students who want to make presentation before 16
-              January ¯\_(ツ)_/¯
+              We believe that good design is powerful, hard work is essential
+              and exploring the unknown is important.
             </p>
           </div>
-          <div className="d-flex col-md-4 col-lg-3 col-xs-12 pt-4 pt-md-5 pl-md-1 pl-lg-4">
+          <div className="d-flex col-md-4 col-lg-4 col-xs-12 pt-4 pt-md-5 pl-md-1 pl-lg-4">
             <a
               href="https://www.facebook.com/unihannover/"
               target="_blank"
@@ -54,7 +57,7 @@ const Footer = () => {
               <i className="fas fa-university fa-2x ml-3" />
             </a>
           </div>
-          <div className="Location col-md-5 col-lg-4 pt-4 pl-3">
+          <div className="Location col-md-5 col-lg-3 pt-4 pl-3">
             <h4 className="text-white pt-3">Location</h4>
             <p className="text-white-50 mb-2">Welfengarten 1, 30167 Hannover</p>
             <p className="text-white-50 mb-2 p-0">
