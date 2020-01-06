@@ -31,7 +31,7 @@ const PersonalInfo = ({ user }) => {
   }, [user]);
   return (
     <div>
-      <div className="d-flex bg-main flex-column align-items-center pt-5 pb-5 pb-md-4 pr-3 pl-3 rounded-0">
+      <div className="h-302 d-flex bg-main flex-column align-items-center pt-5 pb-5 pb-md-4 pr-3 pl-3 rounded-0">
         <div className="text-light mb-4 d-md-flex d-lg-flex justify-content-center">
           <h1 className="lead f-3">W E L C O M E &nbsp;</h1>
           <h1 className="lead f-3 pl-2">{name}</h1>
@@ -57,29 +57,19 @@ const PersonalInfo = ({ user }) => {
           <p className="col-7 col-md-6 col-lg-6 font-weight-light">{type}</p>
         </div>
         <div className="w-100 d-flex text-light">
-          <p className="col-5 col-md-6 col-lg-6 pl-0 pl-md-5 pl-lg-5">Like:</p>
-          <p className="col-7 col-md-6 col-lg-6 font-weight-light">{like}</p>
-        </div>
-        <div className="w-100 d-flex text-light">
           <p className="col-5 col-md-6 col-lg-6 pl-0 pl-md-5 pl-lg-5">Mail:</p>
           <a
             className="ol-7 col-md-6 col-lg-6 text-truncate text-light font-italic font-weight-light"
-            href="mailto:veri_nic3@yahoo.de"
+            href={`mailto:${email}`}
           >
             {email}
           </a>
         </div>
-        <div className="w-100 d-flex text-light">
-          <p className="col-5 col-md-6 col-lg-6 pl-0 pl-md-5 pl-lg-5">Fach:</p>
-          <p className="col-7 col-md-6 col-lg-6 font-weight-light">
-            Something about programming
-          </p>
-        </div>
       </div>
-      <div className="personalInfo d-flex justify-content-between mt-2 mt-md-3 mt-lg-4">
+      <div className="personalInfo d-flex justify-content-between mt-2 mt-md-3 mt-lg-5">
         <Link to="/faq" className="w-100">
           <button
-            className="btn w-100 bg-main text-light rounded-0 pt-lg-4 px-lg-4 text-light"
+            className="btn w-100 bg-main text-light rounded-0 pt-lg-4 px-lg-4 text-light mt-lg-5"
             type="button"
           >
             <p className="lead pt-lg-1 pt-md-3 pb-lg-1 mb-3 pt-3">Go to Faq</p>

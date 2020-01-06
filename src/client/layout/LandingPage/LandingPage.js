@@ -17,24 +17,24 @@ const Landingpage = () => {
                   t o &nbsp;
                 </h1>
                 <h1 className="wc-board text-light font-weight-light">
-                  I N F O H O R S E
+                  I N F O L O U N G E
                 </h1>
               </div>
-              <p className="lead text-light mt-3 mt-md-0">
+              <p className="lead text-light mt-3 mt-md-0 pl-2">
                 A great place for tutors and students to communicate
               </p>
             </div>
             <div className="col-6 text-right">
               <Link to="/faq">
                 <button type="button" className="btn bg-light">
-                  Goto Faq
+                  Go to Faq
                 </button>
               </Link>
             </div>
             <div className="col-6 text-left">
               <Link to="/login">
                 <button type="button" className="btn bg-danger text-light">
-                  Goto Lounge
+                  Go to Lounge
                 </button>
               </Link>
             </div>
