@@ -1,22 +1,16 @@
 .chat {
-  max-height: 480px;
+  height: 465px;
   overflow: hidden;
   overflow-y: scroll;
 }
-
 .w-80 {
   width: 80%;
-}
-/* height */
-.chat {
-  height: 465px;
 }
 .tutor-chat-room {
   height: 321px;
   overflow: hidden;
   overflow-y: scroll;
 }
-/* width */
 .chat ::-webkit-scrollbar {
   width: 0px;
 }
@@ -80,3 +74,13 @@
 .tutor-chat-room-header {
   position: absolute;
 } */
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .react-codemirror2 {
+    height: 482px;
+  }
+  .chat {
+    height: 568px;
+  }
+}
