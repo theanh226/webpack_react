@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import io from 'socket.io-client';
-import { leaveQueueStudent, loadQueue } from '../../actions/queue';
-import { END_POINT_SOCKET } from '../../constant/constant';
-import { getPosition } from './helpFuncQueue';
+import { leaveQueueStudent, loadQueue } from '../../../actions/queue';
+import { END_POINT_SOCKET } from '../../../constant/constant';
+import { getPosition } from '.././helpFuncQueue';
+import './LeaveQueue.css';
 
 let socket;
 const LeaveQueue = ({ user, leaveQueueStudent, queues, loadQueue }) => {
@@ -56,7 +57,7 @@ const LeaveQueue = ({ user, leaveQueueStudent, queues, loadQueue }) => {
       </p>
       <p className="lead text-center text-light mt-3">Below is your number:</p>
       <div className="d-flex justify-content-center py-2">
-        <div className="circle border border-light rounded-circle">
+        <div className="rainbow">
           <p className="display-3 mt-4 text-center">
             {getPosition(queues, id)}
           </p>
