@@ -7,13 +7,12 @@ const PersonalInfo = ({ user }) => {
   const [infos, setInfos] = useState({
     status: '',
     type: '',
-    like: 0,
     name: '',
     email: '',
     createdDate: '',
   });
 
-  const { status, type, like, name, email } = infos;
+  const { status, type, name, email } = infos;
 
   const newDate = user != null ? user.createdDate.toString() : '';
 
@@ -22,7 +21,6 @@ const PersonalInfo = ({ user }) => {
       setInfos({
         status: user.status,
         type: user.type,
-        like: user.like,
         name: user.name,
         email: user.email,
         createdDate: Date(newDate),
