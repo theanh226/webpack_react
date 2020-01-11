@@ -123,8 +123,8 @@ const ChatView = ({
     <div className="container bg-sub fix-height">
       <div className="d-lg-flex">
         <div className="d-md-flex col-lg-9 col-12 p-0">
-          <div className="codemirror col-12 col-md-6 col-lg-6 p-3 bg-sub border-right-sub-light">
-            <h2 className="lead bg-main text-light text-center py-4">
+          <div className="d-flex flex-column codemirror col-12 col-md-6 col-lg-6 p-3 bg-sub border-right-sub-light">
+            <h2 className="lead bg-main text-light text-center py-4 mb-0">
               C O D E _ S N I P P E T
             </h2>
             <CodeMirror
@@ -141,7 +141,7 @@ const ChatView = ({
               // onChange={(editor, data, value) => {}}
             />
             <button
-              className="btn bg-main text-light mt-5 rounded-0 w-100 pt-3 pb-1"
+              className="z-index-99 btn bg-main text-light rounded-0 w-100 pt-3 pb-1"
               type="submit"
               // onClick={() => setSendCode(!sendCode)}
               data-toggle="modal"
@@ -151,7 +151,7 @@ const ChatView = ({
             </button>
           </div>
           {/* --------------- Modal Submit code --------------- */}
-          <div className="modal fade" id="submitModal">
+          <div className="submit-code modal fade" id="submitModal">
             <div className="modal-dialog" role="document">
               <div className="modal-content bg-sub">
                 <p className="h3 text-center text-light mt-3">
