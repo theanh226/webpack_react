@@ -88,7 +88,7 @@ const TutorChatRoom = ({ location, loadUser }) => {
               >
                 {' '}
                 &nbsp;
-                <i className="fas fa-sign-out-alt fa text-light" />
+                <i className="fas fa-user text-light" />
               </button>
             </Link>
           </div>

@@ -80,7 +80,7 @@ const TutorCard = ({
                 className="rounded-circle mr-2"
               />
             </div>
-            <div className="text-light ml-4  text-truncate">
+            <div className="text-light ml-md-1 ml-lg-4 text-truncate">
               <p className="lead mb-0">{nameTutor}</p>
               <div>
                 <div className="d-flex justify-content-start">
@@ -98,7 +98,7 @@ const TutorCard = ({
             type="button"
             onClick={() => studentJoinChat(idTutor)}
           >
-            <p className="lead mb-0">Join Room</p>
+            <p className="mb-0 pt-lg-1 pb-md-3 px-md-2">Join Room</p>
           </button>
         </div>
       </div>

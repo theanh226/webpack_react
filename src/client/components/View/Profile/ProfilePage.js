@@ -4,7 +4,7 @@ import io from 'socket.io-client';
 import { connect } from 'react-redux';
 import { setAlert } from '../../../actions/alert';
 import JoinQueue from '../../Queue/JoinQueue';
-import LeaveQueue from '../../Queue/LeaveQueue';
+import LeaveQueue from '../../Queue/LeaveQueue/LeaveQueue';
 import OpenRoom from '../../Queue/OpenRoom/OpenRoom';
 import ProfileBox from './ProfileBox';
 import PersonalInfo from './PersonalInfo/PersonalInfo';
