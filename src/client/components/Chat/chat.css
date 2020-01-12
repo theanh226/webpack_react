@@ -9,8 +9,8 @@
 .w-80 {
   width: 80%;
 }
-.tutor-chat-room {
-  height: 321px;
+.tutor-chat-room .chat {
+  height: 488px;
   overflow: hidden;
   overflow-y: scroll;
 }

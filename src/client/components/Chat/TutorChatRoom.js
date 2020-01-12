@@ -60,7 +60,7 @@ const TutorChatRoom = ({ location, loadUser }) => {
   return (
     <div className="container bg-sub fix-height">
       <div className="d-lg-flex">
-        <div className="col-12 col-md-12 col-lg-8 bg-sub border-right-sub-light">
+        <div className="tutor-chat-room col-12 col-md-12 col-lg-8 bg-sub border-right-sub-light">
           {/* start chatbox */}
           <div className="bg-sub">
             <div>
