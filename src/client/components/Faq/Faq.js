@@ -471,6 +471,66 @@ const Faq = () => {
                 </div>
               </div>
             </div>
+            <div className="card">
+              <div
+                className="card-header pt-1 px-1 pb-0 text-center"
+                id="headingThirdteen"
+              >
+                <h5 className="mb-0">
+                  <button
+                    className="btn bg-main btn-lg btn-block text-left text-white rounded-0"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#collapseThirdteen"
+                    aria-expanded="false"
+                    aria-controls="collapseThirdteen"
+                  >
+                    These links may help you to understand more quickly
+                  </button>
+                </h5>
+              </div>
+              <div
+                className="collapse"
+                id="collapseThirdteen"
+                aria-labelledby="headingThirdteene"
+                data-parent="#faqExample"
+              >
+                <div className="card-body text-white">
+                  <ul className="mb-0">
+                    <li>
+                      <a
+                        href="https://www.w3schools.com/"
+                        className="text-light"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        w3schools.
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://www.w3resource.com/"
+                        className="text-light"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        w3resource.
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://www.udemy.com/"
+                        className="text-light"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Udemy.
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
           <div className="containButton d-sm-flex d-lg-flex justify-content-between mt-4">
             <Link to="/">
