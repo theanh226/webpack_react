@@ -1,22 +1,19 @@
 .chat {
-  max-height: 480px;
+  height: 67vh;
   overflow: hidden;
   overflow-y: scroll;
 }
-
+.z-index-99 {
+  z-index: 99;
+}
 .w-80 {
   width: 80%;
-}
-/* height */
-.chat {
-  height: 465px;
 }
 .tutor-chat-room {
   height: 321px;
   overflow: hidden;
   overflow-y: scroll;
 }
-/* width */
 .chat ::-webkit-scrollbar {
   width: 0px;
 }
@@ -39,7 +36,7 @@
 
 /* code mirror */
 .react-codemirror2 {
-  height: 378px;
+  height: calc(100%);
 }
 
 .cm-s-monokai.CodeMirror {
@@ -62,6 +59,16 @@
 }
 /* CHATBOX */
 
+/* SUBMIT */
+.submit-code .react-codemirror2 {
+  height: calc(80%);
+}
+.submit-code .modal-content {
+  height: 588px;
+}
+.submit-code .modal-dialog {
+  max-width: 70%;
+}
 /* RESPONSIVE FOR IPAD PORTRAIT SCREEN */
 @media only screen and (min-width: 768px) and (max-height: 1024px) and (orientation: portrait) {
   /* .react-codemirror2 {
@@ -72,11 +79,13 @@
     min-height: 566px;
 } */
 }
-
-/* test
-.tutor-chat-room {
-  position: relative;
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  .submit-code .modal-dialog {
+    max-width: 100%;
+  }
 }
-.tutor-chat-room-header {
-  position: absolute;
-} */
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+}
