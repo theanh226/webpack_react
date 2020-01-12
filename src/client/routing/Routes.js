@@ -24,10 +24,10 @@ const Routes = () => {
         <Route exact path="/register" component={Register} />
         <Route exact path="/faq" component={Faq} />
         <Route exact path="/login" component={Login} />
-        <Route exact path="/queue" component={Queue} />
-        <Route exact path="/pick-tutor" component={PickTutor} />
-        <Route exact path="/chat" component={ChatView} />
-        <Route exact path="/tutor-room" component={TutorChatRoom} />
+        <PrivateRoute exact path="/queue" component={Queue} />
+        <PrivateRoute exact path="/pick-tutor" component={PickTutor} />
+        <PrivateRoute exact path="/chat" component={ChatView} />
+        <PrivateRoute exact path="/tutor-room" component={TutorChatRoom} />
 
         <PrivateRoute exact path="/profile" component={ProfilePage} />
         <PrivateRoute exact path="/queue-view" component={QueueView} />
