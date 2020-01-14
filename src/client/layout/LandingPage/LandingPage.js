@@ -6,6 +6,9 @@ const Landingpage = () => {
   return (
     <div>
       <div className="masthead d-flex align-items-center text-center fix-height">
+        <div id="stars" />
+        <div id="stars2" />
+        <div id="stars3" />
         <div className="container">
           <div className="row">
             <div className="col-12">
