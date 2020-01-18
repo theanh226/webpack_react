@@ -18,9 +18,6 @@ const Routes = () => {
   return (
     <section className="masthead">
       <div className="position-absolute w-100 z-1000">
-        <div id="stars" />
-        <div id="stars2" />
-        <div id="stars3" />
         <Alert />
       </div>
       <Switch>
